@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="page-container">
     <div v-for="(entry, index) in projects" :key="index">
       <div v-for="(items, index) in entry" :key="index">
         {{ items }} : {{ index }}
@@ -18,4 +18,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style lang="scss">
+.page-container {
+  display: grid;
+}
+</style>
