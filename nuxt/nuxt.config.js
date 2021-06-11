@@ -7,13 +7,19 @@ export default {
    */
   publicRuntimeConfig: {
     baseUrl: process.env.BASE_URL,
+    kirbyUrl: process.env.KIRBY_URL,
     devState: process.env.DEV_STATE,
-    maintenance: process.env.MAINTENANCE
+    maintenance: process.env.MAINTENANCE,
+   // showLanding: process.env.SHOW_LANDING === "false" ? false : true
   },
-
+  vue: {npm 
+    config: {
+      devtools: process.env.DEV_STATE === "development" ? true : false
+    }
+  },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: "nuxt",
+    title: "Francisco Borja",
     htmlAttrs: {
       lang: "en"
     },
@@ -21,8 +27,7 @@ export default {
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { hid: "description", name: "description", content: "" }
-    ],
-    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
+    ]
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
