@@ -9,10 +9,10 @@ export default {
     baseUrl: process.env.BASE_URL,
     kirbyUrl: process.env.KIRBY_URL,
     devState: process.env.DEV_STATE,
-    maintenance: process.env.MAINTENANCE,
-   // showLanding: process.env.SHOW_LANDING === "false" ? false : true
+    maintenance: process.env.MAINTENANCE
+    // showLanding: process.env.SHOW_LANDING === "false" ? false : true
   },
-  vue: {npm 
+  vue: {
     config: {
       devtools: process.env.DEV_STATE === "development" ? true : false
     }

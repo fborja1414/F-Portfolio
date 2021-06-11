@@ -112,3 +112,18 @@ exports
 *.cache
 build
 .strapi-updater.json
+
+#icloud files 
+*.icloud
+
+# Cache Files
+# ---------------
+
+/site/cache/*
+!/site/cache/index.html
+
+# Sessions
+# ---------------
+
+/site/sessions/*
+!/site/sessions/index.html
