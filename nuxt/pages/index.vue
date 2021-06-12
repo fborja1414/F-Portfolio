@@ -13,14 +13,18 @@
       <a>> Fast Magazine 2020 Pages </a>
       <a>> Graphics </a>
     </div>
-    <div v-for="(entry, index) in projects" :key="index">
-      <Section :entry="entry" :index="index" />
-    </div>
+    <template v-for="(entry, index) in projects">
+      <Section :entry="entry" :index="index" :key="index" />
+    </template>
   </div>
 </template>
 
 <script>
+import Section from "@/components/Section.vue";
 export default {
+  components: {
+    Section,
+  },
   async asyncData({ $axios }) {
     const projects = await $axios.$get("http://localhost:1337/projects");
     console.log({ projects });
@@ -33,7 +37,6 @@ export default {
 .header-container {
   display: flex;
   grid-column: 2/4;
-  grid-row: 100%;
   font-size: 20px;
   height: 2rem;
   position: sticky;
@@ -44,7 +47,7 @@ export default {
 .page-container {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-row-gap: 20px;
+  grid-gap: 20px;
   margin: 10rem auto;
 }
 
@@ -53,5 +56,9 @@ export default {
   grid-column: 5/11;
   font-size: 20px;
   flex-direction: column;
+  margin: 0 0 6rem 0;
+}
+.items {
+  display: block;
 }
 </style>

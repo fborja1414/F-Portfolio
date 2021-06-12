@@ -5,18 +5,6 @@ export default {
   /*
    ** .env
    */
-  publicRuntimeConfig: {
-    baseUrl: process.env.BASE_URL,
-    kirbyUrl: process.env.KIRBY_URL,
-    devState: process.env.DEV_STATE,
-    maintenance: process.env.MAINTENANCE
-    // showLanding: process.env.SHOW_LANDING === "false" ? false : true
-  },
-  vue: {
-    config: {
-      devtools: process.env.DEV_STATE === "development" ? true : false
-    }
-  },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: "Francisco Borja",
