@@ -42,6 +42,10 @@ export default {
 <style lang="scss" scoped>
 @import "~assets/_projects.scss";
 
+.section-container {
+  margin: 0 0 6rem 0;
+}
+
 .title {
   font-style: italic;
   height: 5rem;
