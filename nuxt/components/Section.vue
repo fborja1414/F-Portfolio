@@ -1,6 +1,26 @@
 <template>
   <div class="section-container" :class="position">
     <div class="scroll" v-if="images.length > 1">
+      <video
+        class="vid-size"
+        :key="index"
+        :src="
+          images[0].url
+            .split('/uploads/')
+            .join('http://localhost:1337/uploads/')
+        "
+        autoplay
+        loop
+      />
+      <img
+        v-for="(image, index) in images"
+        :key="index"
+        :src="
+          image.url.split('/uploads/').join('http://localhost:1337/uploads/')
+        "
+      />
+    </div>
+    <div v-else>
       <img
         v-for="(image, index) in images"
         :key="index"
@@ -12,7 +32,7 @@
     <div class="description">
       <a class="title">2021 {{ entry.name }}</a>
       <a class="title">{{ description }}</a>
-      <a class="swipe" v-if="images.length > 1">swipe -> </a>
+      <a class="swipe" v-if="images.length > 1">swipe >> </a>
     </div>
   </div>
 </template>
@@ -68,5 +88,9 @@ img {
 
 .swipe {
   text-align: right;
+}
+
+.vid-size {
+  width: 100%;
 }
 </style>
