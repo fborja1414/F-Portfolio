@@ -2,8 +2,8 @@
   <div class="page-container">
     <div class="header-container">
       <a class="header">
-        Francisco Borja, <br />
-        designer and developer
+        Francisco Borja,
+        <div class="subheader">designer and developer</div>
       </a>
     </div>
     <div class="navigation">
@@ -12,15 +12,29 @@
         v-for="(entries, index) in projects"
         :key="index"
       >
-        <div class="nav-items" :key="index">
+        <div
+          class="nav-items"
+          :key="index"
+          @click="scrollSectionIntoView(index)"
+        >
           <a :key="index" class="select"> > </a>
           <a> {{ entries.name }}</a>
+          <a :key="index" class="medium"> {{ entries.medium }}</a>
         </div>
-        <a :key="index" class="medium"> {{ entries.medium }}</a>
       </div>
     </div>
-    <template v-for="(entry, index) in projects">
-      <Section :entry="entry" :index="index" :key="index" />
+
+    <template class="section-container">
+      <!-- <div class="scroll-description" :key="index" :class="entry.position">
+        Link
+      </div> -->
+      <Section
+        :entry="entry"
+        :index="index"
+        v-for="(entry, index) in projects"
+        :key="index"
+        ref="entry"
+      />
     </template>
   </div>
 </template>
@@ -37,6 +51,19 @@ export default {
     };
   },
   methods: {
+    scrollSectionIntoView(index) {
+      console.log(this.$refs.entry[index].$el);
+      const rawTargetContainerYPos =
+        this.$refs.entry[index].$el.getBoundingClientRect().top +
+        document.documentElement.scrollTop;
+      const targetContainerHeight = this.$refs.entry[index].$el.offsetHeight;
+      const windowHeight = window.innerHeight;
+      const centeredContainerYPos =
+        rawTargetContainerYPos -
+        Math.abs((windowHeight - targetContainerHeight) / 2);
+      // console.log(rawTargetContainerYPos, targetContainerHeight, centeredContainerYPos)
+      window.scrollTo({ top: centeredContainerYPos, behavior: "smooth" });
+    },
     hoveredNav() {
       this.navHovered = true;
       console.log("ha");
@@ -51,19 +78,26 @@ export default {
 </script>
 
 <style lang="scss">
+@import "~assets/_projects.scss";
+
 .header-container {
+  //position: relative;
   display: flex;
   grid-column: 2/4;
   font-size: 20px;
   height: 2rem;
-  position: sticky;
+  //position: sticky;
   top: 10rem;
   z-index: -1;
 }
 
+.subheader {
+  font-style: italic;
+}
+
 .page-container {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
+  grid-template-columns: repeat(10, 1fr);
   grid-gap: 20px;
   margin: 10rem auto;
 }
@@ -79,9 +113,30 @@ export default {
   overflow-x: visible;
 }
 .medium {
+  display: block;
   font-style: italic;
 }
 
+.section-container {
+  //position: relative;
+  margin: 0 0 6rem 0;
+}
+
+.scroll-description {
+  //display: flex;
+  //position: absolute;
+  //text-align: center;
+  position: relative;
+  grid-column: 2/4;
+  align-content: center;
+  font-style: italic;
+  //top: 50%;
+  //height: 50%;
+}
+
+// .entry-description {
+//   top: 50%;
+// }
 .select {
   position: absolute;
   left: -2vw;

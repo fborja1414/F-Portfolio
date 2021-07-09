@@ -62,10 +62,6 @@ export default {
 <style lang="scss" scoped>
 @import "~assets/_projects.scss";
 
-.section-container {
-  margin: 0 0 6rem 0;
-}
-
 .title {
   font-style: italic;
   height: 5rem;
@@ -81,6 +77,7 @@ export default {
   display: flex;
   justify-content: space-between;
 }
+
 img {
   width: 100%;
   margin: 0 0 1rem 0;
