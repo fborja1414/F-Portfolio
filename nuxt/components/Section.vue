@@ -30,8 +30,8 @@
       />
     </div>
     <div class="description">
-      <a class="title">2021 {{ entry.name }}</a>
-      <a class="title">{{ description }}</a>
+      <!-- <a class="title">2021 {{ entry.name }}</a> -->
+
       <a class="swipe" v-if="images.length > 1">swipe >> </a>
     </div>
   </div>
