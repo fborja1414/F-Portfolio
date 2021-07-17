@@ -8,6 +8,7 @@
 .main {
   width: calc(100% - 40px);
   margin: 3rem auto 0;
+  max-width: 1460px;
 }
 html {
   font-family: "Times New Roman", Times, serif Arial, sans-serif;

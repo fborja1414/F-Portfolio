@@ -90,4 +90,10 @@ img {
 .vid-size {
   width: 100%;
 }
+
+.section-container:hover {
+  .swipe {
+    font-style: bold;
+  }
+}
 </style>
