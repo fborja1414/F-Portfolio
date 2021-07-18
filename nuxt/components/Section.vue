@@ -5,7 +5,7 @@
         class="vid-size"
         :key="index"
         :src="
-          images[0].url
+          images[1].url
             .split('/uploads/')
             .join('http://localhost:1337/uploads/')
         "
@@ -89,6 +89,7 @@ img {
 
 .vid-size {
   width: 100%;
+  margin: 0 0 1rem 0;
 }
 
 .section-container:hover {

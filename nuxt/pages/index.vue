@@ -6,11 +6,11 @@
         <div class="subheader">designer and developer</div>
       </a>
 
-      <div class="socials">
+      <!-- <div class="socials">
         <a href="https://www.are.na/francisco-borja">Are.na</a>
         <a href="https://github.com/fborja1414">Github</a>
         <a>Email</a>
-      </div>
+      </div> -->
       <div class="scroll-description" v-html="sectionDescription"></div>
       <!-- <div
         class="back"
@@ -40,6 +40,8 @@
         v-for="(entry, index) in projects"
         :key="index"
         ref="entry"
+        class="fade-in"
+        :class="{ fade: fadeToggle }"
       />
     </template>
   </div>
@@ -119,6 +121,7 @@ export default {
             this.$refs.entry[index].$el.getBoundingClientRect().bottom
           );
           this.sectionDescription = this.$refs.entry[index].description;
+          this.fadeToggle = true;
         } else if (
           window.scrollY <= this.$refs.entry[0].$el.getBoundingClientRect().top
         ) {
@@ -276,6 +279,15 @@ export default {
 .section-container {
   //position: relative;
   margin: 0 0 6rem 0;
+}
+
+.fade-in {
+  opacity: 0;
+}
+
+.fade {
+  opacity: 1;
+  transition: opacity 0.3s;
 }
 
 .select {

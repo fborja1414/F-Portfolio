@@ -15,6 +15,13 @@
     <a :key="index" class="medium" :class="{ blink: navClick }">
       {{ entries.medium }}</a
     >
+    <div
+      v-if="ExpandStatus"
+      class="description-two"
+      :class="{ 'description--Collapsed': !ExpandStatus }"
+    >
+      extra info
+    </div>
   </div>
 </template>
 
@@ -83,6 +90,21 @@ export default {
 
 .selectOn {
   opacity: 1;
+}
+
+.description-two {
+  height: auto;
+  max-height: 100%;
+  opacity: 1;
+  transition: max-height 10s ease-in-out;
+  transition: opacity 5 ease-in-out;
+  // margin: 10rem 0;
+}
+
+.description--collapsed {
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 10s ease-out;
 }
 
 // .nav-container:hover {
