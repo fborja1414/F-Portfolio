@@ -1,0 +1,32 @@
+@font-face {
+  font-family: "Canela-Thin";
+  src: local("Canela-Thin"),
+    url(~assets/fonts/Canela-Thin.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "Canela-ThinItalic";
+  src: local("Canela-ThinItalic"),
+    url(~assets/fonts/Canela-ThinItalic.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "Canela-Light";
+  src: local("Canela-Light"),
+    url(~assets/fonts/Canela-Light.ttf) format("truetype");
+}
+
+@mixin Canela-Thin {
+  font-family: Canela-Thin, serif;
+  font-style: normal;
+}
+
+@mixin Canela-ThinItalic {
+  font-family: Canela-ThinItalic, serif;
+  font-style: Italic;
+}
+
+@mixin Canela-Light {
+  font-family: Canela-Light, serif;
+  font-style: normal;
+}

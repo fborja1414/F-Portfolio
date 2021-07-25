@@ -2,8 +2,8 @@
   <div class="page-container" v-if="show">
     <div class="header-container">
       <a class="header">
-        Francisco Borja,
-        <div class="subheader">designer and developer</div>
+        Francisco Borja
+        <a class="subheader">designer and developer</a>
       </a>
 
       <!-- <div class="socials">
@@ -11,7 +11,7 @@
         <a href="https://github.com/fborja1414">Github</a>
         <a>Email</a>
       </div> -->
-      <div class="scroll-description" v-html="sectionDescription"></div>
+      <!-- <div class="scroll-description" v-html="sectionDescription"></div> -->
       <!-- <div
         class="back"
         @click="window.scrollTo({ top: 0, behavior: 'smooth' })"
@@ -19,117 +19,106 @@
         Back to Top
       </div> -->
     </div>
-    <div class="navigation">
-      <div
-        class="nav-container"
-        v-for="(entries, index) in projects"
-        :key="index"
-      >
+    <transition name="navigation">
+      <div class="navigation">
         <nav-item
+          :key="index"
+          v-for="(entries, index) in projects"
           :index="index"
           :entries="entries"
-          v-on:clicked="scrollSectionIntoView"
         />
       </div>
-    </div>
-
-    <template class="section-container">
-      <Section
-        :entry="entry"
-        :index="index"
-        v-for="(entry, index) in projects"
-        :key="index"
-        ref="entry"
-        class="fade-in"
-        :class="{ fade: fadeToggle }"
-      />
-    </template>
+    </transition>
   </div>
 </template>
 
 <script>
 import Section from "@/components/Section.vue";
 import NavItem from "@/components/NavItem.vue";
+import NavSection from "@/components/NavSection.vue";
+
 export default {
   components: {
     Section,
     NavItem,
+    NavSection,
   },
 
   transition: {
     appear: true,
-    name: "page",
+    name: "navigation",
   },
   data() {
     return {
       show: false,
       scroll: true,
       sectionDescription: " ",
+      showSection: true,
     };
   },
   methods: {
-    scrollSectionIntoView(index) {
-      setTimeout(() => {
-        if (index == 1) {
-          const rawTargetContainerYPos =
-            this.$refs.entry[index].$el.getBoundingClientRect().top +
-            document.documentElement.scrollTop;
-          const targetContainerHeight = this.$refs.entry[index].$el
-            .offsetHeight;
-          const windowHeight = window.innerHeight;
-          const centeredContainerYPos =
-            rawTargetContainerYPos -
-            Math.abs(windowHeight - targetContainerHeight / 2);
-          // console.log(rawTargetContainerYPos, targetContainerHeight, centeredContainerYPos)
-          window.scrollTo({ top: centeredContainerYPos, behavior: "smooth" });
-        } else {
-          console.log(this.$refs.entry[index].$el);
-          const rawTargetContainerYPos =
-            this.$refs.entry[index].$el.getBoundingClientRect().top +
-            document.documentElement.scrollTop;
-          const targetContainerHeight = this.$refs.entry[index].$el
-            .offsetHeight;
-          const windowHeight = window.innerHeight;
-          const centeredContainerYPos =
-            rawTargetContainerYPos -
-            Math.abs((windowHeight - targetContainerHeight) / 2);
-          // console.log(rawTargetContainerYPos, targetContainerHeight, centeredContainerYPos)
-          window.scrollTo({ top: centeredContainerYPos, behavior: "smooth" });
-        }
-      }, 1000);
-    },
+    // scrollSectionIntoView(index) {
+    //   setTimeout(() => {
+    //     if (index == 1) {
+    //       const rawTargetContainerYPos =
+    //         this.$refs.entry[index].$el.getBoundingClientRect().top +
+    //         document.documentElement.scrollTop;
+    //       const targetContainerHeight = this.$refs.entry[index].$el
+    //         .offsetHeight;
+    //       const windowHeight = window.innerHeight;
+    //       const centeredContainerYPos =
+    //         rawTargetContainerYPos -
+    //         Math.abs(windowHeight - targetContainerHeight / 2);
+    //       // console.log(rawTargetContainerYPos, targetContainerHeight, centeredContainerYPos)
+    //       window.scrollTo({ top: centeredContainerYPos, behavior: "smooth" });
+    //     } else {
+    //       console.log(this.$refs.entry[index].$el);
+    //       const rawTargetContainerYPos =
+    //         this.$refs.entry[index].$el.getBoundingClientRect().top +
+    //         document.documentElement.scrollTop;
+    //       const targetContainerHeight = this.$refs.entry[index].$el
+    //         .offsetHeight;
+    //       const windowHeight = window.innerHeight;
+    //       const centeredContainerYPos =
+    //         rawTargetContainerYPos -
+    //         Math.abs((windowHeight - targetContainerHeight) / 2);
+    //       // console.log(rawTargetContainerYPos, targetContainerHeight, centeredContainerYPos)
+    //       window.scrollTo({ top: centeredContainerYPos, behavior: "smooth" });
+    //     }
+    //   }, 1000);
+    // },
 
-    setDescription(event) {
-      for (var index = 0; index <= this.$refs.entry.length; index++) {
-        if (
-          (this.$refs.entry[index].$el.getBoundingClientRect().top >= 0 &&
-            window.innerHeight >=
-              this.$refs.entry[index].$el.getBoundingClientRect().bottom -
-                this.$refs.entry[index].$el.offsetHeight / 2) ||
-          (this.$refs.entry[index].$el.getBoundingClientRect().bottom >= 0 &&
-            window.innerHeight >=
-              this.$refs.entry[index].$el.getBoundingClientRect().bottom -
-                this.$refs.entry[index].$el.offsetHeight / 2)
-          // this.$refs.entry[index - 1].$el.getBoundingClientRect().bottom >= 0
-          //
-          // window.innerHeight >=
-          //   this.$refs.entry[index].$el.getBoundingClientRect().bottom
-        ) {
-          console.log(
-            window.scrollY,
-            this.$refs.entry[index].$el.getBoundingClientRect().top,
-            this.$refs.entry[index].$el.getBoundingClientRect().bottom
-          );
-          this.sectionDescription = this.$refs.entry[index].description;
-          this.fadeToggle = true;
-        } else if (
-          window.scrollY <= this.$refs.entry[0].$el.getBoundingClientRect().top
-        ) {
-          this.sectionDescription = " ";
-          //this.scroll = false;
-        }
-      }
-    },
+    // setDescription(event) {
+    //   for (var index = 0; index <= this.$refs.entry.length; index++) {
+    //     if (
+    //       (this.$refs.entry[index].$el.getBoundingClientRect().top >= 0 &&
+    //         window.innerHeight >=
+    //           this.$refs.entry[index].$el.getBoundingClientRect().bottom -
+    //             this.$refs.entry[index].$el.offsetHeight / 2) ||
+    //       (this.$refs.entry[index].$el.getBoundingClientRect().bottom >= 0 &&
+    //         window.innerHeight >=
+    //           this.$refs.entry[index].$el.getBoundingClientRect().bottom -
+    //             this.$refs.entry[index].$el.offsetHeight / 2)
+    //       // this.$refs.entry[index - 1].$el.getBoundingClientRect().bottom >= 0
+    //       //
+    //       // window.innerHeight >=
+    //       //   this.$refs.entry[index].$el.getBoundingClientRect().bottom
+    //     ) {
+    //       console.log(
+    //         window.scrollY,
+    //         this.$refs.entry[index].$el.getBoundingClientRect().top,
+    //         this.$refs.entry[index].$el.getBoundingClientRect().bottom
+    //       );
+    //       this.sectionDescription = this.$refs.entry[index].description;
+    //       this.fadeToggle = true;
+    //     } else if (
+    //       window.scrollY <= this.$refs.entry[0].$el.getBoundingClientRect().top
+    //     ) {
+    //       this.sectionDescription = " ";
+    //       //this.scroll = false;
+    //     }
+    //   }
+    // },
 
     // watch: {
     //     sectionDescription: function() {
@@ -179,30 +168,27 @@ export default {
 
 <style lang="scss">
 @import "~assets/_projects.scss";
+@import "~assets/_typography.scss";
 
 .header-container {
-  //position: relative;
-  //display: flex;
-  grid-column: 1/3;
-  font-size: 20px;
-  height: 2rem;
+  @include Canela-Thin;
+  grid-row: 1;
+  grid-column: 1/7;
+  font-size: 40px;
+  height: 8rem;
+  align-content: center;
   position: sticky;
-  top: 3rem;
+  top: 1.5rem;
   z-index: -1;
 }
 
 .subheader {
+  @include Canela-ThinItalic;
   font-style: italic;
 }
 
-// .preview-container {
-//   width: 10rem;
-//   position: absolute;
-//   opacity: 0;
-// }
-
 .scroll-description {
-  display: block;
+  //display: block;
   margin-top: 10rem;
   //position: absolute;
   //text-align: center;
@@ -233,16 +219,25 @@ export default {
 }
 
 .navigation {
-  //position: sticky;
-  //top: 3rem;
-  line-height: 2.5;
-  //display: flex;
-  grid-column: 4/10;
-  font-size: 20px;
-  // flex-direction: column;
+  grid-column: 3/10;
+  font-size: 45px;
   height: 55vh;
   margin: 0 0 10rem 0;
-  overflow-x: visible;
+  //overflow-x: visible;
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+.nav-section {
+  grid-column: 8/11;
+  font-size: 25px;
+  padding-top: 3rem;
+  position: sticky;
+  top: 1.5rem;
+}
+
+.section {
+  grid-column: 3/8;
 }
 
 .back {
@@ -270,25 +265,20 @@ export default {
     display: block;
   }
 }
-.medium {
-  //display: block;
-  font-style: italic;
-  //color: blue;
-}
 
 .section-container {
-  //position: relative;
-  margin: 0 0 6rem 0;
+  //top: 0;
+  //left: 0;
 }
 
-.fade-in {
-  opacity: 0;
-}
+// .fade-in {
+//   opacity: 0;
+// }
 
-.fade {
-  opacity: 1;
-  transition: opacity 0.3s;
-}
+// .fade {
+//   opacity: 1;
+//   transition: opacity 0.3s;
+// }
 
 .select {
   position: absolute;
@@ -325,20 +315,22 @@ export default {
   cursor: pointer;
 }
 
-.description-enter-active,
-.description-leave-active {
-  transition: opacity 1s;
+.navigation-enter-active,
+w .navigation-leave-active {
+  transition: opacity 3s ease-in-out, transform 2s ease-in-out;
 }
-.description-enter,
-.description-leave-to {
+.navigation-enter,
+.navigation-leave-to {
   opacity: 0;
+  transform: translate3d(0, 15px, 0);
 }
 .page-enter-active,
 .page-leave-active {
-  transition: opacity 1s;
+  transition: opacity 0.5s ease-in-out, transform 0.2s ease-in-out;
 }
 .page-enter,
 .page-leave-to {
   opacity: 0;
+  transform: translate3d(0, 15px, 0);
 }
 </style>

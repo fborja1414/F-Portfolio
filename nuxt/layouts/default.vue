@@ -7,7 +7,7 @@
 <style lang="scss">
 .main {
   width: calc(100% - 40px);
-  margin: 3rem auto 0;
+  margin: 0rem 1rem 1rem 1rem;
   max-width: 1460px;
 }
 html {
@@ -26,6 +26,8 @@ html {
 *::after {
   box-sizing: border-box;
   margin: 0;
+  //background: black;
+  //color: white;
 }
 
 .button--green {

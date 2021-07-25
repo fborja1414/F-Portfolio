@@ -1,5 +1,5 @@
 <template>
-  <div class="section-container" :class="position">
+  <div class="section-container">
     <div class="scroll" v-if="images.length > 1">
       <video
         class="vid-size"
@@ -90,6 +90,12 @@ img {
 .vid-size {
   width: 100%;
   margin: 0 0 1rem 0;
+}
+
+.section-container {
+  grid-column: 1/9;
+  margin: 0 0 10rem 0;
+  z-index: -2;
 }
 
 .section-container:hover {

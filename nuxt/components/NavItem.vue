@@ -1,26 +1,48 @@
 <template>
-  <div
-    class="nav-items"
-    :key="index"
-    @mouseenter="selectOn"
-    @mouseleave="selectOff"
-    v-on:click="
-      $emit('clicked', index);
-      navClick = true;
-      resetClick();
-    "
-  >
-    <a :key="index" class="select" :class="{ selectOn: navHovered }"> > </a>
-    <a> {{ entries.name }}</a>
-    <a :key="index" class="medium" :class="{ blink: navClick }">
-      {{ entries.medium }}</a
-    >
+  <div>
     <div
-      v-if="ExpandStatus"
-      class="description-two"
-      :class="{ 'description--Collapsed': !ExpandStatus }"
+      class="nav-items"
+      v-on:click="
+        $emit('clicked', index);
+        navClick = true;
+        resetClick();
+      "
+      @mouseenter="selectOn"
+      @mouseleave="selectOff"
     >
-      extra info
+      <a class="name"> {{ entries.name }} |</a>
+      <a class="medium" :class="{ blink: navClick }"> {{ entries.medium }}</a>
+    </div>
+
+    <div
+      class="section-container"
+      :class="{ 'section-container--active': navHovered }"
+    >
+      <div :class="position">
+        <div v-if="images.length > 1" class="fulldisplay">
+          <img
+            class="fulldisplay-image"
+            v-for="(image, index) in images"
+            :key="index"
+            :src="
+              image.url
+                .split('/uploads/')
+                .join('http://localhost:1337/uploads/')
+            "
+          />
+        </div>
+        <div v-else>
+          <img
+            v-for="(image, index) in images"
+            :key="index"
+            :src="
+              image.url
+                .split('/uploads/')
+                .join('http://localhost:1337/uploads/')
+            "
+          />
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -34,9 +56,24 @@ export default {
     entries: Object,
   },
 
+  data() {
+    return {
+      navHovered: false,
+      navClick: false,
+    };
+  },
   computed: {
     name: function () {
       return this.entries.name;
+    },
+    images: function () {
+      return this.entries.images;
+    },
+    position: function () {
+      return this.entries.position;
+    },
+    description: function () {
+      return this.entries.description;
     },
   },
 
@@ -58,20 +95,65 @@ export default {
     },
   },
 
-  data() {
-    return {
-      navClick: false,
-      navHovered: false,
-    };
-  },
+  // data() {
+  //   return {
+  //     navClick: false,
+  //     navHovered: false,
+  //   };
+  // },
 };
 </script>
 
 <style lang="scss" scoped>
+@import "~assets/_typography.scss";
+
+.section-container {
+  position: fixed;
+  top: 4rem;
+  left: 1rem;
+  height: calc(100% - 5rem);
+  width: calc(100vw - 2rem);
+  margin: 0;
+  z-index: -1;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-column-gap: 1rem;
+  grid-auto-columns: 1fr;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.section-container--active {
+  opacity: 1;
+  transition: opacity 1s;
+}
+
+img {
+  opacity: 40%;
+  width: 100%;
+  object-fit: cover;
+  z-index: 5;
+  //mix-blend-mode: exclusion;
+}
+
+.fulldisplay {
+  display: flex;
+}
+
+.fulldisplay-image {
+  padding: 1.5rem;
+}
 .nav-items {
   position: relative;
-  //margin-bottom: 10px;
-  border-bottom: solid 1px black;
+}
+
+.name {
+  @include Canela-Thin;
+}
+
+.medium {
+  @include Canela-ThinItalic;
 }
 
 .blink {
