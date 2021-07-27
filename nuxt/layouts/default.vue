@@ -26,6 +26,7 @@ html {
 *::after {
   box-sizing: border-box;
   margin: 0;
+
   //background: black;
   //color: white;
 }

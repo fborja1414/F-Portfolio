@@ -92,7 +92,7 @@ export default {
 
 .nav-section {
   grid-row: 1;
-  grid-column: 9/13;
+  grid-column: 6/11;
   font-size: 25px;
   padding: 1rem;
   position: sticky;

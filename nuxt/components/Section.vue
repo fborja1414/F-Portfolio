@@ -43,6 +43,7 @@ export default {
   props: {
     entry: Object,
     index: Number,
+    slideToggle: Boolean,
   },
 
   computed: {
@@ -93,14 +94,25 @@ img {
 }
 
 .section-container {
-  grid-column: 1/9;
+  grid-column: 1/7;
   margin: 0 0 10rem 0;
   z-index: -2;
+  overflow-x: hidden;
 }
 
 .section-container:hover {
   .swipe {
     font-style: bold;
   }
+}
+
+.slideIn-navigation-enter-active,
+.slideIn-navigation-leave-active {
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+}
+.slideIn-navigation-enter,
+.slideIn-navigation-leave-to {
+  opacity: 0;
+  transform: translate3d(0, 15px, 0);
 }
 </style>

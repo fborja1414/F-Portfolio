@@ -6,11 +6,15 @@
       navClick = true;
       resetClick();
     "
-    @mouseenter="selectOn"
-    @mouseleave="selectOff"
   >
     <a class="name"> {{ entry.name }} |</a>
     <a class="medium" :class="{ blink: navClick }"> {{ entry.medium }}</a>
+    <a
+      class="description"
+      :class="{ focusExpanded: focusExpanded }"
+      v-html="entry.description"
+    >
+    </a>
   </div>
 </template> 
 
@@ -19,8 +23,20 @@ export default {
   name: "NavSection",
   props: {
     entry: Object,
+    index: Number,
   },
-
+  data() {
+    return {
+      navClick: false,
+    };
+  },
+  methods: {
+    resetClick() {
+      setTimeout(() => {
+        this.navClick = false;
+      }, 1200);
+    },
+  },
   computed: {
     images: function () {
       return this.entry.images;
@@ -30,6 +46,9 @@ export default {
     },
     description: function () {
       return this.entry.description;
+    },
+    focusExpanded() {
+      return this.entry.name == this.$store.state.focus;
     },
   },
 };
@@ -50,5 +69,36 @@ img {
 }
 
 .nav-item-section {
+}
+
+.description {
+  //padding: 1rem;
+  display: block;
+  opacity: 0;
+  @include Canela-Thin;
+  font-size: 20px;
+
+  width: 35vw;
+  text-align: end;
+  justify-content: flex-end;
+  max-height: 0;
+  opacity: 0;
+  //transition: max-height 1s ease-in-out;
+  //opacity: 0;
+  //transform: translate3d(0, 15px, 0);
+
+  * {
+    display: none !important;
+  }
+}
+
+.focusExpanded {
+  height: auto;
+  margin-bottom: 5rem;
+  padding: 1.5rem;
+  max-height: 100%;
+  opacity: 1;
+  //transition: max-height 0.2s ease-in-out;
+  //transition: opacity 0.2 ease-in-out;
 }
 </style>

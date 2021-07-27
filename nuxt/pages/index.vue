@@ -5,30 +5,58 @@
         Francisco Borja
         <a class="subheader">designer and developer</a>
       </a>
+    </div>
 
-      <!-- <div class="socials">
+    <!-- <div class="socials">
         <a href="https://www.are.na/francisco-borja">Are.na</a>
         <a href="https://github.com/fborja1414">Github</a>
         <a>Email</a>
       </div> -->
-      <!-- <div class="scroll-description" v-html="sectionDescription"></div> -->
-      <!-- <div
+    <!-- <div class="scroll-description" v-html="sectionDescription"></div> -->
+    <!-- <div
         class="back"
         @click="window.scrollTo({ top: 0, behavior: 'smooth' })"
-      >
+      
         Back to Top
       </div> -->
-    </div>
-    <transition name="navigation">
+    <transition name="slideIn">
       <div class="navigation">
         <nav-item
           :key="index"
           v-for="(entries, index) in projects"
           :index="index"
           :entries="entries"
+          :slideToggle="slideToggle"
+          v-on:clicked="scrollSectionIntoView"
         />
       </div>
     </transition>
+
+    <transition name="slideIn">
+      <div v-show="slideToggle" class="nav-section">
+        <div
+          class="nav-container"
+          v-for="(entry, index) in projects"
+          :key="index"
+        >
+          <nav-section
+            v-on:clicked="scrollSectionIntoView"
+            :index="index"
+            :entry="entry"
+          />
+        </div>
+      </div>
+    </transition>
+    <template v-show="slideToggle" class="section-container">
+      <Section
+        :entry="entry"
+        :index="index"
+        v-for="(entry, index) in projects"
+        :key="index"
+        ref="entry"
+        :slideToggle="slideToggle"
+      />
+    </template>
   </div>
 </template>
 
@@ -46,7 +74,7 @@ export default {
 
   transition: {
     appear: true,
-    name: "navigation",
+    name: "page",
   },
   data() {
     return {
@@ -54,71 +82,74 @@ export default {
       scroll: true,
       sectionDescription: " ",
       showSection: true,
+      slideToggle: false,
     };
   },
   methods: {
-    // scrollSectionIntoView(index) {
-    //   setTimeout(() => {
-    //     if (index == 1) {
-    //       const rawTargetContainerYPos =
-    //         this.$refs.entry[index].$el.getBoundingClientRect().top +
-    //         document.documentElement.scrollTop;
-    //       const targetContainerHeight = this.$refs.entry[index].$el
-    //         .offsetHeight;
-    //       const windowHeight = window.innerHeight;
-    //       const centeredContainerYPos =
-    //         rawTargetContainerYPos -
-    //         Math.abs(windowHeight - targetContainerHeight / 2);
-    //       // console.log(rawTargetContainerYPos, targetContainerHeight, centeredContainerYPos)
-    //       window.scrollTo({ top: centeredContainerYPos, behavior: "smooth" });
-    //     } else {
-    //       console.log(this.$refs.entry[index].$el);
-    //       const rawTargetContainerYPos =
-    //         this.$refs.entry[index].$el.getBoundingClientRect().top +
-    //         document.documentElement.scrollTop;
-    //       const targetContainerHeight = this.$refs.entry[index].$el
-    //         .offsetHeight;
-    //       const windowHeight = window.innerHeight;
-    //       const centeredContainerYPos =
-    //         rawTargetContainerYPos -
-    //         Math.abs((windowHeight - targetContainerHeight) / 2);
-    //       // console.log(rawTargetContainerYPos, targetContainerHeight, centeredContainerYPos)
-    //       window.scrollTo({ top: centeredContainerYPos, behavior: "smooth" });
-    //     }
-    //   }, 1000);
-    // },
+    scrollSectionIntoView(index) {
+      setTimeout(() => {
+        if (index == 1) {
+          const rawTargetContainerYPos =
+            this.$refs.entry[index].$el.getBoundingClientRect().top +
+            document.documentElement.scrollTop;
+          const targetContainerHeight = this.$refs.entry[index].$el
+            .offsetHeight;
+          const windowHeight = window.innerHeight;
+          const centeredContainerYPos =
+            rawTargetContainerYPos -
+            Math.abs(windowHeight - targetContainerHeight / 2);
+          // console.log(rawTargetContainerYPos, targetContainerHeight, centeredContainerYPos)
+          window.scrollTo({ top: centeredContainerYPos, behavior: "smooth" });
+        } else {
+          console.log(this.$refs.entry[index].$el);
+          const rawTargetContainerYPos =
+            this.$refs.entry[index].$el.getBoundingClientRect().top +
+            document.documentElement.scrollTop;
+          const targetContainerHeight = this.$refs.entry[index].$el
+            .offsetHeight;
+          const windowHeight = window.innerHeight;
+          const centeredContainerYPos =
+            rawTargetContainerYPos -
+            Math.abs((windowHeight - targetContainerHeight) / 2);
+          // console.log(rawTargetContainerYPos, targetContainerHeight, centeredContainerYPos)
+          window.scrollTo({ top: centeredContainerYPos, behavior: "smooth" });
+        }
+      }, 1000);
+    },
 
-    // setDescription(event) {
-    //   for (var index = 0; index <= this.$refs.entry.length; index++) {
-    //     if (
-    //       (this.$refs.entry[index].$el.getBoundingClientRect().top >= 0 &&
-    //         window.innerHeight >=
-    //           this.$refs.entry[index].$el.getBoundingClientRect().bottom -
-    //             this.$refs.entry[index].$el.offsetHeight / 2) ||
-    //       (this.$refs.entry[index].$el.getBoundingClientRect().bottom >= 0 &&
-    //         window.innerHeight >=
-    //           this.$refs.entry[index].$el.getBoundingClientRect().bottom -
-    //             this.$refs.entry[index].$el.offsetHeight / 2)
-    //       // this.$refs.entry[index - 1].$el.getBoundingClientRect().bottom >= 0
-    //       //
-    //       // window.innerHeight >=
-    //       //   this.$refs.entry[index].$el.getBoundingClientRect().bottom
-    //     ) {
-    //       console.log(
-    //         window.scrollY,
-    //         this.$refs.entry[index].$el.getBoundingClientRect().top,
-    //         this.$refs.entry[index].$el.getBoundingClientRect().bottom
-    //       );
-    //       this.sectionDescription = this.$refs.entry[index].description;
-    //       this.fadeToggle = true;
-    //     } else if (
-    //       window.scrollY <= this.$refs.entry[0].$el.getBoundingClientRect().top
-    //     ) {
-    //       this.sectionDescription = " ";
-    //       //this.scroll = false;
-    //     }
-    //   }
-    // },
+    setDescription(event) {
+      for (var index = 0; index <= this.$refs.entry.length; index++) {
+        if (
+          (this.$refs.entry[index].$el.getBoundingClientRect().top >= 0 &&
+            window.innerHeight >=
+              this.$refs.entry[index].$el.getBoundingClientRect().bottom -
+                this.$refs.entry[index].$el.offsetHeight / 2) ||
+          (this.$refs.entry[index].$el.getBoundingClientRect().bottom >= 0 &&
+            window.innerHeight >=
+              this.$refs.entry[index].$el.getBoundingClientRect().bottom -
+                this.$refs.entry[index].$el.offsetHeight / 2)
+          // this.$refs.entry[index - 1].$el.getBoundingClientRect().bottom >= 0
+          //
+          // window.innerHeight >=
+          //   this.$refs.entry[index].$el.getBoundingClientRect().bottom
+        ) {
+          console.log(
+            window.scrollY,
+            this.$refs.entry[index].$el.getBoundingClientRect().top,
+            this.$refs.entry[index].$el.getBoundingClientRect().bottom
+          );
+          // this.sectionDescription = this.$refs.entry[index].description;
+          this.slideToggle = true;
+          this.$store.commit("setFocus", this.$refs.entry[index].entry.name);
+          console.log(this.$refs.entry[index].entry.name);
+        } else if (
+          window.scrollY <= this.$refs.entry[0].$el.getBoundingClientRect().top
+        ) {
+          this.slideToggle = false;
+          //this.scroll = false;
+        }
+      }
+    },
 
     // watch: {
     //     sectionDescription: function() {
@@ -174,7 +205,7 @@ export default {
   @include Canela-Thin;
   grid-row: 1;
   grid-column: 1/7;
-  font-size: 40px;
+  font-size: 2.5vw;
   height: 8rem;
   align-content: center;
   position: sticky;
@@ -202,6 +233,13 @@ export default {
   //height: 50%;
 }
 
+.slide {
+  opacity: 0;
+}
+
+.slideIn {
+  transition: opacity 3s ease-in-out, transform 2s ease-in-out;
+}
 // .scroll-year {
 //   position: relative;
 //   grid-column: 1/2;
@@ -213,6 +251,8 @@ export default {
 .page-container {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
+  // grid-template-rows: repeat(7, 40vh);
+  grid-auto-rows: auto;
   grid-gap: 20px;
   //pointer-events: none;
   //margin: 10rem auto;
@@ -220,20 +260,28 @@ export default {
 
 .navigation {
   grid-column: 3/10;
-  font-size: 45px;
+  font-size: 3vw;
   height: 55vh;
-  margin: 0 0 10rem 0;
+  margin: 0 0 12rem 0;
   //overflow-x: visible;
   line-height: 1.5;
   cursor: pointer;
 }
 
 .nav-section {
-  grid-column: 8/11;
+  width: 35vw;
+  position: fixed;
+  // grid-row: 3;
+  //grid-column: 7/11;
   font-size: 25px;
   padding-top: 3rem;
-  position: sticky;
+  padding: 1rem;
+  //position: sticky;
+  right: 1rem;
   top: 1.5rem;
+  margin: 1rem;
+  margin-top: none;
+  overflow-y: scroll;
 }
 
 .section {
@@ -315,18 +363,37 @@ export default {
   cursor: pointer;
 }
 
-.navigation-enter-active,
-w .navigation-leave-active {
+.slideIn-enter-active,
+.slideIn-leave-active {
+  transition: opacity 0.25s ease-in-out, transform 0.5s ease-in-out;
+}
+.slideIn-enter,
+.slideIn-leave-to {
+  opacity: 0;
+  transform: translate3d(0, 15px, 0);
+}
+.slideIn-navigation-enter-active,
+.slideIn-navigation-leave-active {
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+}
+.slideIn-navigation-enter,
+.slideIn-navigation-leave-to {
+  opacity: 0;
+  transform: translate3d(0, 15px, 0);
+}
+
+.navigation-scroll-enter-active,
+.navigation-scroll-leave-active {
   transition: opacity 3s ease-in-out, transform 2s ease-in-out;
 }
-.navigation-enter,
+.navigation-scroll-enter,
 .navigation-leave-to {
   opacity: 0;
   transform: translate3d(0, 15px, 0);
 }
 .page-enter-active,
 .page-leave-active {
-  transition: opacity 0.5s ease-in-out, transform 0.2s ease-in-out;
+  transition: opacity 3s ease-in-out, transform 3s ease-in-out;
 }
 .page-enter,
 .page-leave-to {

@@ -1,6 +1,12 @@
 <template>
   <div>
     <div
+      :class="{
+        'slideIn-navigation-enter-active': !slideToggle,
+        'slideIn-navigation-leave-active': !slideToggle,
+        'slideIn-navigation-enter': slideToggle,
+        'slideIn-navigation-leave-to': slideToggle,
+      }"
       class="nav-items"
       v-on:click="
         $emit('clicked', index);
@@ -54,6 +60,7 @@ export default {
   props: {
     index: Number,
     entries: Object,
+    slideToggle: Boolean,
   },
 
   data() {
@@ -195,4 +202,14 @@ img {
 // //     opacity: 1;
 // //   }
 // }
+
+.slideIn-navigation-enter-active,
+.slideIn-navigation-leave-active {
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+}
+.slideIn-navigation-enter,
+.slideIn-navigation-leave-to {
+  opacity: 0;
+  transform: translate3d(0, 15px, 0);
+}
 </style>
