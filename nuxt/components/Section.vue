@@ -1,7 +1,21 @@
 <template>
-  <div class="section-container">
-    <div class="scroll" v-if="images.length > 1">
+  <div class="section-container" v-if="imagesloaded">
+  <div class="scroll" v-if="video.length > 1">
       <video
+        class="vid-size"
+        :key="index"
+        v-for="videos, index) in video"
+        :src="
+          videos.url
+            .split('/uploads/')
+            .join('http://localhost:1337/uploads/')
+        "
+        autoplay
+        loop
+      />
+    </div>
+    <div class="scroll" v-if="images.length > 1">
+      <!-- <video
         class="vid-size"
         :key="index"
         :src="
@@ -11,7 +25,7 @@
         "
         autoplay
         loop
-      />
+      /> -->
       <img
         v-for="(image, index) in images"
         :key="index"
@@ -45,6 +59,34 @@ export default {
     index: Number,
     slideToggle: Boolean,
   },
+  data(){
+    return {
+      imagesloaded: false,
+    }
+  },
+
+  
+methods: {
+  async loadImages() {
+    console.log(`${this.imagesloaded}`);
+    const t0 = performance.now()
+    let cachedImages = [];
+
+    //load Images
+    for(const image of this.entry.images){
+      cachedImages.push(image);
+    }
+
+
+  await Promise.all(cachedImages).then(() => {
+    this.imagesloaded = true; 
+    const t1 = performance.now();
+    console.log( `${this.entry.name} - Loaded section.vue ${this.entry.images.length} images in ${Math.round(t1 - t0)}ms.`);
+       console.log(`${this.imagesloaded}`);
+       console.log(`${this.entry.video}`)
+  });
+},
+},
 
   computed: {
     images: function () {
@@ -56,8 +98,19 @@ export default {
     description: function () {
       return this.entry.description;
     },
+    video: function() {
+      return this.entry.video;
+    }
   },
+
+  mounted() {
+  if(!this.imagesLoaded){
+    this.loadImages();
+  }
+},
 };
+
+
 </script>
 
 <style lang="scss" scoped>
@@ -70,6 +123,7 @@ export default {
 
 .scroll {
   display: flex;
+  z-index: 5;
   overflow-x: scroll;
   scroll-snap-type: x mandatory;
 }
@@ -95,9 +149,9 @@ img {
 
 .section-container {
   grid-column: 1/7;
-  margin: 0 0 10rem 0;
-  z-index: -2;
-  overflow-x: hidden;
+  margin: 0 0 15rem 0;
+  z-index: 2;
+  overflow-x: scroll;
 }
 
 .section-container:hover {

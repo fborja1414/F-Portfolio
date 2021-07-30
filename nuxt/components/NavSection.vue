@@ -28,6 +28,7 @@ export default {
   data() {
     return {
       navClick: false,
+     
     };
   },
   methods: {
@@ -36,7 +37,10 @@ export default {
         this.navClick = false;
       }, 1200);
     },
+
   },
+
+ 
   computed: {
     images: function () {
       return this.entry.images;
@@ -83,7 +87,7 @@ img {
   justify-content: flex-end;
   max-height: 0;
   opacity: 0;
-  //transition: max-height 1s ease-in-out;
+ // transition: max-height 1s ease-out;
   //opacity: 0;
   //transform: translate3d(0, 15px, 0);
 
@@ -98,7 +102,7 @@ img {
   padding: 1.5rem;
   max-height: 100%;
   opacity: 1;
-  //transition: max-height 0.2s ease-in-out;
+ // transition: max-height 1s ease-in;
   //transition: opacity 0.2 ease-in-out;
 }
 </style>

@@ -6,7 +6,15 @@
         <a class="subheader">designer and developer</a>
       </a>
     </div>
-
+ <div class="contact-container">
+      <a class="contact">
+       contact 
+       </a>
+      <a class="dash">&nbsp </a>
+      <a class="about">
+      about
+      </a>
+      </div>
     <!-- <div class="socials">
         <a href="https://www.are.na/francisco-borja">Are.na</a>
         <a href="https://github.com/fborja1414">Github</a>
@@ -210,12 +218,37 @@ export default {
   align-content: center;
   position: sticky;
   top: 1.5rem;
-  z-index: -1;
+  z-index: 5;
 }
 
 .subheader {
   @include Canela-ThinItalic;
   font-style: italic;
+}
+
+.contact-container{
+   @include Canela-Thin;
+  grid-row: 1;
+  grid-column: 9/11;
+  font-size: 2vw;
+  height: 8rem;
+  //align-content: center;
+  position: sticky;
+  top: 1.5rem;
+  z-index: 5;
+}
+.dash{
+  height:1px;
+  border-top: 1px solid black;
+  width: 4vw;
+  display:inline-block;
+  position:absolute;
+  margin-left:0.5vw;
+   margin-right:0.5vw;
+  top:1rem;
+}
+.about{
+ margin-left: 5vw;
 }
 
 .scroll-description {
@@ -281,7 +314,7 @@ export default {
   top: 1.5rem;
   margin: 1rem;
   margin-top: none;
-  overflow-y: scroll;
+  overflow: hidden;
 }
 
 .section {
