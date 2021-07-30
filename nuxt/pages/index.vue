@@ -6,15 +6,19 @@
         <a class="subheader">designer and developer</a>
       </a>
     </div>
- <div class="contact-container">
-      <a class="contact">
-       contact 
-       </a>
-      <a class="dash">&nbsp </a>
-      <a class="about">
-      about
-      </a>
-      </div>
+
+    <div
+      :class="{
+        'slideIn-navigation-enter-active': !slideToggle,
+        'slideIn-navigation-leave-active': !slideToggle,
+        'slideIn-navigation-enter': slideToggle,
+        'slideIn-navigation-leave-to': slideToggle,
+      }"
+      class="contact-container"
+    >
+      <a class="about">about </a>
+    </div>
+
     <!-- <div class="socials">
         <a href="https://www.are.na/francisco-borja">Are.na</a>
         <a href="https://github.com/fborja1414">Github</a>
@@ -91,6 +95,7 @@ export default {
       sectionDescription: " ",
       showSection: true,
       slideToggle: false,
+      showAbout: false,
     };
   },
   methods: {
@@ -171,6 +176,14 @@ export default {
     //   },
     // },
 
+    toggleAbout() {
+      if (this.showAbout) {
+        this.showAbout = false;
+      } else {
+        this.showAbout = true;
+      }
+    },
+
     scrollUp() {
       console.log("inside");
     },
@@ -226,29 +239,25 @@ export default {
   font-style: italic;
 }
 
-.contact-container{
-   @include Canela-Thin;
+.contact-container {
+  display: flex;
+  @include Canela-Thin;
   grid-row: 1;
-  grid-column: 9/11;
-  font-size: 2vw;
+  grid-column: 10/11;
+  font-size: 2.5vw;
   height: 8rem;
   //align-content: center;
   position: sticky;
   top: 1.5rem;
   z-index: 5;
 }
-.dash{
-  height:1px;
-  border-top: 1px solid black;
-  width: 4vw;
-  display:inline-block;
-  position:absolute;
-  margin-left:0.5vw;
-   margin-right:0.5vw;
-  top:1rem;
-}
-.about{
- margin-left: 5vw;
+
+.about {
+  cursor: pointer;
+  // justify-content: flex-end;
+  // text-align: end;
+  // align-items: flex-end;
+  margin-left: 3vw;
 }
 
 .scroll-description {
@@ -426,11 +435,26 @@ export default {
 }
 .page-enter-active,
 .page-leave-active {
-  transition: opacity 3s ease-in-out, transform 3s ease-in-out;
+  transition: opacity 0.25s ease-in-out, transform 0.5s ease-in-out;
 }
 .page-enter,
 .page-leave-to {
   opacity: 0;
   transform: translate3d(0, 15px, 0);
+}
+
+@media screen and (max-width: 768px) {
+  .nav-section {
+    opacity: 0;
+  }
+  .navigation {
+    font-size: 4vw;
+    grid-column: 3/11;
+    margin: 0 0 8rem 0;
+  }
+  .header-container {
+    font-size: 4vw;
+    grid-column: 1/9;
+  }
 }
 </style>

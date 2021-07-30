@@ -1,14 +1,12 @@
 <template>
   <div class="section-container" v-if="imagesloaded">
-  <div class="scroll" v-if="video.length > 1">
+    <div class="scroll" v-if="video.length > 1">
       <video
         class="vid-size"
         :key="index"
-        v-for="videos, index) in video"
+        v-for="(videos, index) in video"
         :src="
-          videos.url
-            .split('/uploads/')
-            .join('http://localhost:1337/uploads/')
+          videos.url.split('/uploads/').join('http://localhost:1337/uploads/')
         "
         autoplay
         loop
@@ -44,9 +42,9 @@
       />
     </div>
     <div class="description">
-      <!-- <a class="title">2021 {{ entry.name }}</a> -->
-
+      <a class="title">{{ entry.name }}</a>
       <a class="swipe" v-if="images.length > 1">swipe >> </a>
+      <div v-html="description" class="mobile-description"></div>
     </div>
   </div>
 </template>
@@ -59,34 +57,36 @@ export default {
     index: Number,
     slideToggle: Boolean,
   },
-  data(){
+  data() {
     return {
       imagesloaded: false,
-    }
+    };
   },
 
-  
-methods: {
-  async loadImages() {
-    console.log(`${this.imagesloaded}`);
-    const t0 = performance.now()
-    let cachedImages = [];
+  methods: {
+    async loadImages() {
+      console.log(`${this.imagesloaded}`);
+      const t0 = performance.now();
+      let cachedImages = [];
 
-    //load Images
-    for(const image of this.entry.images){
-      cachedImages.push(image);
-    }
+      //load Images
+      for (const image of this.entry.images) {
+        cachedImages.push(image);
+      }
 
-
-  await Promise.all(cachedImages).then(() => {
-    this.imagesloaded = true; 
-    const t1 = performance.now();
-    console.log( `${this.entry.name} - Loaded section.vue ${this.entry.images.length} images in ${Math.round(t1 - t0)}ms.`);
-       console.log(`${this.imagesloaded}`);
-       console.log(`${this.entry.video}`)
-  });
-},
-},
+      await Promise.all(cachedImages).then(() => {
+        this.imagesloaded = true;
+        const t1 = performance.now();
+        console.log(
+          `${this.entry.name} - Loaded section.vue ${
+            this.entry.images.length
+          } images in ${Math.round(t1 - t0)}ms.`
+        );
+        console.log(`${this.imagesloaded}`);
+        console.log(`${this.entry.video}`);
+      });
+    },
+  },
 
   computed: {
     images: function () {
@@ -98,24 +98,22 @@ methods: {
     description: function () {
       return this.entry.description;
     },
-    video: function() {
+    video: function () {
       return this.entry.video;
-    }
+    },
   },
 
   mounted() {
-  if(!this.imagesLoaded){
-    this.loadImages();
-  }
-},
+    if (!this.imagesLoaded) {
+      this.loadImages();
+    }
+  },
 };
-
-
 </script>
 
 <style lang="scss" scoped>
 @import "~assets/_projects.scss";
-
+@import "~assets/_typography.scss";
 .title {
   font-style: italic;
   height: 5rem;
@@ -129,8 +127,20 @@ methods: {
 }
 
 .description {
-  display: flex;
+  //display: flex;
   justify-content: space-between;
+}
+
+.mobile-description {
+  @include Canela-Thin;
+  font-size: 20px;
+  margin-top: 1rem;
+}
+
+.title {
+  @include Canela-Light;
+  font-size: 20px;
+  opacity: 1;
 }
 
 img {
@@ -168,5 +178,23 @@ img {
 .slideIn-navigation-leave-to {
   opacity: 0;
   transform: translate3d(0, 15px, 0);
+}
+@media screen and (max-width: 768px) {
+  .section-container {
+    grid-column: 1/11;
+    margin: 0 0 8rem 0;
+    overflow-y: hidden;
+  }
+  .swipe {
+    opacity: 0;
+  }
+}
+@media screen and (min-width: 768px) {
+  .mobile-description {
+    opacity: 0;
+  }
+  .title {
+    opacity: 0;
+  }
 }
 </style>

@@ -21,11 +21,11 @@
     </div>
 
     <div
-    v-if="imagesloaded"
+      v-if="imagesloaded"
       class="section-container"
       :class="{ 'section-container--active': navHovered }"
     >
-      <div  :class="position">
+      <div :class="position">
         <div v-if="images.length > 1" class="fulldisplay">
           <img
             class="fulldisplay-image"
@@ -68,7 +68,7 @@ export default {
     return {
       navHovered: false,
       navClick: false,
-       imagesloaded:false,
+      imagesloaded: false,
     };
   },
   computed: {
@@ -89,32 +89,33 @@ export default {
   methods: {
     selectOn() {
       this.navHovered = true;
-    
     },
 
     selectOff() {
       this.navHovered = false;
     },
-  
-     async loadImages() {
-    console.log(`${this.imagesloaded}`);
-    const t0 = performance.now()
-    let cachedImages = [];
 
-    //load Images
-    for(const image of this.entries.images){
-      cachedImages.push(image);
-    }
+    async loadImages() {
+      console.log(`${this.imagesloaded}`);
+      const t0 = performance.now();
+      let cachedImages = [];
 
+      //load Images
+      for (const image of this.entries.images) {
+        cachedImages.push(image);
+      }
 
-  await Promise.all(cachedImages).then(() => {
-    this.imagesloaded = true; 
-    const t1 = performance.now();
-    console.log( `${this.entries.name} - Loaded ${this.entries.images.length} images in ${Math.round(t1 - t0)}ms.`);
-       console.log(`${this.imagesloaded}`);
-  });
-},
-    
+      await Promise.all(cachedImages).then(() => {
+        this.imagesloaded = true;
+        const t1 = performance.now();
+        console.log(
+          `${this.entries.name} - Loaded ${
+            this.entries.images.length
+          } images in ${Math.round(t1 - t0)}ms.`
+        );
+        console.log(`${this.imagesloaded}`);
+      });
+    },
 
     resetClick() {
       setTimeout(() => {
@@ -123,8 +124,8 @@ export default {
     },
   },
 
- mounted() {
-    if(!this.imagesloaded){
+  mounted() {
+    if (!this.imagesloaded) {
       this.loadImages();
     }
   },
@@ -237,5 +238,10 @@ img {
 .slideIn-navigation-leave-to {
   opacity: 0;
   transform: translate3d(0, 15px, 0);
+}
+@media screen and (max-width: 768px) {
+  .section-container {
+    grid-column: 3/10;
+  }
 }
 </style>

@@ -22,4 +22,21 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "~assets/_typography.scss";
+
+.about {
+  @include Canela-Thin;
+  grid-column: 2/9;
+  display: block;
+}
+
+contact-list .page-enter-active,
+.page-leave-active {
+  transition: opacity 3s ease-in-out, transform 3s ease-in-out;
+}
+.page-enter,
+.page-leave-to {
+  opacity: 0;
+  transform: translate3d(0, 15px, 0);
+}
 </style>
