@@ -1,10 +1,12 @@
 <template>
   <div class="page-container-about">
     <div class="header-container">
-      <a class="header">
-        Francisco Borja
-        <a class="subheader">designer and developer</a>
-      </a>
+      <nuxt-link to="/">
+        <a class="header">
+          Francisco Borja
+          <a class="subheader">designer and developer</a>
+        </a>
+      </nuxt-link>
     </div>
 
     <div class="contact-container">
@@ -81,7 +83,7 @@ export default {
 
 contact-list .page-enter-active,
 .page-leave-active {
-  transition: opacity 3s ease-in-out, transform 3s ease-in-out;
+  transition: opacity 0.2s ease-in-out, transform 0.25s ease-in-out;
 }
 .page-enter,
 .page-leave-to {
