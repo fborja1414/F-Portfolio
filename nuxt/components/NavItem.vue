@@ -209,6 +209,11 @@ img {
   opacity: 1;
 }
 
+.blink-hover {
+  opacity: 0.5;
+  transition: opacity 1s;
+}
+
 .description-two {
   height: auto;
   max-height: 100%;
