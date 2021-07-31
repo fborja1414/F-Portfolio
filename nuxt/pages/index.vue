@@ -16,7 +16,7 @@
       }"
       class="contact-container"
     >
-      <a class="about">about </a>
+      <a class="about"><nuxt-link to="/about">about</nuxt-link> </a>
     </div>
 
     <!-- <div class="socials">
@@ -258,6 +258,8 @@ export default {
   // text-align: end;
   // align-items: flex-end;
   margin-left: 3vw;
+  color: black;
+  text-decoration: none;
 }
 
 .scroll-description {

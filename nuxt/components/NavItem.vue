@@ -6,6 +6,7 @@
         'slideIn-navigation-leave-active': !slideToggle,
         'slideIn-navigation-enter': slideToggle,
         'slideIn-navigation-leave-to': slideToggle,
+        'blink-hover': navHovered,
       }"
       class="nav-items"
       v-on:click="
@@ -206,6 +207,11 @@ img {
 
 .selectOn {
   opacity: 1;
+}
+
+.blink-hover {
+  opacity: 0.2;
+  transition: opacity 0.1s;
 }
 
 .description-two {
