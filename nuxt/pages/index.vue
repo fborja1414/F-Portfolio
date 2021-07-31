@@ -16,7 +16,9 @@
       }"
       class="contact-container"
     >
-      <a class="about"><nuxt-link to="/about">about</nuxt-link> </a>
+      <a class="about"
+        ><nuxt-link class="nuxt-link-active" to="/about">about</nuxt-link>
+      </a>
     </div>
 
     <!-- <div class="socials">
@@ -255,9 +257,14 @@ export default {
 .about {
   cursor: pointer;
   // justify-content: flex-end;
-  // text-align: end;
+  // text-align: end;{}
   // align-items: flex-end;
   margin-left: 3vw;
+  color: black;
+  text-decoration: none;
+}
+
+.nuxt-link-active {
   color: black;
   text-decoration: none;
 }

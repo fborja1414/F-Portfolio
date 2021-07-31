@@ -165,7 +165,7 @@ export default {
 }
 
 img {
-  opacity: 50;
+  opacity: 50%;
   width: 100%;
   object-fit: cover;
   z-index: 5;
