@@ -1,0 +1,20 @@
+{
+  "About": {
+    "description": "Auto imported from components/About.vue"
+  },
+  "Logo": {
+    "description": "Auto imported from components/Logo.vue"
+  },
+  "NavItem": {
+    "description": "Auto imported from components/NavItem.vue"
+  },
+  "NavSection": {
+    "description": "Auto imported from components/NavSection.vue"
+  },
+  "Project": {
+    "description": "Auto imported from components/Project.vue"
+  },
+  "Section": {
+    "description": "Auto imported from components/Section.vue"
+  }
+}
