@@ -6,7 +6,6 @@
         'slideIn-navigation-leave-active': !slideToggle,
         'slideIn-navigation-enter': slideToggle,
         'slideIn-navigation-leave-to': slideToggle,
-        'blink-hover': navHovered,
       }"
       class="nav-items"
       v-on:click="
@@ -193,11 +192,6 @@ img {
 
 .blink {
   animation: blink 1s 2;
-}
-
-.blink-hover {
-  opacity: 0.7;
-  transition: opacity 0.25s;
 }
 
 @keyframes blink {
