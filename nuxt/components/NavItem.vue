@@ -165,7 +165,7 @@ export default {
 }
 
 img {
-  opacity: 50%;
+  opacity: 0.5;
   width: 100%;
   object-fit: cover;
   z-index: 5;
@@ -196,7 +196,7 @@ img {
 }
 
 .blink-hover {
-  opacity: 50%;
+  opacity: 0.7;
   transition: opacity 0.25s;
 }
 
