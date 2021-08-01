@@ -195,6 +195,11 @@ img {
   animation: blink 1s 2;
 }
 
+.blink-hover {
+  opacity: 50%;
+  transition: opacity 0.25s;
+}
+
 @keyframes blink {
   50% {
     opacity: 0;

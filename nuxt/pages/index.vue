@@ -1,6 +1,6 @@
 <template>
   <div class="page-container" v-if="show">
-    <div class="header-container">
+    <div class="header-container" @click="windowScrollto">
       <a class="header">
         Francisco Borja
         <a class="subheader">designer and developer</a>
