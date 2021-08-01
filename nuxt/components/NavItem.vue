@@ -6,6 +6,7 @@
         'slideIn-navigation-leave-active': !slideToggle,
         'slideIn-navigation-enter': slideToggle,
         'slideIn-navigation-leave-to': slideToggle,
+        'blink-hover': navHovered,
       }"
       class="nav-items"
       v-on:click="
@@ -40,6 +41,7 @@
         </div>
         <div v-else>
           <img
+            class="fulldisplay-image"
             v-for="(image, index) in images"
             :key="index"
             :src="
@@ -164,7 +166,6 @@ export default {
 }
 
 img {
-  opacity: 0.5;
   width: 100%;
   object-fit: cover;
   z-index: 5;
@@ -175,7 +176,13 @@ img {
   display: flex;
 }
 
+.blink-hover {
+  opacity: 0.5;
+  transition: opacity 0.25;
+}
+
 .fulldisplay-image {
+  opacity: 0.5;
   padding: 1.5rem;
 }
 .nav-items {
@@ -191,7 +198,7 @@ img {
 }
 
 .blink {
-  animation: blink 1s 2;
+  animation: blink 1s;
 }
 
 @keyframes blink {
