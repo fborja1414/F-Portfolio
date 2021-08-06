@@ -209,7 +209,7 @@ export default {
   },
 
   async asyncData({ $axios }) {
-    const projects = await $axios.$get("https://localhost:1337/projects");
+    const projects = await $axios.$get("http://localhost:1337/projects");
     console.log({ projects });
     return { projects };
   },
