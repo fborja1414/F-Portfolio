@@ -209,9 +209,7 @@ export default {
   },
 
   async asyncData({ $axios }) {
-    const projects = await $axios.$get(
-      "f-portfolio5-8u4u1vhoh-fborja1414.vercel.app/projects"
-    );
+    const projects = await $axios.$get("https://localhost:1337/projects");
     console.log({ projects });
     return { projects };
   },
