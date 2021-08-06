@@ -12,7 +12,7 @@
         'slideIn-navigation-enter-active': !slideToggle,
         'slideIn-navigation-leave-active': !slideToggle,
         'slideIn-navigation-enter': slideToggle,
-        'slideIn-navigation-leave-to': slideToggle,
+        'slideIn-navigation-leave-to': slideToggle
       }"
       class="contact-container"
     >
@@ -83,12 +83,12 @@ export default {
   components: {
     Section,
     NavItem,
-    NavSection,
+    NavSection
   },
 
   transition: {
     appear: true,
-    name: "page",
+    name: "page"
   },
   data() {
     return {
@@ -97,7 +97,7 @@ export default {
       sectionDescription: " ",
       showSection: true,
       slideToggle: false,
-      showAbout: false,
+      showAbout: false
     };
   },
   methods: {
@@ -192,7 +192,7 @@ export default {
     hoveredNav() {
       this.navHovered = true;
       console.log("ha");
-    },
+    }
   },
 
   // computed: {
@@ -209,14 +209,16 @@ export default {
   },
 
   async asyncData({ $axios }) {
-    const projects = await $axios.$get("http://localhost:1337/projects");
+    const projects = await $axios.$get(
+      "f-portfolio5-8u4u1vhoh-fborja1414.vercel.app/projects"
+    );
     console.log({ projects });
     return { projects };
   },
 
   mounted() {
     this.$nextTick(() => (this.show = true));
-  },
+  }
 };
 </script>
 
