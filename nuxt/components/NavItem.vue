@@ -6,7 +6,7 @@
         'slideIn-navigation-leave-active': !slideToggle,
         'slideIn-navigation-enter': slideToggle,
         'slideIn-navigation-leave-to': slideToggle,
-        'blink-hover': navHovered,
+        'blink-hover': navHovered
       }"
       class="nav-items"
       v-on:click="
@@ -35,7 +35,7 @@
             :src="
               image.url
                 .split('/uploads/')
-                .join('http://localhost:1337/uploads/')
+                .join('https://agile-peak-21162.herokuapp.com/uploads/')
             "
           />
         </div>
@@ -47,7 +47,7 @@
             :src="
               image.url
                 .split('/uploads/')
-                .join('http://localhost:1337/uploads/')
+                .join('https://agile-peak-21162.herokuapp.com/uploads/')
             "
           />
         </div>
@@ -63,29 +63,29 @@ export default {
   props: {
     index: Number,
     entries: Object,
-    slideToggle: Boolean,
+    slideToggle: Boolean
   },
 
   data() {
     return {
       navHovered: false,
       navClick: false,
-      imagesloaded: false,
+      imagesloaded: false
     };
   },
   computed: {
-    name: function () {
+    name: function() {
       return this.entries.name;
     },
-    images: function () {
+    images: function() {
       return this.entries.images;
     },
-    position: function () {
+    position: function() {
       return this.entries.position;
     },
-    description: function () {
+    description: function() {
       return this.entries.description;
-    },
+    }
   },
 
   methods: {
@@ -123,14 +123,14 @@ export default {
       setTimeout(() => {
         this.navClick = false;
       }, 1200);
-    },
+    }
   },
 
   mounted() {
     if (!this.imagesloaded) {
       this.loadImages();
     }
-  },
+  }
   // data() {
   //   return {
   //     navClick: false,

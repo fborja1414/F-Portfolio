@@ -6,7 +6,9 @@
         :key="index"
         v-for="(videos, index) in video"
         :src="
-          videos.url.split('/uploads/').join('http://localhost:1337/uploads/')
+          videos.url
+            .split('/uploads/')
+            .join('https://agile-peak-21162.herokuapp.com/uploads/')
         "
         autoplay
         loop
@@ -28,7 +30,9 @@
         v-for="(image, index) in images"
         :key="index"
         :src="
-          image.url.split('/uploads/').join('http://localhost:1337/uploads/')
+          image.url
+            .split('/uploads/')
+            .join('https://agile-peak-21162.herokuapp.com/uploads/')
         "
       />
     </div>
@@ -37,7 +41,9 @@
         v-for="(image, index) in images"
         :key="index"
         :src="
-          image.url.split('/uploads/').join('http://localhost:1337/uploads/')
+          image.url
+            .split('/uploads/')
+            .join('https://agile-peak-21162.herokuapp.com/uploads/')
         "
       />
     </div>
@@ -55,11 +61,11 @@ export default {
   props: {
     entry: Object,
     index: Number,
-    slideToggle: Boolean,
+    slideToggle: Boolean
   },
   data() {
     return {
-      imagesloaded: false,
+      imagesloaded: false
     };
   },
 
@@ -85,29 +91,29 @@ export default {
         console.log(`${this.imagesloaded}`);
         console.log(`${this.entry.video}`);
       });
-    },
+    }
   },
 
   computed: {
-    images: function () {
+    images: function() {
       return this.entry.images;
     },
-    position: function () {
+    position: function() {
       return this.entry.position;
     },
-    description: function () {
+    description: function() {
       return this.entry.description;
     },
-    video: function () {
+    video: function() {
       return this.entry.video;
-    },
+    }
   },
 
   mounted() {
     if (!this.imagesLoaded) {
       this.loadImages();
     }
-  },
+  }
 };
 </script>
 
