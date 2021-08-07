@@ -209,7 +209,9 @@ export default {
   },
 
   async asyncData({ $axios }) {
-    const projects = await $axios.$get("http://localhost:1337/projects");
+    const projects = await $axios.$get(
+      "https://agile-peak-21162.herokuapp.com/projects"
+    );
     console.log({ projects });
     return { projects };
   },

@@ -127,3 +127,5 @@ build
 
 /site/sessions/*
 !/site/sessions/index.html
+
+package-lock.json
