@@ -112,7 +112,7 @@ export default {
           const windowHeight = window.innerHeight;
           const centeredContainerYPos =
             rawTargetContainerYPos -
-            Math.abs(windowHeight - targetContainerHeight / 2);
+            Math.abs((windowHeight - targetContainerHeight) / 2);
           // console.log(rawTargetContainerYPos, targetContainerHeight, centeredContainerYPos)
           window.scrollTo({ top: centeredContainerYPos, behavior: "smooth" });
         } else {
@@ -126,7 +126,11 @@ export default {
           const centeredContainerYPos =
             rawTargetContainerYPos -
             Math.abs((windowHeight - targetContainerHeight) / 2);
-          // console.log(rawTargetContainerYPos, targetContainerHeight, centeredContainerYPos)
+          console.log(
+            rawTargetContainerYPos,
+            targetContainerHeight,
+            centeredContainerYPos
+          );
           window.scrollTo({ top: centeredContainerYPos, behavior: "smooth" });
         }
       }, 1000);
@@ -312,10 +316,10 @@ export default {
 }
 
 .navigation {
-  grid-column: 3/10;
+  grid-column: 3/11;
   font-size: 3vw;
   height: 55vh;
-  margin: 0 0 12rem 0;
+  margin: 0 0 18vw 0;
   //overflow-x: visible;
   line-height: 1.5;
   cursor: pointer;

@@ -186,7 +186,8 @@ img {
   padding: 1.5rem;
 }
 .nav-items {
-  position: relative;
+  //position: relative;
+  display: inline-block;
 }
 
 .name {
