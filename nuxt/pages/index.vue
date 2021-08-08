@@ -253,7 +253,7 @@ export default {
   grid-row: 1;
   grid-column: 10/11;
   font-size: 2.5vw;
-  height: 8rem;
+  height: 10rem;
   //align-content: center;
   position: sticky;
   top: 1.5rem;
