@@ -6,9 +6,7 @@
         :key="index"
         v-for="(videos, index) in video"
         :src="
-          videos.url
-            .split('/uploads/')
-            .join('https://agile-peak-21162.herokuapp.com/uploads/')
+          videos.url.split('/uploads/').join('http://localhost:1337/uploads/')
         "
         autoplay
         loop
@@ -30,9 +28,7 @@
         v-for="(image, index) in images"
         :key="index"
         :src="
-          image.url
-            .split('/uploads/')
-            .join('https://agile-peak-21162.herokuapp.com/uploads/')
+          image.url.split('/uploads/').join('http://localhost:1337/uploads/')
         "
       />
     </div>
@@ -41,9 +37,7 @@
         v-for="(image, index) in images"
         :key="index"
         :src="
-          image.url
-            .split('/uploads/')
-            .join('https://agile-peak-21162.herokuapp.com/uploads/')
+          image.url.split('/uploads/').join('http://localhost:1337/uploads/')
         "
       />
     </div>
