@@ -35,7 +35,7 @@
             :src="
               image.url
                 .split('/uploads/')
-                .join('http://localhost:1337/uploads/')
+                .join('https://agile-peak-21162.herokuapp.com/uploads/')
             "
           />
         </div>
@@ -47,7 +47,7 @@
             :src="
               image.url
                 .split('/uploads/')
-                .join('http://localhost:1337/uploads/')
+                .join('https://agile-peak-21162.herokuapp.com/uploads/')
             "
           />
         </div>
@@ -160,10 +160,6 @@ export default {
   transition: opacity 1s;
 }
 
-.nav-items {
-  display: flex;
-  width: 50vw;
-}
 .section-container--active {
   opacity: 1;
   transition: opacity 1s;
@@ -190,8 +186,6 @@ img {
   padding: 1.5rem;
 }
 .nav-items {
-  //position: relative;
-  display: inline-block;
 }
 
 .name {

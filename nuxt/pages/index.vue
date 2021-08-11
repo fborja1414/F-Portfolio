@@ -213,7 +213,9 @@ export default {
   },
 
   async asyncData({ $axios }) {
-    const projects = await $axios.$get("http://localhost:1337/projects");
+    const projects = await $axios.$get(
+      "https://agile-peak-21162.herokuapp.com/projects"
+    );
     console.log({ projects });
     return { projects };
   },
@@ -315,10 +317,7 @@ export default {
 
 .navigation {
   grid-column: 3/11;
-  display: flex;
   font-size: 3vw;
-  height: 100vh;
-  width: 50vw;
   margin: 0 0 18vw 0;
   //overflow-x: visible;
   line-height: 1.5;

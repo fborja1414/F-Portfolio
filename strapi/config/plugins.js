@@ -1,19 +1,18 @@
 module.exports = ({ env }) => {
-  if (env("NODE_ENV") === "production") {
+  if ("NODE_ENV" === "production") {
     return {
       upload: {
         provider: "aws-s3",
         providerOptions: {
-          accessKeyId: env("AKIARRHC7ER4JQWACZHI"),
-          secretAccessKey: env("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"),
-          region: env("us-west-1"),
+          accessKeyId: env("AWS_ACCESS_KEY_ID"),
+          secretAccessKey: env("AWS_ACCESS_SECRET"),
+          region: env("AWS_REGION"),
           params: {
-            Bucket: env("f-portfolio-backend"),
+            Bucket: env("AWS_BUCKET"),
           },
         },
       },
     };
   }
-
   return {};
 };
