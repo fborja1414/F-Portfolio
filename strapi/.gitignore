@@ -106,7 +106,7 @@ coverage
 # Strapi
 ############################
 
-.env
+
 license.txt
 exports
 *.cache
@@ -117,7 +117,7 @@ build
 *.icloud
 
 # Cache Files
-# ---------------
+# ---------------s
 
 /site/cache/*
 !/site/cache/index.html
