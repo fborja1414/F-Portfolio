@@ -1,6 +1,14 @@
 <template>
   <div class="page-container" v-if="show">
-    <div class="header-container">
+    <div
+      class="header-container"
+      :class="{
+        'slideIn-navigation-enter-active': !slideToggle,
+        'slideIn-navigation-leave-active': !slideToggle,
+        'slideIn-navigation-enter': slideToggle,
+        'slideIn-navigation-leave-to': slideToggle
+      }"
+    >
       <a class="header">
         Francisco Borja
         <a class="subheader">designer and developer</a>
@@ -35,6 +43,23 @@
       </div> -->
     <transition name="slideIn">
       <div class="navigation">
+        <div
+          class="project-titles"
+          :class="{
+            'slideIn-navigation-enter-active': !slideToggle,
+            'slideIn-navigation-leave-active': !slideToggle,
+            'slideIn-navigation-enter': slideToggle,
+            'slideIn-navigation-leave-to': slideToggle
+          }"
+        >
+          <title-item
+            v-for="(entries, index) in projects"
+            :key="index"
+            :entries="entries"
+            :index="index"
+            v-on:clicked="scrollSectionIntoView"
+          />
+        </div>
         <nav-item
           :key="index"
           v-for="(entries, index) in projects"
@@ -78,12 +103,14 @@
 import Section from "@/components/Section.vue";
 import NavItem from "@/components/NavItem.vue";
 import NavSection from "@/components/NavSection.vue";
+import TitleItem from "@/components/TitleItem.vue";
 
 export default {
   components: {
     Section,
     NavItem,
-    NavSection
+    NavSection,
+    TitleItem
   },
 
   transition: {
@@ -97,7 +124,8 @@ export default {
       sectionDescription: " ",
       showSection: true,
       slideToggle: false,
-      showAbout: false
+      showAbout: false,
+      navHovered: false
     };
   },
   methods: {
@@ -134,6 +162,20 @@ export default {
           window.scrollTo({ top: centeredContainerYPos, behavior: "smooth" });
         }
       }, 1000);
+    },
+
+    resetClick() {
+      setTimeout(() => {
+        this.navClick = false;
+      }, 1200);
+    },
+
+    selectOn() {
+      this.navHovered = true;
+    },
+
+    selectOff() {
+      this.navHovered = false;
     },
 
     setDescription(event) {
@@ -213,9 +255,7 @@ export default {
   },
 
   async asyncData({ $axios }) {
-    const projects = await $axios.$get(
-      "https://agile-peak-21162.herokuapp.com/projects"
-    );
+    const projects = await $axios.$get("http://localhost:1337/projects");
     console.log({ projects });
     return { projects };
   },
@@ -235,11 +275,28 @@ export default {
   grid-row: 1;
   grid-column: 1/7;
   font-size: 2.5vw;
-  height: 8rem;
+  height: 10vh;
   align-content: center;
-  position: sticky;
+  position: relative;
   top: 1.5rem;
   z-index: 5;
+}
+
+.project-titles {
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  margin-top: 15vh;
+  text-align: center;
+  cursor: pointer;
+}
+.name {
+  @include Canela-Thin;
+  margin-right: 10px;
+}
+
+.medium {
+  @include Canela-ThinItalic;
 }
 
 .subheader {
@@ -255,7 +312,7 @@ export default {
   font-size: 2.5vw;
   height: 8vh;
   //align-content: center;
-  position: sticky;
+  position: relative;
   top: 1.5rem;
   z-index: 5;
 }
@@ -316,12 +373,13 @@ export default {
 }
 
 .navigation {
-  grid-column: 3/11;
+  grid-column: 1/11;
   font-size: 3vw;
-  margin: 0 0 18vw 0;
+  margin-bottom: 70vh;
+  //height: 100vh;
   //overflow-x: visible;
   line-height: 1.5;
-  cursor: pointer;
+  display: flex;
 }
 
 .nav-section {
@@ -368,6 +426,11 @@ export default {
     pointer-events: auto;
     display: block;
   }
+}
+
+.blink-hover {
+  opacity: 0.5;
+  transition: opacity 0.25;
 }
 
 .section-container {

@@ -17,14 +17,14 @@
       @mouseenter="selectOn"
       @mouseleave="selectOff"
     >
-      <a class="name"> {{ entries.name }} |</a>
-      <a class="medium" :class="{ blink: navClick }"> {{ entries.medium }}</a>
+      <!-- <a class="name"> {{ entries.name }} |</a>
+      <a class="medium" :class="{ blink: navClick }"> {{ entries.medium }}</a> -->
     </div>
 
     <div
       v-if="imagesloaded"
       class="section-container"
-      :class="{ 'section-container--active': navHovered }"
+      :class="{ 'section-container--active': titleHovered }"
     >
       <div :class="position">
         <div v-if="images.length > 1" class="fulldisplay">
@@ -35,7 +35,7 @@
             :src="
               image.url
                 .split('/uploads/')
-                .join('https://agile-peak-21162.herokuapp.com/uploads/')
+                .join('http://localhost:1337/uploads/')
             "
           />
         </div>
@@ -47,7 +47,7 @@
             :src="
               image.url
                 .split('/uploads/')
-                .join('https://agile-peak-21162.herokuapp.com/uploads/')
+                .join('http://localhost:1337/uploads/')
             "
           />
         </div>
@@ -85,6 +85,9 @@ export default {
     },
     description: function() {
       return this.entries.description;
+    },
+    titleHovered: function() {
+      return this.entries.name == this.$store.state.title;
     }
   },
 

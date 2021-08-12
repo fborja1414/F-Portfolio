@@ -129,5 +129,3 @@ build
 !/site/sessions/index.html
 
 package-lock.json
-
-.env

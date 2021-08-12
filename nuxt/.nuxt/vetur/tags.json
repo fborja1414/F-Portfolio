@@ -16,5 +16,8 @@
   },
   "Section": {
     "description": "Auto imported from components/Section.vue"
+  },
+  "TitleItem": {
+    "description": "Auto imported from components/TitleItem.vue"
   }
 }
