@@ -35,7 +35,7 @@
             :src="
               image.url
                 .split('/uploads/')
-                .join('http://localhost:1337/uploads/')
+                .join('https://agile-peak-21162.herokuapp.com/uploads/')
             "
           />
         </div>
@@ -47,7 +47,7 @@
             :src="
               image.url
                 .split('/uploads/')
-                .join('http://localhost:1337/uploads/')
+                .join('https://agile-peak-21162.herokuapp.com/uploads/')
             "
           />
         </div>
