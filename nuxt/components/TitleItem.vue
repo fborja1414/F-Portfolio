@@ -12,7 +12,7 @@
     @mouseenter="setTitle(entries.name)"
     @mouseleave="removeTitle()"
   >
-    {{ entries.name }} |
+    <a class="dot" v-if="index != 0"> • </a> {{ entries.name }} |
     <a class="medium"> {{ entries.medium }}</a>
   </a>
 </template>
@@ -107,6 +107,10 @@ export default {
   opacity: 1;
 }
 
+.dot {
+  padding-right: 10px;
+}
+
 .slideIn-navigation-enter-active,
 .slideIn-navigation-leave-active {
   transition: opacity 1s ease-in-out, transform 1s ease-in-out;
@@ -115,10 +119,5 @@ export default {
 .slideIn-navigation-leave-to {
   opacity: 0;
   transform: translate3d(0, 15px, 0);
-}
-@media screen and (max-width: 768px) {
-  .section-container {
-    grid-column: 3/10;
-  }
 }
 </style>

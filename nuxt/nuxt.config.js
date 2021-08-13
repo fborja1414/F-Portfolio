@@ -12,6 +12,16 @@ export default {
     htmlAttrs: {
       lang: "en"
     },
+    link: [
+      { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" }, //IBM Plex Mono
+      { rel: "preconnect", href: "https://fonts.gstatic.com" }, //
+      {
+        rel: "stylesheet",
+        href:
+          "https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&display=swap"
+      } //
+    ],
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },

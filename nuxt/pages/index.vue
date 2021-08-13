@@ -59,6 +59,11 @@
             :index="index"
             v-on:clicked="scrollSectionIntoView"
           />
+          <div class="contact">
+            <a class="email">EMAIL</a>
+            <a class="github">GITHUB</a>
+            <a class="are.na">ARE.NA</a>
+          </div>
         </div>
         <nav-item
           :key="index"
@@ -86,7 +91,16 @@
         </div>
       </div>
     </transition>
-    <template v-show="slideToggle" class="section-container">
+    <template
+      v-show="slideToggle"
+      class="section-container"
+      :class="{
+        'slideIn-navigation-enter-active': !slideToggle,
+        'slideIn-navigation-leave-active': !slideToggle,
+        'slideIn-navigation-enter': slideToggle,
+        'slideIn-navigation-leave-to': slideToggle
+      }"
+    >
       <Section
         :entry="entry"
         :index="index"
@@ -384,6 +398,23 @@ export default {
   display: flex;
 }
 
+.contact {
+  @include IBM-Plex-Mono;
+  font-size: 0.8vw;
+  bottom: 5vh;
+  margin: 0 auto;
+  display: flex;
+  width: 10vw;
+  align-content: center;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 25vh;
+  //position: absolute;'
+  a {
+    padding: 5px;
+  }
+}
+
 .nav-section {
   width: 35vw;
   position: fixed;
@@ -528,8 +559,10 @@ export default {
   }
   .navigation {
     font-size: 4vw;
-    grid-column: 3/11;
-    margin: 0 0 8rem 0;
+    // grid-column: 3/11;
+    // margin: 0 0 8rem 0;
+  }
+  .contact {
   }
   .header-container {
     font-size: 4vw;
