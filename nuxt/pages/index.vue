@@ -145,36 +145,16 @@ export default {
   methods: {
     scrollSectionIntoView(index) {
       setTimeout(() => {
-        if (index == 1) {
-          const rawTargetContainerYPos =
-            this.$refs.entry[index].$el.getBoundingClientRect().top +
-            document.documentElement.scrollTop;
-          const targetContainerHeight = this.$refs.entry[index].$el
-            .offsetHeight;
-          const windowHeight = window.innerHeight;
-          const centeredContainerYPos =
-            rawTargetContainerYPos -
-            Math.abs((windowHeight - targetContainerHeight) / 2);
-          // console.log(rawTargetContainerYPos, targetContainerHeight, centeredContainerYPos)
-          window.scrollTo({ top: centeredContainerYPos, behavior: "smooth" });
-        } else {
-          console.log(this.$refs.entry[index].$el);
-          const rawTargetContainerYPos =
-            this.$refs.entry[index].$el.getBoundingClientRect().top +
-            document.documentElement.scrollTop;
-          const targetContainerHeight = this.$refs.entry[index].$el
-            .offsetHeight;
-          const windowHeight = window.innerHeight;
-          const centeredContainerYPos =
-            rawTargetContainerYPos -
-            Math.abs((windowHeight - targetContainerHeight) / 2);
-          console.log(
-            rawTargetContainerYPos,
-            targetContainerHeight,
-            centeredContainerYPos
-          );
-          window.scrollTo({ top: centeredContainerYPos, behavior: "smooth" });
-        }
+        const rawTargetContainerYPos =
+          this.$refs.entry[index].$el.getBoundingClientRect().top +
+          document.documentElement.scrollTop;
+        const targetContainerHeight = this.$refs.entry[index].$el.offsetHeight;
+        const windowHeight = window.innerHeight;
+        const centeredContainerYPos =
+          rawTargetContainerYPos -
+          Math.abs((windowHeight - targetContainerHeight) / 2);
+        // console.log(rawTargetContainerYPos, targetContainerHeight, centeredContainerYPos)
+        window.scrollTo({ top: centeredContainerYPos, behavior: "smooth" });
       }, 1000);
     },
 
@@ -198,11 +178,11 @@ export default {
           (this.$refs.entry[index].$el.getBoundingClientRect().top >= 0 &&
             window.innerHeight >=
               this.$refs.entry[index].$el.getBoundingClientRect().bottom -
-                this.$refs.entry[index].$el.offsetHeight / 2) ||
+                this.$refs.entry[index].$el.offsetHeight) ||
           (this.$refs.entry[index].$el.getBoundingClientRect().bottom >= 0 &&
             window.innerHeight >=
               this.$refs.entry[index].$el.getBoundingClientRect().bottom -
-                this.$refs.entry[index].$el.offsetHeight / 2)
+                this.$refs.entry[index].$el.offsetHeight)
           // this.$refs.entry[index - 1].$el.getBoundingClientRect().bottom >= 0
           //
           // window.innerHeight >=
