@@ -114,10 +114,14 @@ export default {
 
       for (var index = 0; index < this.images.length; index++) {
         if (
-          this.$refs.image[index].getBoundingClientRect().left >= 0 &&
-          this.$refs.container.offsetWidth / 2 >=
-            this.$refs.image[index].getBoundingClientRect().right -
-              this.$refs.image[index].offsetWidth
+          (this.$refs.image[index].getBoundingClientRect().left >= 0 &&
+            this.$refs.container.offsetWidth / 2 >=
+              this.$refs.image[index].getBoundingClientRect().right -
+                this.$refs.image[index].offsetWidth) ||
+          (this.$refs.image[index].getBoundingClientRect().right >= 0 &&
+            this.$refs.container.offsetWidth / 2 >=
+              this.$refs.image[index].getBoundingClientRect().right -
+                this.$refs.image[index].offsetWidth)
 
           //this.$refs.image[index].getBoundingClientRect().right >= 0
         ) {
