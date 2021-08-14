@@ -1,6 +1,7 @@
 <template>
-  <div class="section-container" v-if="imagesloaded">
-    <div class="scroll" v-if="video.length > 1">
+  <div class="section-container" ref="container" v-if="imagesloaded">
+    <div class="pagination">{{ pageNum }} / {{ images.length }}</div>
+    <div class="" v-if="video.length > 1">
       <video
         class="vid-size"
         :key="index"
@@ -14,7 +15,12 @@
         loop
       />
     </div>
-    <div class="scroll" v-if="images.length > 1">
+    <div
+      class="scroll"
+      ref="imagescroll"
+      v-if="images.length > 1"
+      v-on:scroll="displayPagination"
+    >
       <!-- <video
         class="vid-size"
         :key="index"
@@ -27,6 +33,8 @@
         loop
       /> -->
       <img
+        class="img"
+        ref="image"
         v-for="(image, index) in images"
         :key="index"
         :src="
@@ -65,7 +73,8 @@ export default {
   },
   data() {
     return {
-      imagesloaded: false
+      imagesloaded: false,
+      pageNum: 1
     };
   },
 
@@ -91,6 +100,39 @@ export default {
         console.log(`${this.imagesloaded}`);
         console.log(`${this.entry.video}`);
       });
+    },
+
+    displayPagination() {
+      console.log("scrolled");
+      //var leftScroll = this.$refs.imagescroll.scrollLeft;
+      //var totalscrollwidth = this.$refs.imagescroll.width;
+      //  var containerwidth = this.$refs.container.offsetWidth;
+
+      // console.log(leftScroll);
+      // console.log(this.$refs.imagescroll.scrollWidth);
+      // console.log(this.$refs.container.offsetWidth);
+
+      for (var index = 0; index < this.images.length; index++) {
+        if (
+          this.$refs.image[index].getBoundingClientRect().left >= 0 &&
+          this.$refs.container.offsetWidth / 2 >=
+            this.$refs.image[index].getBoundingClientRect().right -
+              this.$refs.image[index].offsetWidth
+
+          //this.$refs.image[index].getBoundingClientRect().right >= 0
+        ) {
+          // console.log(leftScroll);
+          // console.log(this.$refs.container.offsetWidth);
+          console.log(this.$refs.image[index]);
+          this.pageNum = index + 1;
+        } else {
+          // this.pageNum = 1;
+          // console.log(leftScroll);
+          // console.log(this.$refs.container.offsetWidth);
+          // console.log(this.pageNum);
+        }
+      }
+      // console.log(this.$refs.imagescroll);
     }
   },
 
@@ -161,6 +203,20 @@ img {
 .vid-size {
   width: 100%;
   margin: 0 0 1rem 0;
+}
+
+.img {
+  padding: 10px;
+}
+
+.pagination {
+  @include Canela-Light;
+  display: block;
+  position: relative;
+  font-size: 20px;
+  text-align: right;
+  right: 1px;
+  margin: 10px;
 }
 
 .section-container {

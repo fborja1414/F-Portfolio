@@ -190,8 +190,10 @@ export default {
         ) {
           console.log(
             window.scrollY,
-            this.$refs.entry[index].$el.getBoundingClientRect().top,
-            this.$refs.entry[index].$el.getBoundingClientRect().bottom
+            "scrolltop" +
+              this.$refs.entry[index].$el.getBoundingClientRect().top,
+            "scrollbottom" +
+              this.$refs.entry[index].$el.getBoundingClientRect().bottom
           );
           // this.sectionDescription = this.$refs.entry[index].description;
           this.slideToggle = true;
