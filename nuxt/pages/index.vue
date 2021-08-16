@@ -140,6 +140,7 @@ export default {
       slideToggle: false,
       showAbout: false,
       navHovered: false
+      //position: Number
     };
   },
   methods: {
@@ -156,6 +157,7 @@ export default {
         // console.log(rawTargetContainerYPos, targetContainerHeight, centeredContainerYPos)
         window.scrollTo({ top: centeredContainerYPos, behavior: "smooth" });
       }, 1000);
+      //this.position = index;
     },
 
     resetClick() {
@@ -197,7 +199,9 @@ export default {
           );
           // this.sectionDescription = this.$refs.entry[index].description;
           this.slideToggle = true;
+
           this.$store.commit("setFocus", this.$refs.entry[index].entry.name);
+
           console.log(this.$refs.entry[index].entry.name);
         } else if (
           window.scrollY <= this.$refs.entry[0].$el.getBoundingClientRect().top
@@ -291,6 +295,24 @@ export default {
 .name {
   @include Canela-Thin;
   margin-right: 10px;
+}
+
+.next {
+  @include IBM-Plex-Mono;
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.prev {
+  @include IBM-Plex-Mono;
+  position: absolute;
+  //left: 5rem;
+  bottom: 1rem;
+  font-size: 12px;
+  cursor: pointer;
 }
 
 .medium {
@@ -400,6 +422,7 @@ export default {
 .nav-section {
   width: 35vw;
   position: fixed;
+  height: 90vh;
   // grid-row: 3;
   //grid-column: 7/11;
   font-size: 25px;

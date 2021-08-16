@@ -236,6 +236,16 @@ img {
   }
 }
 
+.slideIn-enter-active,
+.slideIn-leave-active {
+  transition: opacity 0.25s ease-in-out, transform 0.5s ease-in-out;
+}
+.slideIn-enter,
+.slideIn-leave-to {
+  opacity: 0;
+  transform: translate3d(0, 15px, 0);
+}
+
 .slideIn-navigation-enter-active,
 .slideIn-navigation-leave-active {
   transition: opacity 1s ease-in-out, transform 1s ease-in-out;

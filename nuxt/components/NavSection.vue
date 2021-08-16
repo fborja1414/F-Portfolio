@@ -9,6 +9,7 @@
   >
     <a class="name"> {{ entry.name }} |</a>
     <a class="medium" :class="{ blink: navClick }"> {{ entry.medium }}</a>
+
     <a
       class="description"
       :class="{ focusExpanded: focusExpanded }"
@@ -16,18 +17,18 @@
     >
     </a>
   </div>
-</template> 
+</template>
 
 <script>
 export default {
   name: "NavSection",
   props: {
     entry: Object,
-    index: Number,
+    index: Number
   },
   data() {
     return {
-      navClick: false,
+      navClick: false
     };
   },
   methods: {
@@ -35,23 +36,23 @@ export default {
       setTimeout(() => {
         this.navClick = false;
       }, 1200);
-    },
+    }
   },
 
   computed: {
-    images: function () {
+    images: function() {
       return this.entry.images;
     },
-    position: function () {
+    position: function() {
       return this.entry.position;
     },
-    description: function () {
+    description: function() {
       return this.entry.description;
     },
     focusExpanded() {
       return this.entry.name == this.$store.state.focus;
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -77,7 +78,7 @@ img {
 .description {
   //padding: 1rem;
   display: block;
-  opacity: 0;
+
   @include Canela-Thin;
   font-size: 25px;
   // font-size: 1.7vw;
@@ -87,6 +88,7 @@ img {
   justify-content: flex-end;
   max-height: 0;
   opacity: 0;
+
   // transition: max-height 1s ease-out;
   //opacity: 0;
   //transform: translate3d(0, 15px, 0);

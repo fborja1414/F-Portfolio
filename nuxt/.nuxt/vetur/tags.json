@@ -16,5 +16,8 @@
   },
   "TitleItem": {
     "description": "Auto imported from components/TitleItem.vue"
+  },
+  "TransitionExpand": {
+    "description": "Auto imported from components/TransitionExpand.vue"
   }
 }

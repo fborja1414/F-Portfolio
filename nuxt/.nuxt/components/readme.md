@@ -12,3 +12,4 @@ You can directly use them in pages and other components without the need to impo
 - `<NavSection>` | `<nav-section>` (components/NavSection.vue)
 - `<Section>` | `<section>` (components/Section.vue)
 - `<TitleItem>` | `<title-item>` (components/TitleItem.vue)
+- `<TransitionExpand>` | `<transition-expand>` (components/TransitionExpand.vue)
