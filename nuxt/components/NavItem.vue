@@ -134,12 +134,6 @@ export default {
       this.loadImages();
     }
   }
-  // data() {
-  //   return {
-  //     navClick: false,
-  //     navHovered: false,
-  //   };
-  // },
 };
 </script>
 
