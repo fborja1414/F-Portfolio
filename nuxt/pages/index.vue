@@ -76,7 +76,7 @@
       </div>
     </transition>
 
-    <transition name="slideIn">
+    <!-- <transition name="slideIn">
       <div v-show="slideToggle" class="nav-section">
         <div
           class="nav-container"
@@ -90,15 +90,15 @@
           />
         </div>
       </div>
-    </transition>
+    </transition> -->
     <template
       v-show="slideToggle"
       class="section-container"
       :class="{
-        'slideIn-navigation-enter-active': !slideToggle,
-        'slideIn-navigation-leave-active': !slideToggle,
-        'slideIn-navigation-enter': slideToggle,
-        'slideIn-navigation-leave-to': slideToggle
+        'slideIn-navigation-enter-active': slideToggle,
+        'slideIn-navigation-leave-active': slideToggle,
+        'slideIn-navigation-enter': !slideToggle,
+        'slideIn-navigation-leave-to': !slideToggle
       }"
     >
       <Section
@@ -108,7 +108,9 @@
         :key="index"
         ref="entry"
         :slideToggle="slideToggle"
-      />
+      >
+        <nav-section />
+      </Section>
     </template>
   </div>
 </template>
@@ -201,12 +203,15 @@ export default {
           this.slideToggle = true;
 
           this.$store.commit("setFocus", this.$refs.entry[index].entry.name);
+          this.$store.commit("updateFocus", this.$refs.entry[index].entry.name);
 
           console.log(this.$refs.entry[index].entry.name);
         } else if (
           window.scrollY <= this.$refs.entry[0].$el.getBoundingClientRect().top
         ) {
           this.slideToggle = false;
+          this.$store.commit("resetFocus");
+
           //this.scroll = false;
         }
       }
@@ -395,7 +400,7 @@ export default {
 .navigation {
   grid-column: 1/11;
   font-size: 3vw;
-  margin-bottom: 70vh;
+  margin-bottom: 50vh;
   //height: 100vh;
   //overflow-x: visible;
   line-height: 1.5;

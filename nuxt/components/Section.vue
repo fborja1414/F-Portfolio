@@ -1,22 +1,13 @@
 <template>
   <div class="section-container" ref="container" v-if="imagesloaded">
-    <div class="pagination">{{ pageNum }} / {{ images.length }}</div>
-    <div class="" v-if="video.length > 1">
-      <video
-        class="vid-size"
-        :key="index"
-        v-for="(videos, index) in video"
-        :src="
-          videos.url
-            .split('/uploads/')
-            .join('https://agile-peak-21162.herokuapp.com/uploads/')
-        "
-        autoplay
-        loop
-      />
-    </div>
     <div
       class="scroll"
+      :class="{
+        'slideIn-navigation-enter-active': scrollToggle,
+        'slideIn-navigation-leave-active': scrollToggle,
+        'slideIn-navigation-enter': !scrollToggle,
+        'slideIn-navigation-leave-to': !scrollToggle
+      }"
       ref="imagescroll"
       v-if="images.length > 1"
       v-on:scroll="displayPagination"
@@ -44,7 +35,17 @@
         "
       />
     </div>
-    <div v-else>
+
+    <div
+      class="scroll"
+      :class="{
+        'slideIn-navigation-enter-active': scrollToggle,
+        //'slideIn-navigation-leave-active': scrollToggle,
+        'slideIn-navigation-enter': !scrollToggle
+        // 'slideIn-navigation-leave-to': !scrollToggle
+      }"
+      v-else
+    >
       <img
         v-for="(image, index) in images"
         :key="index"
@@ -55,9 +56,11 @@
         "
       />
     </div>
+    <div class="pagination">{{ pageNum }} / {{ images.length }}</div>
     <div class="description">
-      <a class="title">{{ entry.name }}</a>
-      <a class="swipe" v-if="images.length > 1">swipe >> </a>
+      <a class="title">{{ entry.name }} |</a>
+      <a class="medium" :class="{ blink: navClick }"> {{ entry.medium }}</a>
+
       <div v-html="description" class="mobile-description"></div>
     </div>
   </div>
@@ -69,7 +72,8 @@ export default {
   props: {
     entry: Object,
     index: Number,
-    slideToggle: Boolean
+    slideToggle: Boolean,
+    scrollToggle: Boolean
   },
   data() {
     return {
@@ -152,6 +156,9 @@ export default {
     },
     video: function() {
       return this.entry.video;
+    },
+    scrollToggle: function() {
+      return this.$store.state.scrolledfocus.includes(this.entry.name);
     }
   },
 
@@ -166,6 +173,17 @@ export default {
 <style lang="scss" scoped>
 @import "~assets/_projects.scss";
 @import "~assets/_typography.scss";
+.section-container {
+  grid-column: 1/11;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: auto;
+  overflow-y: hidden;
+  margin: 0 0 15rem 0;
+  z-index: 2;
+  overflow-x: scroll;
+}
+
 .title {
   font-style: italic;
   height: 5rem;
@@ -175,29 +193,59 @@ export default {
   display: flex;
   z-index: 5;
   overflow-x: scroll;
+  width: 100%;
   scroll-snap-type: x mandatory;
+  grid-column: 1/7;
+  grid-row: 1;
 }
 
 .description {
+  grid-column: 7/11;
+  grid-row: 1;
+  //width: 35vw;
+  //height: 90vh;
+  // grid-row: 3;
+  //grid-column: 7/11;
+  font-size: 30px;
+
+  padding: 4rem;
+  padding-top: 0;
+  padding-right: 0rem;
+  //position: sticky;
+  margin: 1rem 0rem 1rem 1rem;
+  margin-top: 0;
+  overflow: hidden;
+  height: auto;
+  //float: right;
   //display: flex;
-  justify-content: space-between;
 }
 
 .mobile-description {
   @include Canela-Thin;
   font-size: 20px;
   margin-top: 1rem;
+  margin-bottom: 5rem;
+  padding: 1.5rem;
 }
 
 .title {
   @include Canela-Light;
-  font-size: 20px;
+  font-size: 25px;
   opacity: 1;
+  justify-content: end;
+}
+
+.medium {
+  @include Canela-ThinItalic;
+  // font-size: 1.7vw;
+  font-size: 25px;
 }
 
 img {
   width: 100%;
   margin: 0 0 1rem 0;
+
+  // grid-column: 1/7;
 }
 
 .swipe {
@@ -209,10 +257,6 @@ img {
   margin: 0 0 1rem 0;
 }
 
-.img {
-  padding: 10px;
-}
-
 .pagination {
   @include Canela-Light;
   display: block;
@@ -221,13 +265,9 @@ img {
   text-align: right;
   right: 1px;
   margin: 10px;
-}
-
-.section-container {
-  grid-column: 1/7;
-  margin: 0 0 15rem 0;
-  z-index: 2;
-  overflow-x: scroll;
+  width: 10px;
+  grid-row: 1;
+  grid-column: 7/11;
 }
 
 .section-container:hover {
@@ -248,7 +288,7 @@ img {
 
 .slideIn-navigation-enter-active,
 .slideIn-navigation-leave-active {
-  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+  transition: opacity 0.2s ease-in, transform 0, 5s ease-in;
 }
 .slideIn-navigation-enter,
 .slideIn-navigation-leave-to {
@@ -266,11 +306,11 @@ img {
   }
 }
 @media screen and (min-width: 768px) {
-  .mobile-description {
-    opacity: 0;
-  }
-  .title {
-    opacity: 0;
-  }
+  // .mobile-description {
+  //   opacity: 0;
+  // }
+  // .title {
+  //   opacity: 0;
+  // }
 }
 </style>
