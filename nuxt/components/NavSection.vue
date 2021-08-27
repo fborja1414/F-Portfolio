@@ -7,6 +7,7 @@
       resetClick();
     "
   >
+    {{ slug.params }}
     <a class="name"> {{ entry.name }} |</a>
     <a class="medium" :class="{ blink: navClick }"> {{ entry.medium }}</a>
 
@@ -24,11 +25,12 @@ export default {
   name: "NavSection",
   props: {
     entry: Object,
-    index: Number
+    index: Number,
   },
+
   data() {
     return {
-      navClick: false
+      navClick: false,
     };
   },
   methods: {
@@ -36,23 +38,27 @@ export default {
       setTimeout(() => {
         this.navClick = false;
       }, 1200);
-    }
+    },
   },
 
   computed: {
-    images: function() {
+    images: function () {
       return this.entry.images;
     },
-    position: function() {
+    position: function () {
       return this.entry.position;
     },
-    description: function() {
+    description: function () {
       return this.entry.description;
     },
     focusExpanded() {
       return this.entry.name == this.$store.state.focus;
-    }
-  }
+    },
+  },
+
+  created() {
+    console.log(this.$route.params);
+  },
 };
 </script>
 

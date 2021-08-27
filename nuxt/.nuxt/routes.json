@@ -7,6 +7,13 @@
     "_name": "_14565cc5"
   },
   {
+    "name": "projects-projects",
+    "path": "/projects/:projects?",
+    "component": "/Users/FranciscoBorja/Desktop/F-Portfolio/nuxt/pages/projects/_projects.vue",
+    "chunkName": "pages/projects/_projects",
+    "_name": "_aadfd3c2"
+  },
+  {
     "name": "index",
     "path": "/",
     "component": "/Users/FranciscoBorja/Desktop/F-Portfolio/nuxt/pages/index.vue",

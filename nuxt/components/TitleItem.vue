@@ -3,7 +3,7 @@
     class="name"
     :class="{ 'blink-hover': navHovered, blink: navClick }"
     v-on:click="
-      $emit('clicked', index);
+      //  $emit('clicked', index);
       navClick = true;
       resetClick();
       removeTitle();
@@ -12,8 +12,10 @@
     @mouseenter="setTitle(entries.name)"
     @mouseleave="removeTitle()"
   >
-    <a class="dot" v-if="index != 0"> • </a> {{ entries.name }} |
-    <a class="medium"> {{ entries.medium }}</a>
+    <nuxt-link to="projects">
+      <a class="dot" v-if="index != 0"> • </a> {{ entries.name }} |
+      <a class="medium"> {{ entries.medium }}</a>
+    </nuxt-link>
   </a>
 </template>
 
@@ -24,32 +26,32 @@ export default {
   props: {
     index: Number,
     entries: Object,
-    slideToggle: Boolean
+    slideToggle: Boolean,
   },
 
   data() {
     return {
       navHovered: false,
       navClick: false,
-      imagesloaded: false
+      imagesloaded: false,
     };
   },
   computed: {
-    name: function() {
+    name: function () {
       return this.entries.name;
     },
-    images: function() {
+    images: function () {
       return this.entries.images;
     },
-    position: function() {
+    position: function () {
       return this.entries.position;
     },
-    description: function() {
+    description: function () {
       return this.entries.description;
     },
-    titleHovered: function() {
+    titleHovered: function () {
       return this.entries.name == this.$store.state.title;
-    }
+    },
   },
 
   methods: {
@@ -66,8 +68,8 @@ export default {
       setTimeout(() => {
         this.navClick = false;
       }, 1200);
-    }
-  }
+    },
+  },
 };
 </script>
 

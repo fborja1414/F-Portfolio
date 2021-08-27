@@ -2,7 +2,16 @@ export default {
   target: "static",
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
-
+  generate: {
+    routes: [
+      "/projects/1",
+      "projects/2",
+      "projects/3",
+      "projects/4",
+      "projects/5",
+      "projects/6"
+    ]
+  },
   /*
    ** .env
    */

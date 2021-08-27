@@ -6,7 +6,7 @@
         'slideIn-navigation-enter-active': !slideToggle,
         'slideIn-navigation-leave-active': !slideToggle,
         'slideIn-navigation-enter': slideToggle,
-        'slideIn-navigation-leave-to': slideToggle
+        'slideIn-navigation-leave-to': slideToggle,
       }"
     >
       <a class="header">
@@ -20,7 +20,7 @@
         'slideIn-navigation-enter-active': !slideToggle,
         'slideIn-navigation-leave-active': !slideToggle,
         'slideIn-navigation-enter': slideToggle,
-        'slideIn-navigation-leave-to': slideToggle
+        'slideIn-navigation-leave-to': slideToggle,
       }"
       class="contact-container"
     >
@@ -49,7 +49,7 @@
             'slideIn-navigation-enter-active': !slideToggle,
             'slideIn-navigation-leave-active': !slideToggle,
             'slideIn-navigation-enter': slideToggle,
-            'slideIn-navigation-leave-to': slideToggle
+            'slideIn-navigation-leave-to': slideToggle,
           }"
         >
           <title-item
@@ -59,20 +59,21 @@
             :index="index"
             v-on:clicked="scrollSectionIntoView"
           />
+
           <div class="contact">
             <a class="email">EMAIL</a>
             <a class="github">GITHUB</a>
             <a class="are.na">ARE.NA</a>
           </div>
         </div>
-        <nav-item
+        <!-- <nav-item
           :key="index"
           v-for="(entries, index) in projects"
           :index="index"
           :entries="entries"
           :slideToggle="slideToggle"
           v-on:clicked="scrollSectionIntoView"
-        />
+        /> -->
       </div>
     </transition>
 
@@ -91,16 +92,7 @@
         </div>
       </div>
     </transition> -->
-    <template
-      v-show="slideToggle"
-      class="section-container"
-      :class="{
-        'slideIn-navigation-enter-active': slideToggle,
-        'slideIn-navigation-leave-active': slideToggle,
-        'slideIn-navigation-enter': !slideToggle,
-        'slideIn-navigation-leave-to': !slideToggle
-      }"
-    >
+    <template v-show="slideToggle" class="section-container" :class="{}">
       <Section
         :entry="entry"
         :index="index"
@@ -108,6 +100,7 @@
         :key="index"
         ref="entry"
         :slideToggle="slideToggle"
+        keep-alive
       >
         <nav-section />
       </Section>
@@ -126,12 +119,12 @@ export default {
     Section,
     NavItem,
     NavSection,
-    TitleItem
+    TitleItem,
   },
 
   transition: {
     appear: true,
-    name: "page"
+    name: "page",
   },
   data() {
     return {
@@ -141,7 +134,7 @@ export default {
       showSection: true,
       slideToggle: false,
       showAbout: false,
-      navHovered: false
+      navHovered: false,
       //position: Number
     };
   },
@@ -243,7 +236,7 @@ export default {
     hoveredNav() {
       this.navHovered = true;
       console.log("ha");
-    }
+    },
   },
 
   // computed: {
@@ -269,7 +262,7 @@ export default {
 
   mounted() {
     this.$nextTick(() => (this.show = true));
-  }
+  },
 };
 </script>
 
@@ -400,7 +393,7 @@ export default {
 .navigation {
   grid-column: 1/11;
   font-size: 3vw;
-  margin-bottom: 50vh;
+  margin-bottom: 20vh;
   //height: 100vh;
   //overflow-x: visible;
   line-height: 1.5;
