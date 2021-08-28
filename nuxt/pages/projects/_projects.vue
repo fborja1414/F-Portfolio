@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <pre> {{ projects }}</pre>
-  </div>
+  <div></div>
 </template>
 
 <script>
@@ -20,13 +18,14 @@ export default {
     };
   },
 
-  async asyncData({ params, $axios }) {
+  async asyncData({ params, $axios, route }) {
     const projects = await $axios.$get(
-      `https://agile-peak-21162.herokuapp.com/projects/${params.id}`
+      `https://agile-peak-21162.herokuapp.com/projects/${route.params.projects}`
     );
-    const slug = params.slug;
-    console.log({ projects });
-    return { projects };
+    const slug = route.params.projects;
+    console.log(`${projects}`);
+    console.log(route.params.projects);
+    //return { projects };
   },
 
   //   methods: {

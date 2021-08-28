@@ -7,8 +7,15 @@
     "_name": "_14565cc5"
   },
   {
+    "name": "projects",
+    "path": "/projects",
+    "component": "/Users/FranciscoBorja/Desktop/F-Portfolio/nuxt/pages/projects/index.vue",
+    "chunkName": "pages/projects/index",
+    "_name": "_e185d0d0"
+  },
+  {
     "name": "projects-projects",
-    "path": "/projects/:projects?",
+    "path": "/projects/:projects",
     "component": "/Users/FranciscoBorja/Desktop/F-Portfolio/nuxt/pages/projects/_projects.vue",
     "chunkName": "pages/projects/_projects",
     "_name": "_aadfd3c2"
@@ -19,5 +26,12 @@
     "component": "/Users/FranciscoBorja/Desktop/F-Portfolio/nuxt/pages/index.vue",
     "chunkName": "pages/index",
     "_name": "_68e80a87"
+  },
+  {
+    "name": "test",
+    "path": "/:test",
+    "component": "/Users/FranciscoBorja/Desktop/F-Portfolio/nuxt/pages/_test.vue",
+    "chunkName": "pages/_test",
+    "_name": "_5a1477a6"
   }
 ]

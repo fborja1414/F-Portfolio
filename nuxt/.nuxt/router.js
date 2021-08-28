@@ -5,8 +5,10 @@ import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
 const _14565cc5 = () => interopDefault(import('../pages/about/index.vue' /* webpackChunkName: "pages/about/index" */))
+const _e185d0d0 = () => interopDefault(import('../pages/projects/index.vue' /* webpackChunkName: "pages/projects/index" */))
 const _aadfd3c2 = () => interopDefault(import('../pages/projects/_projects.vue' /* webpackChunkName: "pages/projects/_projects" */))
 const _68e80a87 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
+const _5a1477a6 = () => interopDefault(import('../pages/_test.vue' /* webpackChunkName: "pages/_test" */))
 
 const emptyFn = () => {}
 
@@ -24,13 +26,21 @@ export const routerOptions = {
     component: _14565cc5,
     name: "about"
   }, {
-    path: "/projects/:projects?",
+    path: "/projects",
+    component: _e185d0d0,
+    name: "projects"
+  }, {
+    path: "/projects/:projects",
     component: _aadfd3c2,
     name: "projects-projects"
   }, {
     path: "/",
     component: _68e80a87,
     name: "index"
+  }, {
+    path: "/:test",
+    component: _5a1477a6,
+    name: "test"
   }],
 
   fallback: false

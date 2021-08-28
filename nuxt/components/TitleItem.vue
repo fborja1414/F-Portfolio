@@ -3,7 +3,7 @@
     class="name"
     :class="{ 'blink-hover': navHovered, blink: navClick }"
     v-on:click="
-      //  $emit('clicked', index);
+      $emit('clicked', index);
       navClick = true;
       resetClick();
       removeTitle();
@@ -12,9 +12,10 @@
     @mouseenter="setTitle(entries.name)"
     @mouseleave="removeTitle()"
   >
-    <nuxt-link to="projects">
+    <nuxt-link :to="'/' + entries.id">
       <a class="dot" v-if="index != 0"> • </a> {{ entries.name }} |
       <a class="medium"> {{ entries.medium }}</a>
+      <a> {{ entries.id }}</a>
     </nuxt-link>
   </a>
 </template>
@@ -48,6 +49,9 @@ export default {
     },
     description: function () {
       return this.entries.description;
+    },
+    id: function () {
+      return this.entries.id;
     },
     titleHovered: function () {
       return this.entries.name == this.$store.state.title;
