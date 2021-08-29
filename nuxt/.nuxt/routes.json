@@ -12,5 +12,12 @@
     "component": "/Users/FranciscoBorja/Desktop/F-Portfolio/nuxt/pages/index.vue",
     "chunkName": "pages/index",
     "_name": "_68e80a87"
+  },
+  {
+    "name": "project",
+    "path": "/:project",
+    "component": "/Users/FranciscoBorja/Desktop/F-Portfolio/nuxt/pages/_project.vue",
+    "chunkName": "pages/_project",
+    "_name": "_b6012396"
   }
 ]

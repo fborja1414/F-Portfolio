@@ -1,8 +1,20 @@
 <template>
   <div class="main">
+    <landing />
     <Nuxt />
   </div>
 </template>
+
+<script>
+import Landing from "../components/Landing.vue";
+
+export default {
+  name: "Landing",
+  components: {
+    Landing,
+  },
+};
+</script>
 
 <style lang="scss">
 .main {

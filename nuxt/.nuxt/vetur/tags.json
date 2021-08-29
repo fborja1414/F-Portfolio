@@ -2,6 +2,9 @@
   "About": {
     "description": "Auto imported from components/About.vue"
   },
+  "Landing": {
+    "description": "Auto imported from components/Landing.vue"
+  },
   "Logo": {
     "description": "Auto imported from components/Logo.vue"
   },
