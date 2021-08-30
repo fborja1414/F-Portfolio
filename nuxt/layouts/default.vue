@@ -1,22 +1,35 @@
 <template>
   <div class="main">
-    <landing />
+    <div
+      class="header-container"
+      :class="{
+        'slideIn-navigation-enter-active': !slideToggle,
+        'slideIn-navigation-leave-active': !slideToggle,
+        'slideIn-navigation-enter': slideToggle,
+        'slideIn-navigation-leave-to': slideToggle,
+      }"
+    >
+      <nuxt-link to="/">
+        <a class="header">
+          Francisco Borja
+          <a class="subheader">designer and developer</a>
+        </a>
+        <!-- <a class="index">index</a> -->
+      </nuxt-link>
+
+      <a class="about"
+        ><nuxt-link class="nuxt-link-active" to="/about">about</nuxt-link>
+      </a>
+    </div>
+
     <Nuxt />
   </div>
 </template>
 
-<script>
-import Landing from "../components/Landing.vue";
-
-export default {
-  name: "Landing",
-  components: {
-    Landing,
-  },
-};
-</script>
 
 <style lang="scss">
+@import "~assets/_typography.scss";
+
 .main {
   width: calc(100% - 40px);
   margin: 0rem 1rem 1rem 1rem;
@@ -31,6 +44,50 @@ html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
+}
+
+.header-container {
+  display: flex;
+  @include Canela-Thin;
+  width: 100%;
+  font-size: 2.5vw;
+  height: 10vh;
+  //align-content: center;
+  position: relative;
+  top: 1.5rem;
+  z-index: 5;
+  margin: 0;
+}
+
+.header {
+  width: 100%;
+}
+
+.subheader {
+  @include Canela-ThinItalic;
+  font-style: italic;
+}
+
+.index {
+  @include Canela-ThinItalic;
+  font-style: italic;
+}
+
+.nuxt-link-active {
+  width: 100%;
+  color: black;
+  text-decoration: none;
+}
+
+.about {
+  width: 100%;
+  cursor: pointer;
+  justify-content: flex-end;
+  text-align: right;
+  align-items: flex-end;
+  //margin-left: 3vw;
+  color: black;
+  text-decoration: none;
 }
 
 *,

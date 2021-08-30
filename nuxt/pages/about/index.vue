@@ -1,18 +1,5 @@
 <template>
   <div class="page-container-about">
-    <div class="header-container">
-      <nuxt-link to="/">
-        <a class="header">
-          Francisco Borja
-          <a class="subheader">designer and developer</a>
-        </a>
-      </nuxt-link>
-    </div>
-
-    <div class="contact-container">
-      <a class="about">about </a>
-    </div>
-
     <div class="about-copy">
       Francisco is a designer developer based in San Francisco, California. In
       2020 he graduated with a degree in cognitive science from University of
@@ -30,7 +17,7 @@
 
 <script>
 export default {
-  name: "About"
+  name: "About",
 };
 </script>
 
@@ -48,18 +35,6 @@ export default {
   overflow: hidden;
 }
 
-.header-container {
-  @include Canela-Thin;
-  grid-row: 1;
-  grid-column: 1/7;
-  font-size: 2.5vw;
-  height: 8rem;
-  align-content: center;
-  position: sticky;
-  top: 1.5rem;
-  z-index: 5;
-}
-
 .contact-container {
   display: flex;
   @include Canela-Thin;
@@ -74,6 +49,7 @@ export default {
 }
 
 .about-copy {
+  padding-top: 5vh;
   @include Canela-Thin;
   grid-column: 2/10;
   display: block;

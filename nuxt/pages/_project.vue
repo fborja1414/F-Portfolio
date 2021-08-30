@@ -1,29 +1,5 @@
 <template>
   <div class="page-container">
-    <div
-      class="header-container"
-      :class="{
-        'slideIn-navigation-enter-active': !slideToggle,
-        'slideIn-navigation-leave-active': !slideToggle,
-        'slideIn-navigation-enter': slideToggle,
-        'slideIn-navigation-leave-to': slideToggle,
-      }"
-    >
-      <a class="header">
-        Francisco Borja
-        <a class="subheader">designer and developer</a>
-      </a>
-    </div>
-    <!-- <pre>{{ images }}</pre> -->
-    <!-- <video
-        class="vid-size"
-        :key="index"
-        :src="
-          image[1].url.split('/uploads/').join('http://localhost:1337/uploads/')
-        "
-        autoplay
-        loop
-      /> -->
     <div class="description-container">
       <div class="title">{{ name }}</div>
       <div class="description" v-html="description"></div>
@@ -79,18 +55,6 @@ export default {
   grid-gap: 20px;
   //pointer-events: none;
   //margin: 10rem auto;
-}
-
-.header-container {
-  @include Canela-Thin;
-  grid-row: 1;
-  grid-column: 1/7;
-  font-size: 2.5vw;
-  height: 10vh;
-  align-content: center;
-  position: relative;
-  top: 1.5rem;
-  z-index: 5;
 }
 
 .title {

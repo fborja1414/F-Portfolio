@@ -1,83 +1,46 @@
 <template>
-  <div class="page-container">
-    <div
-      class="header-container"
-      :class="{
-        'slideIn-navigation-enter-active': !slideToggle,
-        'slideIn-navigation-leave-active': !slideToggle,
-        'slideIn-navigation-enter': slideToggle,
-        'slideIn-navigation-leave-to': slideToggle,
-      }"
-    >
-      <a class="header">
-        Francisco Borja
-        <a class="subheader">designer and developer</a>
-      </a>
-    </div>
-
-    <div
-      :class="{
-        'slideIn-navigation-enter-active': !slideToggle,
-        'slideIn-navigation-leave-active': !slideToggle,
-        'slideIn-navigation-enter': slideToggle,
-        'slideIn-navigation-leave-to': slideToggle,
-      }"
-      class="contact-container"
-    >
-      <a class="about"
-        ><nuxt-link class="nuxt-link-active" to="/about">about</nuxt-link>
-      </a>
-    </div>
-
-    <!-- <div class="socials">
+  <!-- <div class="socials">
         <a href="https://www.are.na/francisco-borja">Are.na</a>
         <a href="https://github.com/fborja1414">Github</a>
         <a>Email</a>
       </div> -->
-    <!-- <div class="scroll-description" v-html="sectionDescription"></div> -->
-    <!-- <div
+  <!-- <div class="scroll-description" v-html="sectionDescription"></div> -->
+  <!-- <div
         class="back"
         @click="window.scrollTo({ top: 0, behavior: 'smooth' })"
       
         Back to Top
       </div> -->
-    <transition name="slideIn">
-      <div class="navigation">
-        <div
-          class="project-titles"
-          :class="{
-            'slideIn-navigation-enter-active': !slideToggle,
-            'slideIn-navigation-leave-active': !slideToggle,
-            'slideIn-navigation-enter': slideToggle,
-            'slideIn-navigation-leave-to': slideToggle,
-          }"
-        >
-          <title-item
-            v-for="(entries, index) in projects"
-            :key="index"
-            :entries="entries"
-            :index="index"
-          />
-          <div class="contact">
-            <a class="email">EMAIL</a>
-            <a class="github">GITHUB</a>
-            <a class="are.na">ARE.NA</a>
-          </div>
-        </div>
-        <nav-item
-          :key="index"
-          v-for="(entries, index) in projects"
-          :index="index"
-          :entries="entries"
-          :slideToggle="slideToggle"
-        />
-      </div>
+
+  <div class="navigation">
+    <div
+      class="project-titles"
+      :class="{
+        'slideIn-navigation-enter-active': !slideToggle,
+        'slideIn-navigation-leave-active': !slideToggle,
+        'slideIn-navigation-enter': slideToggle,
+        'slideIn-navigation-leave-to': slideToggle,
+      }"
+    >
+      <title-item
+        v-for="(entries, index) in projects"
+        :key="index"
+        :entries="entries"
+        :index="index"
+      />
       <div class="contact">
         <a class="email">EMAIL</a>
         <a class="github">GITHUB</a>
         <a class="are.na">ARE.NA</a>
       </div>
-    </transition>
+    </div>
+    <nav-item
+      :key="index"
+      v-for="(entries, index) in projects"
+      :index="index"
+      :entries="entries"
+      :slideToggle="slideToggle"
+    />
   </div>
 </template>
 
@@ -91,8 +54,14 @@ export default {
     NavItem,
     TitleItem,
   },
+  props: {
+    projects: Object,
+    slideToggle: Boolean,
+  },
   data() {
-    return {};
+    return {
+      slideToggle: false,
+    };
   },
   methods: {
     hoveredNav() {
@@ -160,29 +129,6 @@ export default {
   font-style: italic;
 }
 
-.contact-container {
-  display: flex;
-  @include Canela-Thin;
-  grid-row: 1;
-  grid-column: 10/11;
-  font-size: 2.5vw;
-  height: 8vh;
-  //align-content: center;
-  position: relative;
-  top: 1.5rem;
-  z-index: 5;
-}
-
-.about {
-  cursor: pointer;
-  // justify-content: flex-end;
-  // text-align: end;{}
-  // align-items: flex-end;
-  margin-left: 3vw;
-  color: black;
-  text-decoration: none;
-}
-
 .nuxt-link-active {
   color: black;
   text-decoration: none;
@@ -223,25 +169,28 @@ export default {
   grid-template-columns: repeat(10, 1fr);
   // grid-template-rows: repeat(7, 40vh);
   grid-auto-rows: auto;
-  grid-gap: 20px;
+  //grid-gap: 20px;
   //pointer-events: none;
   //margin: 10rem auto;
+  overflow: hidden;
 }
 
 .navigation {
+  //position: relative;
   grid-column: 1/11;
   font-size: 3vw;
-  margin-bottom: 70vh;
-  //height: 100vh;
+  // margin-bottom: 70vh;
+  height: 100vh;
   //overflow-x: visible;
   line-height: 1.5;
   display: flex;
+  //overflow: hidden;
 }
 
 .contact {
   @include IBM-Plex-Mono;
   font-size: 0.8vw;
-  bottom: 5vh;
+  //bottom: 5vh;
   margin: 0 auto;
   display: flex;
   width: 10vw;
@@ -255,52 +204,52 @@ export default {
   }
 }
 
-.nav-section {
-  width: 35vw;
-  position: fixed;
-  height: 90vh;
-  // grid-row: 3;
-  //grid-column: 7/11;
-  font-size: 25px;
-  padding-top: 3rem;
-  padding: 1rem;
-  //position: sticky;
-  right: 1rem;
-  top: 1.5rem;
-  margin: 1rem;
-  margin-top: none;
-  overflow: hidden;
-}
+// .nav-section {
+//   width: 35vw;
+//   position: fixed;
+//   height: 90vh;
+//   // grid-row: 3;
+//   //grid-column: 7/11;
+//   font-size: 25px;
+//   padding-top: 3rem;
+//   padding: 1rem;
+//   //position: sticky;
+//   right: 1rem;
+//   top: 1.5rem;
+//   margin: 1rem;
+//   margin-top: none;
+//   overflow: hidden;
+// }
 
-.section {
-  grid-column: 3/8;
-}
+// .section {
+//   grid-column: 3/8;
+// }
 
-.back {
-  position: fixed;
-  bottom: 1rem;
-  font-size: 18px;
-}
+// .back {
+//   position: fixed;
+//   bottom: 1rem;
+//   font-size: 18px;
+// }
 
-.socials {
-  //display: block;
-  line-height: 2;
-  margin-top: 1rem;
-  position: fixed;
-  font-size: 18px;
-  font-style: italic;
-  height: auto;
-  //grid-row: 0;
-  // grid-column: 9/11;
-  //position: sticky;
-  // bottom: 5rem;
-  color: blue;
-  z-index: 5;
-  a {
-    pointer-events: auto;
-    display: block;
-  }
-}
+// .socials {
+//   //display: block;
+//   line-height: 2;
+//   margin-top: 1rem;
+//   position: fixed;
+//   font-size: 18px;
+//   font-style: italic;
+//   height: auto;
+//   //grid-row: 0;
+//   // grid-column: 9/11;
+//   //position: sticky;
+//   // bottom: 5rem;
+//   color: blue;
+//   z-index: 5;
+//   a {
+//     pointer-events: auto;
+//     display: block;
+//   }
+// }
 
 .blink-hover {
   opacity: 0.5;

@@ -1,82 +1,8 @@
 <template>
   <div class="page-container" v-if="show">
-    <div
-      class="header-container"
-      :class="{
-        'slideIn-navigation-enter-active': !slideToggle,
-        'slideIn-navigation-leave-active': !slideToggle,
-        'slideIn-navigation-enter': slideToggle,
-        'slideIn-navigation-leave-to': slideToggle
-      }"
-    >
-      <a class="header">
-        Francisco Borja
-        <a class="subheader">designer and developer</a>
-      </a>
-    </div>
+    <landing :projects="projects" :slideToggle="slideToggle" />
 
-    <div
-      :class="{
-        'slideIn-navigation-enter-active': !slideToggle,
-        'slideIn-navigation-leave-active': !slideToggle,
-        'slideIn-navigation-enter': slideToggle,
-        'slideIn-navigation-leave-to': slideToggle
-      }"
-      class="contact-container"
-    >
-      <a class="about"
-        ><nuxt-link class="nuxt-link-active" to="/about">about</nuxt-link>
-      </a>
-    </div>
-
-    <!-- <div class="socials">
-        <a href="https://www.are.na/francisco-borja">Are.na</a>
-        <a href="https://github.com/fborja1414">Github</a>
-        <a>Email</a>
-      </div> -->
-    <!-- <div class="scroll-description" v-html="sectionDescription"></div> -->
-    <!-- <div
-        class="back"
-        @click="window.scrollTo({ top: 0, behavior: 'smooth' })"
-      
-        Back to Top
-      </div> -->
-    <transition name="slideIn">
-      <div class="navigation">
-        <div
-          class="project-titles"
-          :class="{
-            'slideIn-navigation-enter-active': !slideToggle,
-            'slideIn-navigation-leave-active': !slideToggle,
-            'slideIn-navigation-enter': slideToggle,
-            'slideIn-navigation-leave-to': slideToggle
-          }"
-        >
-          <title-item
-            v-for="(entries, index) in projects"
-            :key="index"
-            :entries="entries"
-            :index="index"
-            v-on:clicked="scrollSectionIntoView"
-          />
-          <div class="contact">
-            <a class="email">EMAIL</a>
-            <a class="github">GITHUB</a>
-            <a class="are.na">ARE.NA</a>
-          </div>
-        </div>
-        <nav-item
-          :key="index"
-          v-for="(entries, index) in projects"
-          :index="index"
-          :entries="entries"
-          :slideToggle="slideToggle"
-          v-on:clicked="scrollSectionIntoView"
-        />
-      </div>
-    </transition>
-
-    <transition name="slideIn">
+    <!-- <transition name="slideIn">
       <div v-show="slideToggle" class="nav-section">
         <div
           class="nav-container"
@@ -98,7 +24,7 @@
         'slideIn-navigation-enter-active': !slideToggle,
         'slideIn-navigation-leave-active': !slideToggle,
         'slideIn-navigation-enter': slideToggle,
-        'slideIn-navigation-leave-to': slideToggle
+        'slideIn-navigation-leave-to': slideToggle,
       }"
     >
       <Section
@@ -109,7 +35,7 @@
         ref="entry"
         :slideToggle="slideToggle"
       />
-    </template>
+    </template> -->
   </div>
 </template>
 
@@ -118,18 +44,20 @@ import Section from "@/components/Section.vue";
 import NavItem from "@/components/NavItem.vue";
 import NavSection from "@/components/NavSection.vue";
 import TitleItem from "@/components/TitleItem.vue";
+import Landing from "@/components/Landing.vue";
 
 export default {
   components: {
     Section,
     NavItem,
     NavSection,
-    TitleItem
+    TitleItem,
+    Landing,
   },
 
   transition: {
     appear: true,
-    name: "page"
+    name: "page",
   },
   data() {
     return {
@@ -139,7 +67,7 @@ export default {
       showSection: true,
       slideToggle: false,
       showAbout: false,
-      navHovered: false
+      navHovered: false,
       //position: Number
     };
   },
@@ -238,7 +166,7 @@ export default {
     hoveredNav() {
       this.navHovered = true;
       console.log("ha");
-    }
+    },
   },
 
   // computed: {
@@ -264,7 +192,7 @@ export default {
 
   mounted() {
     this.$nextTick(() => (this.show = true));
-  }
+  },
 };
 </script>
 
@@ -387,9 +315,10 @@ export default {
   grid-template-columns: repeat(10, 1fr);
   // grid-template-rows: repeat(7, 40vh);
   grid-auto-rows: auto;
-  grid-gap: 20px;
+  //grid-gap: 20px;
   //pointer-events: none;
   //margin: 10rem auto;
+  overflow: hidden;
 }
 
 .navigation {
@@ -400,6 +329,7 @@ export default {
   //overflow-x: visible;
   line-height: 1.5;
   display: flex;
+  overflow: hidden;
 }
 
 .contact {
@@ -559,9 +489,13 @@ export default {
 }
 
 @media screen and (max-width: 768px) {
-  .nav-section {
-    opacity: 0;
-  }
+  // nav-section {
+  //   display: none;
+  //   opacity: 0;
+  // }
+  // Section {
+  //   display: none;
+  // }
   .navigation {
     font-size: 4vw;
     // grid-column: 3/11;

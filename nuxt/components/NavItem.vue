@@ -6,7 +6,7 @@
         'slideIn-navigation-leave-active': !slideToggle,
         'slideIn-navigation-enter': slideToggle,
         'slideIn-navigation-leave-to': slideToggle,
-        'blink-hover': navHovered
+        'blink-hover': navHovered,
       }"
       class="nav-items"
       v-on:click="
@@ -63,32 +63,32 @@ export default {
   props: {
     index: Number,
     entries: Object,
-    slideToggle: Boolean
+    slideToggle: Boolean,
   },
 
   data() {
     return {
       navHovered: false,
       navClick: false,
-      imagesloaded: false
+      imagesloaded: false,
     };
   },
   computed: {
-    name: function() {
+    name: function () {
       return this.entries.name;
     },
-    images: function() {
+    images: function () {
       return this.entries.images;
     },
-    position: function() {
+    position: function () {
       return this.entries.position;
     },
-    description: function() {
+    description: function () {
       return this.entries.description;
     },
-    titleHovered: function() {
+    titleHovered: function () {
       return this.entries.name == this.$store.state.title;
-    }
+    },
   },
 
   methods: {
@@ -126,14 +126,14 @@ export default {
       setTimeout(() => {
         this.navClick = false;
       }, 1200);
-    }
+    },
   },
 
   mounted() {
     if (!this.imagesloaded) {
       this.loadImages();
     }
-  }
+  },
   // data() {
   //   return {
   //     navClick: false,
@@ -147,7 +147,7 @@ export default {
 @import "~assets/_typography.scss";
 
 .section-container {
-  position: fixed;
+  position: absolute;
   top: 4rem;
   left: 1rem;
   height: calc(100% - 5rem);
@@ -161,11 +161,13 @@ export default {
   align-items: center;
   opacity: 0;
   transition: opacity 1s;
+  overflow: hidden;
 }
 
 .section-container--active {
   opacity: 1;
   transition: opacity 1s;
+  overflow: hidden;
 }
 
 img {
