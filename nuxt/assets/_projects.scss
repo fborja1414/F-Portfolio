@@ -3,7 +3,7 @@
 }
 
 .graphics {
-  height: 100vh;
+  // height: 100vh;
   // grid-row: 3;
   grid-column: 1/5;
 }
@@ -25,4 +25,35 @@
 
 .conne {
   grid-column: 4/10;
+}
+
+@media screen and (max-width: 768px) {
+  .elliot {
+    grid-column: 1/13;
+  }
+
+  .graphics {
+    // height: 100vh;
+    // grid-row: 3;
+    grid-column: 1/5;
+  }
+
+  .zine {
+    // grid-row: 5;
+    grid-column: 1/13;
+  }
+
+  .uganda {
+    //grid-row: 6;
+    grid-column: 1/13;
+  }
+
+  .typography {
+    // grid-row: 4;
+    grid-column: 1/13;
+  }
+
+  .conne {
+    grid-column: 1/13;
+  }
 }

@@ -1,5 +1,13 @@
 <template>
-  <div class="navigation">
+  <div
+    class="navigation"
+    :class="{
+      'slideIn-navigation-enter-active': !slideToggle,
+      'slideIn-navigation-leave-active': !slideToggle,
+      'slideIn-navigation-enter': slideToggle,
+      'slideIn-navigation-leave-to': slideToggle,
+    }"
+  >
     <div class="project-titles">
       <title-item
         v-for="(entries, index) in projects"
@@ -9,9 +17,9 @@
       />
     </div>
     <div class="contact">
-      <a class="email">EMAIL</a>
-      <a class="github">GITHUB</a>
-      <a class="are.na">ARE.NA</a>
+      <a class="email" href="mailto:fborja1414@gmail.com">EMAIL</a>
+      <a class="github" href="fborja1414.github.io">GITHUB</a>
+      <a class="arena" href="https://www.are.na/francisco-borja">ARE.NA</a>
     </div>
     <nav-item
       :key="index"
@@ -148,6 +156,12 @@ export default {
   }
 }
 
+.email,
+.arena,
+.github {
+  color: black;
+  text-decoration: none;
+}
 .blink-hover {
   opacity: 0.5;
   transition: opacity 0.25;
@@ -173,6 +187,25 @@ export default {
   cursor: pointer;
 }
 
+.slideIn-enter-active,
+.slideIn-leave-active {
+  transition: opacity 0.25s ease-in-out, transform 0.5s ease-in-out;
+}
+.slideIn-enter,
+.slideIn-leave-to {
+  opacity: 0;
+  transform: translate3d(0, 15px, 0);
+}
+.slideIn-navigation-enter-active,
+.slideIn-navigation-leave-active {
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+}
+.slideIn-navigation-enter,
+.slideIn-navigation-leave-to {
+  opacity: 0;
+  transform: translate3d(0, 15px, 0);
+}
+
 .page-enter-active,
 .page-leave-active {
   transition: opacity 0.25s ease-in-out, transform 0.5s ease-in-out;
@@ -193,8 +226,14 @@ export default {
     // margin: 0 0 8rem 0;
   }
   .header-container {
-    font-size: 4vw;
+    font-size: 1.5vw;
     grid-column: 1/9;
+  }
+  .contact {
+    padding-top: 15vh;
+    font-size: 1.6vw;
+    text-align: center;
+    width: 40vw;
   }
 }
 </style>

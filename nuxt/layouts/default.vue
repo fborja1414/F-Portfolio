@@ -1,6 +1,14 @@
 <template>
   <div class="main">
-    <div class="header-container">
+    <div
+      class="header-container"
+      :class="{
+        'slideIn-navigation-enter-active': !slideToggle,
+        'slideIn-navigation-leave-active': !slideToggle,
+        'slideIn-navigation-enter': slideToggle,
+        'slideIn-navigation-leave-to': slideToggle,
+      }"
+    >
       <nuxt-link to="/">
         <a class="header">
           Francisco Borja
@@ -19,18 +27,7 @@
 </template>
 
 <script>
-export default {
-  methods: {
-    toggleLanding() {
-      this.$store.commit("toggleLanding");
-    },
-  },
-  computed: {
-    onProjectPage() {
-      return this.$route.params.project;
-    },
-  },
-};
+export default {};
 </script>
 
 
@@ -133,5 +130,14 @@ html {
 .button--grey:hover {
   color: #fff;
   background-color: #35495e;
+}
+
+@media screen and (max-width: 768px) {
+  .header,
+  .about {
+    font-size: 3.5vw;
+    grid-column: 1/9;
+    width: 30vw;
+  }
 }
 </style>

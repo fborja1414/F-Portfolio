@@ -1,8 +1,8 @@
 <template>
   <div class="page-container">
     <landing :projects="projects" :slideToggle="slideToggle" />
-
-    <!-- <transition name="slideIn">
+    <!-- 
+    <transition name="slideIn">
       <div v-show="slideToggle" class="nav-section">
         <div
           class="nav-container"
@@ -13,10 +13,12 @@
             v-on:clicked="scrollSectionIntoView"
             :index="index"
             :entry="entry"
+            :slideToggle="slideToggle"
           />
         </div>
       </div>
     </transition>
+
     <template
       v-show="slideToggle"
       class="section-container"
@@ -55,10 +57,10 @@ export default {
     Landing,
   },
 
-  // transition: {
-  //   appear: true,
-  //   name: "page",
-  // },
+  transition: {
+    appear: true,
+    name: "slideIn",
+  },
   data() {
     return {
       scroll: true,
@@ -167,6 +169,12 @@ export default {
       console.log("ha");
     },
   },
+
+  // computed: {
+  //   entries() {
+  //     const entries = this.projects.entry;
+  //   },
+  // },
 
   beforeMount() {
     window.addEventListener("scroll", this.setDescription);
@@ -299,16 +307,16 @@ export default {
 //   top: 15rem;
 // }
 
-// .page-container {
-//   display: grid;
-//   grid-template-columns: repeat(10, 1fr);
-//   // grid-template-rows: repeat(7, 40vh);
-//   grid-auto-rows: auto;
-//   //grid-gap: 20px;
-//   //pointer-events: none;
-//   //margin: 10rem auto;
-//   overflow: hidden;
-// }
+.page-container {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  // grid-template-rows: repeat(7, 40vh);
+  grid-auto-rows: auto;
+  //grid-gap: 20px;
+  //pointer-events: none;
+  //margin: 10rem auto;
+  overflow: hidden;
+}
 
 // .navigation {
 //   grid-column: 1/11;
@@ -439,15 +447,15 @@ export default {
   cursor: pointer;
 }
 
-// .slideIn-enter-active,
-// .slideIn-leave-active {
-//   transition: opacity 0.25s ease-in-out, transform 0.5s ease-in-out;
-// }
-// .slideIn-enter,
-// .slideIn-leave-to {
-//   opacity: 0;
-//   transform: translate3d(0, 15px, 0);
-// }
+.slideIn-enter-active,
+.slideIn-leave-active {
+  transition: opacity 0.25s ease-in-out, transform 0.5s ease-in-out;
+}
+.slideIn-enter,
+.slideIn-leave-to {
+  opacity: 0;
+  transform: translate3d(0, 15px, 0);
+}
 // .slideIn-navigation-enter-active,
 // .slideIn-navigation-leave-active {
 //   transition: opacity 1s ease-in-out, transform 1s ease-in-out;
@@ -466,16 +474,16 @@ export default {
 // .navigation-leave-to {
 //   opacity: 0;
 //   transform: translate3d(0, 15px, 0);
-//}
-// .page-enter-active,
-// .page-leave-active {
-//   transition: opacity 0.25s ease-in-out, transform 0.5s ease-in-out;
 // }
-// .page-enter,
-// .page-leave-to {
-//   opacity: 0;
-//   transform: translate3d(0, 15px, 0);
-// }
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.25s ease-in-out, transform 0.5s ease-in-out;
+}
+.page-enter,
+.page-leave-to {
+  opacity: 0;
+  transform: translate3d(0, 15px, 0);
+}
 
 @media screen and (max-width: 768px) {
   // nav-section {

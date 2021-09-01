@@ -1,27 +1,39 @@
 <template>
-  <div class="section-container" ref="container" v-if="imagesloaded">
-    <div class="pagination">{{ pageNum }} / {{ images.length }}</div>
-    <div class="" v-if="video.length > 1">
-      <video
-        class="vid-size"
-        :key="index"
-        v-for="(videos, index) in video"
-        :src="
-          videos.url
-            .split('/uploads/')
-            .join('https://agile-peak-21162.herokuapp.com/uploads/')
-        "
-        autoplay
-        loop
-      />
-    </div>
-    <div
-      class="scroll"
-      ref="imagescroll"
-      v-if="images.length > 1"
-      v-on:scroll="displayPagination"
-    >
-      <!-- <video
+  <div
+    class="section-container"
+    :class="{
+      'slideIn-navigation-enter-active': slideToggle,
+      'slideIn-navigation-leave-active': slideToggle,
+      'slideIn-navigation-enter': !slideToggle,
+      'slideIn-navigation-leave-to': !slideToggle,
+    }"
+    ref="container"
+    v-if="imagesloaded"
+  >
+    <nuxt-link class="project-link" :to="'/' + entry.id">
+      <div class="pagination">{{ pageNum }} / {{ images.length }}</div>
+
+      <div class="scroll" v-if="video.length > 1">
+        <video
+          class="vid-size"
+          :key="index"
+          v-for="(videos, index) in video"
+          :src="
+            videos.url
+              .split('/uploads/')
+              .join('https://agile-peak-21162.herokuapp.com/uploads/')
+          "
+          autoplay
+          loop
+        />
+      </div>
+      <div
+        class="scroll"
+        ref="imagescroll"
+        v-if="images.length > 1"
+        v-on:scroll="displayPagination"
+      >
+        <!-- <video
         class="vid-size"
         :key="index"
         :src="
@@ -32,34 +44,35 @@
         autoplay
         loop
       /> -->
-      <img
-        class="img"
-        ref="image"
-        v-for="(image, index) in images"
-        :key="index"
-        :src="
-          image.url
-            .split('/uploads/')
-            .join('https://agile-peak-21162.herokuapp.com/uploads/')
-        "
-      />
-    </div>
-    <div v-else>
-      <img
-        v-for="(image, index) in images"
-        :key="index"
-        :src="
-          image.url
-            .split('/uploads/')
-            .join('https://agile-peak-21162.herokuapp.com/uploads/')
-        "
-      />
-    </div>
-    <div class="description">
-      <a class="title">{{ entry.name }}</a>
-      <a class="swipe" v-if="images.length > 1">swipe >> </a>
-      <div v-html="description" class="mobile-description"></div>
-    </div>
+        <img
+          class="img"
+          ref="image"
+          v-for="(image, index) in images"
+          :key="index"
+          :src="
+            image.url
+              .split('/uploads/')
+              .join('https://agile-peak-21162.herokuapp.com/uploads/')
+          "
+        />
+      </div>
+      <div v-else>
+        <img
+          v-for="(image, index) in images"
+          :key="index"
+          :src="
+            image.url
+              .split('/uploads/')
+              .join('https://agile-peak-21162.herokuapp.com/uploads/')
+          "
+        />
+      </div>
+      <div class="description">
+        <a class="title">{{ entry.name }}</a>
+        <!-- <a class="swipe" v-if="images.length > 1">swipe >> </a> -->
+        <div v-html="description" class="mobile-description"></div>
+      </div>
+    </nuxt-link>
   </div>
 </template>
 
@@ -69,12 +82,12 @@ export default {
   props: {
     entry: Object,
     index: Number,
-    slideToggle: Boolean
+    slideToggle: Boolean,
   },
   data() {
     return {
       imagesloaded: false,
-      pageNum: 1
+      pageNum: 1,
     };
   },
 
@@ -137,29 +150,29 @@ export default {
         }
       }
       // console.log(this.$refs.imagescroll);
-    }
+    },
   },
 
   computed: {
-    images: function() {
+    images: function () {
       return this.entry.images;
     },
-    position: function() {
+    position: function () {
       return this.entry.position;
     },
-    description: function() {
+    description: function () {
       return this.entry.description;
     },
-    video: function() {
+    video: function () {
       return this.entry.video;
-    }
+    },
   },
 
   mounted() {
     if (!this.imagesLoaded) {
       this.loadImages();
     }
-  }
+  },
 };
 </script>
 
@@ -169,6 +182,11 @@ export default {
 .title {
   font-style: italic;
   height: 5rem;
+}
+
+.project-link {
+  color: black;
+  text-decoration: none;
 }
 
 .scroll {
