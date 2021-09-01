@@ -1,56 +1,33 @@
 <template>
-  <div>
-    <div
-      :class="{
-        'slideIn-navigation-enter-active': !slideToggle,
-        'slideIn-navigation-leave-active': !slideToggle,
-        'slideIn-navigation-enter': slideToggle,
-        'slideIn-navigation-leave-to': slideToggle,
-        'blink-hover': navHovered,
-      }"
-      class="nav-items"
-      v-on:click="
-        $emit('clicked', index);
-        navClick = true;
-        resetClick();
-      "
-      @mouseenter="selectOn"
-      @mouseleave="selectOff"
-    >
-      <!-- <a class="name"> {{ entries.name }} |</a>
-      <a class="medium" :class="{ blink: navClick }"> {{ entries.medium }}</a> -->
-    </div>
-
-    <div
-      v-if="imagesloaded"
-      class="section-container"
-      :class="{ 'section-container--active': titleHovered }"
-    >
-      <div :class="position">
-        <div v-if="images.length > 1" class="fulldisplay">
-          <img
-            class="fulldisplay-image"
-            v-for="(image, index) in images"
-            :key="index"
-            :src="
-              image.url
-                .split('/uploads/')
-                .join('https://agile-peak-21162.herokuapp.com/uploads/')
-            "
-          />
-        </div>
-        <div v-else>
-          <img
-            class="fulldisplay-image"
-            v-for="(image, index) in images"
-            :key="index"
-            :src="
-              image.url
-                .split('/uploads/')
-                .join('https://agile-peak-21162.herokuapp.com/uploads/')
-            "
-          />
-        </div>
+  <div
+    v-if="imagesloaded"
+    class="section-container"
+    :class="{ 'section-container--active': titleHovered }"
+  >
+    <div :class="position">
+      <div v-if="images.length > 1" class="fulldisplay">
+        <img
+          class="fulldisplay-image"
+          v-for="(image, index) in images"
+          :key="index"
+          :src="
+            image.url
+              .split('/uploads/')
+              .join('https://agile-peak-21162.herokuapp.com/uploads/')
+          "
+        />
+      </div>
+      <div v-else>
+        <img
+          class="fulldisplay-image"
+          v-for="(image, index) in images"
+          :key="index"
+          :src="
+            image.url
+              .split('/uploads/')
+              .join('https://agile-peak-21162.herokuapp.com/uploads/')
+          "
+        />
       </div>
     </div>
   </div>
@@ -121,12 +98,6 @@ export default {
         console.log(`${this.imagesloaded}`);
       });
     },
-
-    resetClick() {
-      setTimeout(() => {
-        this.navClick = false;
-      }, 1200);
-    },
   },
 
   mounted() {
@@ -150,7 +121,7 @@ export default {
   position: absolute;
   top: 4rem;
   left: 1rem;
-  height: calc(100% - 5rem);
+  height: calc(100vh - 5rem);
   width: calc(100vw - 2rem);
   margin: 0;
   z-index: -1;
@@ -167,7 +138,7 @@ export default {
 .section-container--active {
   opacity: 1;
   transition: opacity 1s;
-  overflow: hidden;
+  // overflow: hidden;
 }
 
 img {
@@ -187,6 +158,7 @@ img {
 }
 
 .fulldisplay-image {
+  width: 100%;
   opacity: 0.5;
   padding: 1.5rem;
 }

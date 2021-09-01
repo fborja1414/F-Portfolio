@@ -1,5 +1,5 @@
 <template>
-  <div class="page-container" v-if="show">
+  <div class="page-container">
     <landing :projects="projects" :slideToggle="slideToggle" />
 
     <!-- <transition name="slideIn">
@@ -55,13 +55,12 @@ export default {
     Landing,
   },
 
-  transition: {
-    appear: true,
-    name: "page",
-  },
+  // transition: {
+  //   appear: true,
+  //   name: "page",
+  // },
   data() {
     return {
-      show: false,
       scroll: true,
       sectionDescription: " ",
       showSection: true,
@@ -189,10 +188,6 @@ export default {
     console.log({ projects });
     return { projects };
   },
-
-  mounted() {
-    this.$nextTick(() => (this.show = true));
-  },
 };
 </script>
 
@@ -310,27 +305,27 @@ export default {
 //   top: 15rem;
 // }
 
-.page-container {
-  display: grid;
-  grid-template-columns: repeat(10, 1fr);
-  // grid-template-rows: repeat(7, 40vh);
-  grid-auto-rows: auto;
-  //grid-gap: 20px;
-  //pointer-events: none;
-  //margin: 10rem auto;
-  overflow: hidden;
-}
+// .page-container {
+//   display: grid;
+//   grid-template-columns: repeat(10, 1fr);
+//   // grid-template-rows: repeat(7, 40vh);
+//   grid-auto-rows: auto;
+//   //grid-gap: 20px;
+//   //pointer-events: none;
+//   //margin: 10rem auto;
+//   overflow: hidden;
+// }
 
-.navigation {
-  grid-column: 1/11;
-  font-size: 3vw;
-  margin-bottom: 70vh;
-  //height: 100vh;
-  //overflow-x: visible;
-  line-height: 1.5;
-  display: flex;
-  overflow: hidden;
-}
+// .navigation {
+//   grid-column: 1/11;
+//   font-size: 3vw;
+//   //  margin-bottom: 70vh;
+//   //height: 100vh;
+//   //overflow-x: visible;
+//   line-height: 1.5;
+//   display: flex;
+//   overflow: hidden;
+// }
 
 .contact {
   @include IBM-Plex-Mono;
@@ -450,34 +445,34 @@ export default {
   cursor: pointer;
 }
 
-.slideIn-enter-active,
-.slideIn-leave-active {
-  transition: opacity 0.25s ease-in-out, transform 0.5s ease-in-out;
-}
-.slideIn-enter,
-.slideIn-leave-to {
-  opacity: 0;
-  transform: translate3d(0, 15px, 0);
-}
-.slideIn-navigation-enter-active,
-.slideIn-navigation-leave-active {
-  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
-}
-.slideIn-navigation-enter,
-.slideIn-navigation-leave-to {
-  opacity: 0;
-  transform: translate3d(0, 15px, 0);
-}
+// .slideIn-enter-active,
+// .slideIn-leave-active {
+//   transition: opacity 0.25s ease-in-out, transform 0.5s ease-in-out;
+// }
+// .slideIn-enter,
+// .slideIn-leave-to {
+//   opacity: 0;
+//   transform: translate3d(0, 15px, 0);
+// }
+// .slideIn-navigation-enter-active,
+// .slideIn-navigation-leave-active {
+//   transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+// }
+// .slideIn-navigation-enter,
+// .slideIn-navigation-leave-to {
+//   opacity: 0;
+//   transform: translate3d(0, 15px, 0);
+// }
 
-.navigation-scroll-enter-active,
-.navigation-scroll-leave-active {
-  transition: opacity 3s ease-in-out, transform 2s ease-in-out;
-}
-.navigation-scroll-enter,
-.navigation-leave-to {
-  opacity: 0;
-  transform: translate3d(0, 15px, 0);
-}
+// .navigation-scroll-enter-active,
+// .navigation-scroll-leave-active {
+//   transition: opacity 3s ease-in-out, transform 2s ease-in-out;
+// }
+// .navigation-scroll-enter,
+// .navigation-leave-to {
+//   opacity: 0;
+//   transform: translate3d(0, 15px, 0);
+//}
 .page-enter-active,
 .page-leave-active {
   transition: opacity 0.25s ease-in-out, transform 0.5s ease-in-out;

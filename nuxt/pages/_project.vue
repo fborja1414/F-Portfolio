@@ -4,7 +4,7 @@
       <div class="title">{{ name }}</div>
       <div class="description" v-html="description"></div>
     </div>
-    <div class="image-cont">
+    <div class="image-cont" v-if="imagesloaded">
       <img
         v-for="(image, index) in images"
         :key="index"
@@ -40,6 +40,42 @@ export default {
       return this.projects.description;
     },
   },
+
+  data() {
+    return {
+      imagesloaded: false,
+    };
+  },
+
+  mounted() {
+    if (!this.imagesloaded) {
+      this.loadImages();
+    }
+  },
+  methods: {
+    async loadImages() {
+      console.log(`${this.imagesloaded}`);
+      const t0 = performance.now();
+      let cachedImages = [];
+
+      //load Images
+      for (const image of this.projects.images) {
+        cachedImages.push(image);
+      }
+
+      await Promise.all(cachedImages).then(() => {
+        this.imagesloaded = true;
+        const t1 = performance.now();
+        console.log(
+          `${this.entry.name} - Loaded section.vue ${
+            this.entry.images.length
+          } images in ${Math.round(t1 - t0)}ms.`
+        );
+        console.log(`${this.imagesloaded}`);
+        console.log(`${this.entry.video}`);
+      });
+    },
+  },
 };
 </script>
 
@@ -49,12 +85,15 @@ export default {
 
 .page-container {
   display: grid;
-  grid-template-columns: repeat(10, 1fr);
-  // grid-template-rows: repeat(7, 40vh);
+
+  grid-template-columns: repeat(
+    12,
+    1fr
+  ); // grid-template-rows: repeat(7, 40vh);
   grid-auto-rows: auto;
   grid-gap: 20px;
   //pointer-events: none;
-  //margin: 10rem auto;
+  margin: 10vh auto;
 }
 
 .title {
@@ -68,12 +107,19 @@ export default {
   @include IBM-Plex-Mono;
   font-style: italic;
   font-size: 1vw;
-  grid-column: 1/10;
+  grid-row: 2;
+  grid-column: 4/10;
+  .title,
+  .description {
+    margin: 0 auto;
+    text-align: center;
+  }
   // grid-row: 1;
 }
 
 .image-cont {
-  grid-column: 1/8;
+  grid-row: 3;
+  grid-column: 4/10;
   //display: block;
   img {
     width: 100%;

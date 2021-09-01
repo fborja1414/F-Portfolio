@@ -18,13 +18,30 @@
       </nuxt-link>
 
       <a class="about"
-        ><nuxt-link class="nuxt-link-active" to="/about">about</nuxt-link>
+        ><nuxt-link class="nuxt-link-active" to="/about" v-if="!onProjectPage"
+          >about</nuxt-link
+        >
+      </a>
+      <a class="index"
+        ><nuxt-link class="nuxt-link-active" to="/about" v-if="onProjectPage"
+          >index</nuxt-link
+        >
       </a>
     </div>
 
     <Nuxt />
   </div>
 </template>
+
+<script>
+export default {
+  computed: {
+    onProjectPage() {
+      return this.$route.params.project;
+    },
+  },
+};
+</script>
 
 
 <style lang="scss">
@@ -69,8 +86,7 @@ html {
 }
 
 .index {
-  @include Canela-ThinItalic;
-  font-style: italic;
+  @include Canela-Thin;
 }
 
 .nuxt-link-active {
