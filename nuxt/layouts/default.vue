@@ -1,14 +1,6 @@
 <template>
   <div class="main">
-    <div
-      class="header-container"
-      :class="{
-        'slideIn-navigation-enter-active': !slideToggle,
-        'slideIn-navigation-leave-active': !slideToggle,
-        'slideIn-navigation-enter': slideToggle,
-        'slideIn-navigation-leave-to': slideToggle,
-      }"
-    >
+    <div class="header-container">
       <nuxt-link to="/">
         <a class="header">
           Francisco Borja
@@ -18,14 +10,7 @@
       </nuxt-link>
 
       <a class="about"
-        ><nuxt-link class="nuxt-link-active" to="/about" v-if="!onProjectPage"
-          >about</nuxt-link
-        >
-      </a>
-      <a class="index"
-        ><nuxt-link class="nuxt-link-active" to="/about" v-if="onProjectPage"
-          >index</nuxt-link
-        >
+        ><nuxt-link class="nuxt-link-active" to="/about">about</nuxt-link>
       </a>
     </div>
 
@@ -35,6 +20,11 @@
 
 <script>
 export default {
+  methods: {
+    toggleLanding() {
+      this.$store.commit("toggleLanding");
+    },
+  },
   computed: {
     onProjectPage() {
       return this.$route.params.project;

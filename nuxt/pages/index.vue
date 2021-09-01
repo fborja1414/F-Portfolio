@@ -168,12 +168,6 @@ export default {
     },
   },
 
-  // computed: {
-  //   entries() {
-  //     const entries = this.projects.entry;
-  //   },
-  // },
-
   beforeMount() {
     window.addEventListener("scroll", this.setDescription);
   },
@@ -473,15 +467,15 @@ export default {
 //   opacity: 0;
 //   transform: translate3d(0, 15px, 0);
 //}
-.page-enter-active,
-.page-leave-active {
-  transition: opacity 0.25s ease-in-out, transform 0.5s ease-in-out;
-}
-.page-enter,
-.page-leave-to {
-  opacity: 0;
-  transform: translate3d(0, 15px, 0);
-}
+// .page-enter-active,
+// .page-leave-active {
+//   transition: opacity 0.25s ease-in-out, transform 0.5s ease-in-out;
+// }
+// .page-enter,
+// .page-leave-to {
+//   opacity: 0;
+//   transform: translate3d(0, 15px, 0);
+// }
 
 @media screen and (max-width: 768px) {
   // nav-section {

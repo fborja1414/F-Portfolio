@@ -1,25 +1,31 @@
 <template>
-  <div class="page-container">
-    <div class="description-container">
-      <div class="title">{{ name }}</div>
-      <div class="description" v-html="description"></div>
-    </div>
-    <div class="image-cont" v-if="imagesloaded">
-      <img
-        v-for="(image, index) in images"
-        :key="index"
-        :src="
-          image.url
-            .split('/uploads/')
-            .join('https://agile-peak-21162.herokuapp.com/uploads/')
-        "
-      />
-    </div>
-  </div>
+  <nuxt-link class="nuxt-link-active" :to="'/' + nextpage">
+    <transition name="page">
+      <div class="page-container">
+        <div class="description-container">
+          <div class="title">{{ name }}</div>
+          <div class="description" v-html="description"></div>
+        </div>
+        <div class="image-cont" v-if="imagesloaded">
+          <img
+            v-for="(image, index) in images"
+            :key="index"
+            :src="
+              image.url
+                .split('/uploads/')
+                .join('https://agile-peak-21162.herokuapp.com/uploads/')
+            "
+          />
+        </div>
+      </div>
+    </transition>
+  </nuxt-link>
 </template>
 
 <script>
+import Landing from "../components/Landing.vue";
 export default {
+  components: { Landing },
   async asyncData({ params, $axios, route }) {
     const projects = await $axios.$get(
       `https://agile-peak-21162.herokuapp.com/projects/${route.params.project}`
@@ -30,6 +36,12 @@ export default {
   },
 
   computed: {
+    nextpage: function () {
+      if (this.projects.id == 6) {
+        return this.projects.id - (6 - 1);
+      }
+      return this.projects.id + 1;
+    },
     images: function () {
       return this.projects.images;
     },
@@ -92,8 +104,7 @@ export default {
   ); // grid-template-rows: repeat(7, 40vh);
   grid-auto-rows: auto;
   grid-gap: 20px;
-  //pointer-events: none;
-  margin: 10vh auto;
+  margin: vh auto;
 }
 
 .title {
@@ -103,24 +114,62 @@ export default {
   padding-bottom: 1rem;
 }
 
+.nuxt-link-active {
+  color: black;
+  text-decoration: none;
+}
 .description-container {
   @include IBM-Plex-Mono;
   font-style: italic;
   font-size: 1vw;
   grid-row: 2;
   grid-column: 4/10;
+  pointer-events: none;
+  margin-bottom: 3rem;
   .title,
   .description {
     margin: 0 auto;
     text-align: center;
+    pointer-events: auto;
+    z-index: 5;
   }
   // grid-row: 1;
+}
+
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.25s ease-in-out, transform 0.5s ease-in-out;
+}
+.page-enter,
+.page-leave-to {
+  opacity: 0;
+  transform: translate3d(0, 15px, 0);
+}
+
+.slideIn-enter-active,
+.slideIn-leave-active {
+  transition: opacity 0.25s ease-in-out, transform 0.5s ease-in-out;
+}
+.slideIn-enter,
+.slideIn-leave-to {
+  opacity: 0;
+  transform: translate3d(0, 15px, 0);
+}
+.slideIn-navigation-enter-active,
+.slideIn-navigation-leave-active {
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+}
+.slideIn-navigation-enter,
+.slideIn-navigation-leave-to {
+  opacity: 0;
+  transform: translate3d(0, 15px, 0);
 }
 
 .image-cont {
   grid-row: 3;
   grid-column: 4/10;
   //display: block;
+  cursor: default;
   img {
     width: 100%;
   }
