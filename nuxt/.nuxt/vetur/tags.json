@@ -1,7 +1,4 @@
 {
-  "About": {
-    "description": "Auto imported from components/About.vue"
-  },
   "Landing": {
     "description": "Auto imported from components/Landing.vue"
   },
@@ -19,8 +16,5 @@
   },
   "TitleItem": {
     "description": "Auto imported from components/TitleItem.vue"
-  },
-  "TransitionExpand": {
-    "description": "Auto imported from components/TransitionExpand.vue"
   }
 }

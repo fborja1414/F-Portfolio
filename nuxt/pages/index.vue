@@ -1,68 +1,26 @@
 <template>
-  <div class="page-container">
-    <landing :projects="projects" :slideToggle="slideToggle" />
-    <!-- 
-    <transition name="slideIn">
-      <div v-show="slideToggle" class="nav-section">
-        <div
-          class="nav-container"
-          v-for="(entry, index) in projects"
-          :key="index"
-        >
-          <nav-section
-            v-on:clicked="scrollSectionIntoView"
-            :index="index"
-            :entry="entry"
-            :slideToggle="slideToggle"
-          />
-        </div>
-      </div>
+  <div class="page-container" v-if="show">
+    <transition name="page">
+      <landing :projects="projects" :slideToggle="slideToggle" />
     </transition>
-
-    <template
-      v-show="slideToggle"
-      class="section-container"
-      :class="{
-        'slideIn-navigation-enter-active': !slideToggle,
-        'slideIn-navigation-leave-active': !slideToggle,
-        'slideIn-navigation-enter': slideToggle,
-        'slideIn-navigation-leave-to': slideToggle,
-      }"
-    >
-      <Section
-        :entry="entry"
-        :index="index"
-        v-for="(entry, index) in projects"
-        :key="index"
-        ref="entry"
-        :slideToggle="slideToggle"
-      />
-    </template> -->
   </div>
 </template>
 
 <script>
-import Section from "@/components/Section.vue";
-import NavItem from "@/components/NavItem.vue";
-import NavSection from "@/components/NavSection.vue";
-import TitleItem from "@/components/TitleItem.vue";
 import Landing from "@/components/Landing.vue";
 
 export default {
   components: {
-    Section,
-    NavItem,
-    NavSection,
-    TitleItem,
     Landing,
   },
 
-  transition: {
-    appear: true,
-    name: "slideIn",
-  },
+  // transition: {
+  //   appear: true,
+  //   name: "slideIn",
+  // },
   data() {
     return {
+      show: false,
       scroll: true,
       sectionDescription: " ",
       showSection: true,
@@ -176,11 +134,21 @@ export default {
   //   },
   // },
 
+  computed: {
+    showLanding: function () {
+      return this.$store.state.landing;
+    },
+  },
+
   beforeMount() {
     window.addEventListener("scroll", this.setDescription);
   },
   beforeDestroy() {
     window.removeEventListener("scroll", this.setDescription);
+  },
+
+  mounted() {
+    this.$nextTick(() => (this.show = true));
   },
 
   async asyncData({ $axios }) {
@@ -447,15 +415,15 @@ export default {
   cursor: pointer;
 }
 
-.slideIn-enter-active,
-.slideIn-leave-active {
-  transition: opacity 0.25s ease-in-out, transform 0.5s ease-in-out;
-}
-.slideIn-enter,
-.slideIn-leave-to {
-  opacity: 0;
-  transform: translate3d(0, 15px, 0);
-}
+// .slideIn-enter-active,
+// .slideIn-leave-active {
+//   transition: opacity 0.25s ease-in-out, transform 0.5s ease-in-out;
+// }
+// .slideIn-enter,
+// .slideIn-leave-to {
+//   opacity: 0;
+//   transform: translate3d(0, 15px, 0);
+// }
 // .slideIn-navigation-enter-active,
 // .slideIn-navigation-leave-active {
 //   transition: opacity 1s ease-in-out, transform 1s ease-in-out;
@@ -475,14 +443,24 @@ export default {
 //   opacity: 0;
 //   transform: translate3d(0, 15px, 0);
 // }
+// .page-enter-active,
+// .page-leave-active {
+//   transition: opacity 0.25s ease-in-out, transform 0.5s ease-in-out;
+// }
+// .page-enter,
+// .page-leave-to {
+//   opacity: 0;
+//   transform: translate3d(0, 15px, 0);
+// }
+
 .page-enter-active,
 .page-leave-active {
-  transition: opacity 0.25s ease-in-out, transform 0.5s ease-in-out;
+  transition: opacity 0.25s ease-in;
 }
+
 .page-enter,
 .page-leave-to {
   opacity: 0;
-  transform: translate3d(0, 15px, 0);
 }
 
 @media screen and (max-width: 768px) {

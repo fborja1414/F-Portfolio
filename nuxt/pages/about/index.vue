@@ -57,7 +57,7 @@ export default {
   text-indent: 15%;
 }
 
-contact-list .page-enter-active,
+.page-enter-active,
 .page-leave-active {
   transition: opacity 0.2s ease-in-out, transform 0.25s ease-in-out;
 }

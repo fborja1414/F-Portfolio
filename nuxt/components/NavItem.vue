@@ -68,6 +68,13 @@ export default {
     },
   },
 
+  mounted() {
+    if (!this.imagesloaded) {
+      this.loadImages();
+      console.log(this.$refs.image);
+    }
+  },
+
   methods: {
     selectOn() {
       this.navHovered = true;
@@ -100,11 +107,6 @@ export default {
     },
   },
 
-  mounted() {
-    if (!this.imagesloaded) {
-      this.loadImages();
-    }
-  },
   // data() {
   //   return {
   //     navClick: false,
@@ -213,15 +215,15 @@ img {
 // //   }
 // }
 
-.slideIn-navigation-enter-active,
-.slideIn-navigation-leave-active {
-  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
-}
-.slideIn-navigation-enter,
-.slideIn-navigation-leave-to {
-  opacity: 0;
-  transform: translate3d(0, 15px, 0);
-}
+// .slideIn-navigation-enter-active,
+// .slideIn-navigation-leave-active {
+//   transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+// }
+// .slideIn-navigation-enter,
+// .slideIn-navigation-leave-to {
+//   opacity: 0;
+//   transform: translate3d(0, 15px, 0);
+// }
 
 @media screen and (max-width: 768px) {
   // nav-section {

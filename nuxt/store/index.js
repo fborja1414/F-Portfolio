@@ -9,8 +9,8 @@ export const mutations = {
     state.focus = value;
   },
 
-  toggleLanding(state) {
-    state.landing = !state.landing;
+  toggleLanding(state, value) {
+    state.landing = value;
   },
 
   titleHovered(state, value) {

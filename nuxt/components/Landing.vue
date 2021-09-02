@@ -55,6 +55,16 @@ export default {
       this.navHovered = true;
       console.log("ha");
     },
+
+    onLandingPage() {
+      if (!this.$route.params.project) {
+        this.$store.commit("toggleLanding", true);
+      }
+      console.log("togglelanding");
+    },
+  },
+  mounted() {
+    this.onLandingPage();
   },
 };
 </script>
@@ -220,7 +230,9 @@ export default {
   .nav-section {
     opacity: 0;
   }
+
   .navigation {
+    //margin-top: 10vh;
     font-size: 4vw;
     // grid-column: 3/11;
     // margin: 0 0 8rem 0;
@@ -230,7 +242,7 @@ export default {
     grid-column: 1/9;
   }
   .contact {
-    padding-top: 15vh;
+    padding-top: 20vh;
     font-size: 1.6vw;
     text-align: center;
     width: 40vw;

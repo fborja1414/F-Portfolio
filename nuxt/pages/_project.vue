@@ -1,5 +1,5 @@
 <template>
-  <transition>
+  <transition name="page">
     <nuxt-link class="nuxt-link-active" :to="'/' + nextpage">
       <div class="page-container">
         <div class="description-container">
@@ -17,7 +17,7 @@
             v-if="images.length > 1"
             v-on:scroll="displayPagination"
           >
-            <!-- <video
+            <video
         class="vid-size"
         :key="index"
         :src="
@@ -27,8 +27,8 @@
         "
         autoplay
         loop
-      /> -->
-          <!-- <img
+      />
+          <img
               class="img"
               ref="image"
               v-for="(image, index) in images"
@@ -39,7 +39,7 @@
                   .join('https://agile-peak-21162.herokuapp.com/uploads/')
               "
             />
-          </div> -->
+          </div>-->
           <img
             v-for="(image, index) in images"
             :key="index"
@@ -56,7 +56,7 @@
 </template>
 
 <script>
-import Landing from "../components/Landing.vue";
+import Landing from "@/components/Landing.vue";
 export default {
   components: { Landing },
   async asyncData({ params, $axios, route }) {
@@ -67,9 +67,9 @@ export default {
     console.log(route.params.project);
     return { projects };
   },
-  transition: {
-    appear: true,
-    name: "page",
+
+  key(projects) {
+    return projects.fullPath;
   },
 
   computed: {
@@ -88,10 +88,14 @@ export default {
     description: function () {
       return this.projects.description;
     },
+    showLanding: function () {
+      return this.$store.state.landing;
+    },
   },
 
   data() {
     return {
+      show: false,
       imagesloaded: false,
       pageNum: 1,
     };
@@ -102,8 +106,18 @@ export default {
       this.loadImages();
       console.log(this.$refs.image);
     }
+    this.onLandingPage();
+    this.show = true;
+    console.log("show" + `${this.show}`);
   },
   methods: {
+    onLandingPage() {
+      if (this.$route.params.project) {
+        this.$store.commit("toggleLanding", false);
+      }
+      console.log("untogglelanding");
+    },
+
     displayPagination() {
       console.log("scrolled");
       console.log(`${this.$refs.image}`);
@@ -220,40 +234,49 @@ export default {
   scroll-snap-type: x mandatory;
 }
 
+// .page-enter-active,
+// .page-leave-active {
+//   transition: opacity 0.25s ease-in-out, transform 0.5s ease-in-out;
+// }
+// .page-enter,
+// .page-leave-to {
+//   opacity: 0;
+//   transform: translate3d(0, 15px, 0);
+// }
+
+// .slideIn-enter-active,
+// .slideIn-leave-active {
+//   transition: opacity 0.25s ease-in-out, transform 0.5s ease-in-out;
+// }
+// .slideIn-enter,
+// .slideIn-leave-to {
+//   opacity: 0;
+//   transform: translate3d(0, 15px, 0);
+// }
+// .slideIn-navigation-enter-active,
+// .slideIn-navigation-leave-active {
+//   transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+// }
+// .slideIn-navigation-enter,
+// .slideIn-navigation-leave-to {
+//   opacity: 0;
+//   transform: translate3d(0, 15px, 0);
+// }
+
 .page-enter-active,
 .page-leave-active {
-  transition: opacity 0.25s ease-in-out, transform 0.5s ease-in-out;
+  transition: opacity 0.2s ease-in-out, transform 0.25s ease-in-out;
 }
 .page-enter,
 .page-leave-to {
   opacity: 0;
   transform: translate3d(0, 15px, 0);
 }
-
-.slideIn-enter-active,
-.slideIn-leave-active {
-  transition: opacity 0.25s ease-in-out, transform 0.5s ease-in-out;
-}
-.slideIn-enter,
-.slideIn-leave-to {
-  opacity: 0;
-  transform: translate3d(0, 15px, 0);
-}
-.slideIn-navigation-enter-active,
-.slideIn-navigation-leave-active {
-  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
-}
-.slideIn-navigation-enter,
-.slideIn-navigation-leave-to {
-  opacity: 0;
-  transform: translate3d(0, 15px, 0);
-}
-
 .image-cont {
   grid-row: 3;
   grid-column: 4/10;
   //display: block;
-  cursor: default;
+  // cursor: default;
   overflow-x: scroll;
   img {
     width: 100%;
@@ -264,10 +287,10 @@ export default {
 @media screen and (max-width: 768px) {
   .description-container {
     margin-top: 10vh;
-    font-size: 2vw;
+    font-size: 1.8vw;
     grid-column: 1/12;
     .title {
-      font-size: 2.5vw;
+      font-size: 1.8vw;
     }
   }
   .image-cont {
