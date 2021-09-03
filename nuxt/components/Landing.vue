@@ -42,7 +42,7 @@ export default {
     TitleItem,
   },
   props: {
-    projects: Object,
+    projects: Array,
     slideToggle: Boolean,
   },
   data() {

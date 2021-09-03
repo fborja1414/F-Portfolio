@@ -12,7 +12,7 @@
     @mouseenter="setTitle(entries.name)"
     @mouseleave="removeTitle()"
   >
-    <nuxt-link class="project-link" :to="'/' + entries.id">
+    <nuxt-link class="project-link" :to="'/nav/' + entries.id">
       <a class="dot" v-if="index != 0"> • </a> {{ entries.name }} |
       <a class="medium"> {{ entries.medium }}</a>
     </nuxt-link>
