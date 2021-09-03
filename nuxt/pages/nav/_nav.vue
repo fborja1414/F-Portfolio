@@ -1,6 +1,15 @@
 <template>
   <!-- <nuxt-link class="nuxt-link-active" :to="'/' + nextpage"> -->
-  <div class="pages-container">
+  <div
+    class="pages-container"
+    :class="{
+      'page-enter-active': show,
+      'page-leave-active': show,
+      'page-enter': !show,
+      'page-leave-to': !show,
+    }"
+    v-if="show"
+  >
     <div class="description-container">
       <div class="title">{{ name }}</div>
       <div class="description" v-html="description"></div>
@@ -60,7 +69,7 @@ export default {
       `https://agile-peak-21162.herokuapp.com/projects/${route.params.nav}`
     );
     const slug = route.params.nav;
-    console.log(projects);
+    // console.log(projects);
     return { projects };
   },
 
@@ -94,13 +103,14 @@ export default {
   },
 
   mounted() {
-    if (!this.imagesloaded) {
-      this.loadImages();
-      console.log(this.$refs.image);
-    }
-    this.onLandingPage();
     this.show = true;
-    console.log("show" + `${this.show}`);
+    //   if (!this.imagesloaded) {
+    //     this.loadImages();
+    //     console.log(this.$refs.image);
+    //   }
+    //   this.onLandingPage();
+    //   this.show = true;
+    //   console.log("show" + `${this.show}`);
   },
   methods: {
     onLandingPage() {
@@ -240,15 +250,14 @@ export default {
   scroll-snap-type: x mandatory;
 }
 
-// .page-enter-active,
-// .page-leave-active {
-//   transition: opacity 0.25s ease-in-out, transform 0.5s ease-in-out;
-// }
-// .page-enter,
-// .page-leave-to {
-//   opacity: 0;
-//   transform: translate3d(0, 15px, 0);
-// }
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.25s ease-in-out;
+}
+.page-enter,
+.page-leave-to {
+  opacity: 0;
+}
 
 // .slideIn-enter-active,
 // .slideIn-leave-active {

@@ -28,7 +28,7 @@ export default {
       { hid: "description", name: "description", content: "" }
     ]
   },
-
+  loading: false,
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: ["~assets/_typography.scss"],
 

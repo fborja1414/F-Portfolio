@@ -1,6 +1,6 @@
 <template>
   <div
-    v-if="imagesloaded"
+    v-if="!imagesloaded"
     class="section-container"
     :class="{ 'section-container--active': titleHovered }"
   >

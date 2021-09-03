@@ -3,7 +3,7 @@ import { decode, parsePath, withoutBase, withoutTrailingSlash, normalizeURL } fr
 
 import { getMatchedComponentsInstances, getChildrenComponentInstancesUsingFetch, promisify, globalHandleError, urlJoin, sanitizeComponent } from './utils'
 import NuxtError from './components/nuxt-error.vue'
-import NuxtLoading from './components/nuxt-loading.vue'
+
 import NuxtBuildIndicator from './components/nuxt-build-indicator'
 
 import '../assets/_typography.scss'
@@ -14,8 +14,6 @@ const layouts = { "_default": sanitizeComponent(_6f6c098b) }
 
 export default {
   render (h, props) {
-    const loadingEl = h('NuxtLoading', { ref: 'loading' })
-
     const layoutEl = h(this.layout || 'nuxt')
     const templateEl = h('div', {
       domProps: {
@@ -44,7 +42,7 @@ export default {
         id: '__nuxt'
       }
     }, [
-      loadingEl,
+
       h(NuxtBuildIndicator),
       transitionEl
     ])
@@ -79,10 +77,6 @@ export default {
     this.error = this.nuxt.error
     // Add $nuxt.context
     this.context = this.$options.context
-  },
-
-  async mounted () {
-    this.$loading = this.$refs.loading
   },
 
   watch: {
@@ -123,7 +117,6 @@ export default {
       if (!pages.length) {
         return
       }
-      this.$loading.start()
 
       const promises = pages.map((page) => {
         const p = []
@@ -157,23 +150,12 @@ export default {
       try {
         await Promise.all(promises)
       } catch (error) {
-        this.$loading.fail(error)
         globalHandleError(error)
         this.error(error)
       }
-      this.$loading.finish()
     },
     errorChanged () {
       if (this.nuxt.err) {
-        if (this.$loading) {
-          if (this.$loading.fail) {
-            this.$loading.fail(this.nuxt.err)
-          }
-          if (this.$loading.finish) {
-            this.$loading.finish()
-          }
-        }
-
         let errorLayout = (NuxtError.options || NuxtError).layout;
 
         if (typeof errorLayout === 'function') {
@@ -203,8 +185,4 @@ export default {
       return Promise.resolve(layouts['_' + layout])
     },
   },
-
-  components: {
-    NuxtLoading
-  }
 }

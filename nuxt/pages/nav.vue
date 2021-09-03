@@ -1,10 +1,33 @@
 <template>
   <div v-if="show">
     <transition name="page">
-      <landing :projects="projects" :slideToggle="slideToggle" />
+      <div class="landing-container">
+        <landing
+          class="landing"
+          :class="{
+            'nav-enter-active': landing,
+            'nav-leave-active': landing,
+            'nav-enter': !landing,
+            'nav-leave-to': !landing,
+          }"
+          v-on:click="showLanding"
+          @click.native="showLanding"
+          :projects="projects"
+          :slideToggle="slideToggle"
+        />
+      </div>
     </transition>
-
-    <nuxt-child class="project" />
+    <nuxt-child
+      :class="{
+        'page-enter-active': !landing,
+        'page-leave-active': !landing,
+        'page-enter': landing,
+        'page-leave-to': landing,
+      }"
+      @click.native="showLanding"
+      class="project"
+      :key="$route.params.nav"
+    />
   </div>
 </template>
 
@@ -23,6 +46,7 @@ export default {
   data() {
     return {
       show: false,
+      landing: true,
       scroll: true,
       sectionDescription: " ",
       showSection: true,
@@ -33,28 +57,15 @@ export default {
     };
   },
   methods: {
-    scrollSectionIntoView(index) {
+    showLanding() {
       setTimeout(() => {
-        const rawTargetContainerYPos =
-          this.$refs.entry[index].$el.getBoundingClientRect().top +
-          document.documentElement.scrollTop;
-        const targetContainerHeight = this.$refs.entry[index].$el.offsetHeight;
-        const windowHeight = window.innerHeight;
-        const centeredContainerYPos =
-          rawTargetContainerYPos -
-          Math.abs((windowHeight - targetContainerHeight) / 2);
-        // console.log(rawTargetContainerYPos, targetContainerHeight, centeredContainerYPos)
-        window.scrollTo({ top: centeredContainerYPos, behavior: "smooth" });
-      }, 1000);
-      //this.position = index;
-    },
+        if (!this.landing) {
+          this.landing = true;
+        } else this.landing = false;
 
-    resetClick() {
-      setTimeout(() => {
-        this.navClick = false;
-      }, 1200);
+        console.log("lanidng" + this.landing);
+      }, 250);
     },
-
     selectOn() {
       this.navHovered = true;
     },
@@ -62,56 +73,6 @@ export default {
     selectOff() {
       this.navHovered = false;
     },
-
-    // setDescription(event) {
-    //   for (var index = 0; index <= this.$refs.entry.length; index++) {
-    //     if (
-    //       (this.$refs.entry[index].$el.getBoundingClientRect().top >= 0 &&
-    //         window.innerHeight >=
-    //           this.$refs.entry[index].$el.getBoundingClientRect().bottom -
-    //             this.$refs.entry[index].$el.offsetHeight) ||
-    //       (this.$refs.entry[index].$el.getBoundingClientRect().bottom >= 0 &&
-    //         window.innerHeight >=
-    //           this.$refs.entry[index].$el.getBoundingClientRect().bottom -
-    //             this.$refs.entry[index].$el.offsetHeight)
-    //       // this.$refs.entry[index - 1].$el.getBoundingClientRect().bottom >= 0
-    //       //
-    //       // window.innerHeight >=
-    //       //   this.$refs.entry[index].$el.getBoundingClientRect().bottom
-    //     ) {
-    //       console.log(
-    //         window.scrollY,
-    //         "scrolltop" +
-    //           this.$refs.entry[index].$el.getBoundingClientRect().top,
-    //         "scrollbottom" +
-    //           this.$refs.entry[index].$el.getBoundingClientRect().bottom
-    //       );
-    //       // this.sectionDescription = this.$refs.entry[index].description;
-    //       this.slideToggle = true;
-
-    //       this.$store.commit("setFocus", this.$refs.entry[index].entry.name);
-
-    //       console.log(this.$refs.entry[index].entry.name);
-    //     } else if (
-    //       window.scrollY <= this.$refs.entry[0].$el.getBoundingClientRect().top
-    //     ) {
-    //       this.slideToggle = false;
-    //       //this.scroll = false;
-    //     }
-    //   }
-    // },
-
-    // watch: {
-    //     sectionDescription: function() {
-
-    //       projects.foreach() if(window.scrollY >= this.$refs.entry[index] )
-    //     //const rawTargetContainerYPos =
-    //        // this.$refs.entry[index].$el.getBoundingClientRect().top == window.scrollY
-    //         // document.documentElement.scrollTop;
-    //     // Your scroll handling here
-    //     console.log(window.scrollY);
-    //   },
-    // },
 
     toggleAbout() {
       if (this.showAbout) {
@@ -127,18 +88,6 @@ export default {
     hoveredNav() {
       this.navHovered = true;
       console.log("ha");
-    },
-  },
-
-  // computed: {
-  //   entries() {
-  //     const entries = this.projects.entry;
-  //   },
-  // },
-
-  computed: {
-    showLanding: function () {
-      return this.$store.state.landing;
     },
   },
 
@@ -177,6 +126,11 @@ export default {
   position: relative;
   top: 1.5rem;
   z-index: 5;
+}
+
+.landing-container {
+  position: sticky;
+  top: 1.5px;
 }
 
 // .child {
@@ -463,6 +417,17 @@ export default {
 
 .page-enter,
 .page-leave-to {
+  opacity: 0.2;
+  filter: grayscale(1);
+}
+
+.nav-enter-active,
+.nav-leave-active {
+  transition: opacity 0.25s ease-in;
+}
+
+.nav-enter,
+.nav-leave-to {
   opacity: 0;
 }
 
