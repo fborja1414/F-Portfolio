@@ -27,7 +27,14 @@
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    // openLanding() {
+    //   console.log("inabout");
+    //   this.$store.commit("toggleLanding", true);
+    // },
+  },
+};
 </script>
 
 

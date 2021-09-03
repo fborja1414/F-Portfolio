@@ -140,7 +140,12 @@ export default {
 }
 
 .navigation {
-  //position: relative;
+  position: absolute;
+  top: 4rem;
+  left: 1rem;
+  height: calc(100vh - 5rem);
+  width: calc(100vw - 2rem);
+  //top: 10vh;
   grid-column: 1/11;
   font-size: 3vw;
   line-height: 1.5;
@@ -183,15 +188,15 @@ export default {
   opacity: 0;
 }
 
-.blink {
-  animation: blink 1s 2;
-}
+// .blink {
+//   animation: blink 1s;
+// }
 
-@keyframes blink {
-  50% {
-    opacity: 0;
-  }
-}
+// @keyframes blink {
+//   50% {
+//     opacity: 0;
+//   }
+// }
 
 .nav-container {
   cursor: pointer;

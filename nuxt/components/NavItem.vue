@@ -4,32 +4,31 @@
     class="section-container"
     :class="{ 'section-container--active': titleHovered }"
   >
-    <div :class="position">
-      <div v-if="images.length > 1" class="fulldisplay">
-        <img
-          class="fulldisplay-image"
-          v-for="(image, index) in images"
-          :key="index"
-          :src="
-            image.url
-              .split('/uploads/')
-              .join('https://agile-peak-21162.herokuapp.com/uploads/')
-          "
-        />
-      </div>
-      <div v-else>
-        <img
-          class="fulldisplay-image"
-          v-for="(image, index) in images"
-          :key="index"
-          :src="
-            image.url
-              .split('/uploads/')
-              .join('https://agile-peak-21162.herokuapp.com/uploads/')
-          "
-        />
-      </div>
+    <div class="fulldisplay">
+      <img
+        class="fulldisplay-image"
+        v-for="(image, index) in images"
+        :key="index"
+        :src="
+          image.url
+            .split('/uploads/')
+            .join('https://agile-peak-21162.herokuapp.com/uploads/')
+        "
+      />
     </div>
+    <!-- <div v-else>
+        <img
+          class="fulldisplay-image"
+          v-for="(image, index) in images"
+          :key="index"
+          :src="
+            image.url
+              .split('/uploads/')
+              .join('https://agile-peak-21162.herokuapp.com/uploads/')
+          "
+        />
+      </div> -->
+    <!-- </div> -->
   </div>
 </template>
 
@@ -121,37 +120,30 @@ export default {
 
 .section-container {
   position: absolute;
-  top: 4rem;
+  top: 10vh;
   left: 1rem;
   height: calc(100vh - 5rem);
   width: calc(100vw - 2rem);
   margin: 0;
   z-index: -1;
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-column-gap: 1rem;
-  grid-auto-columns: 1fr;
-  align-items: center;
+  // display: grid;
+  // grid-template-columns: repeat(12, 1fr);
+  // grid-column-gap: 1rem;
+  // grid-auto-columns: 1fr;
   opacity: 0;
-  transition: opacity 1s;
-  overflow: hidden;
+  align-items: center;
 }
 
 .section-container--active {
-  opacity: 1;
+  opacity: 0.5;
   transition: opacity 1s;
+  filter: grayscale(1);
   // overflow: hidden;
 }
 
-img {
-  width: 100%;
-  object-fit: cover;
-  z-index: 5;
-  //mix-blend-mode: exclusion;
-}
-
 .fulldisplay {
-  display: flex;
+  width: 50vw;
+  margin: 0 auto;
 }
 
 .blink-hover {
@@ -160,11 +152,9 @@ img {
 }
 
 .fulldisplay-image {
+  height: 100%;
   width: 100%;
-  opacity: 0.5;
-  padding: 1.5rem;
-}
-.nav-items {
+  margin-top: 8vh;
 }
 
 .name {

@@ -1,9 +1,19 @@
 <template>
   <div v-if="show">
     <transition name="page">
-      <div class="landing-container">
+      <div>
+        <nuxt-child
+          :class="{
+            'page-enter-active': !landing,
+            'page-leave-active': !landing,
+            'page-enter': landing,
+            'page-leave-to': landing,
+          }"
+          @click.native="showLanding"
+          class="project"
+          :key="$route.params.nav"
+        />
         <landing
-          class="landing"
           :class="{
             'nav-enter-active': landing,
             'nav-leave-active': landing,
@@ -14,20 +24,10 @@
           @click.native="showLanding"
           :projects="projects"
           :slideToggle="slideToggle"
+          v-if="landing"
         />
       </div>
     </transition>
-    <nuxt-child
-      :class="{
-        'page-enter-active': !landing,
-        'page-leave-active': !landing,
-        'page-enter': landing,
-        'page-leave-to': landing,
-      }"
-      @click.native="showLanding"
-      class="project"
-      :key="$route.params.nav"
-    />
   </div>
 </template>
 
@@ -64,7 +64,7 @@ export default {
         } else this.landing = false;
 
         console.log("lanidng" + this.landing);
-      }, 250);
+      }, 150);
     },
     selectOn() {
       this.navHovered = true;
@@ -128,11 +128,6 @@ export default {
   z-index: 5;
 }
 
-.landing-container {
-  position: sticky;
-  top: 1.5px;
-}
-
 // .child {
 //   color: black;
 //   height: 100vh;
@@ -145,179 +140,10 @@ export default {
   z-index: -5;
 }
 
-.project-titles {
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  margin-top: 15vh;
-  text-align: center;
-  cursor: pointer;
-}
-.name {
-  @include Canela-Thin;
-  margin-right: 10px;
-}
-
-.next {
-  @include IBM-Plex-Mono;
-  position: absolute;
-  bottom: 1rem;
-  right: 1rem;
-  font-size: 12px;
-  cursor: pointer;
-}
-
-.prev {
-  @include IBM-Plex-Mono;
-  position: absolute;
-  //left: 5rem;
-  bottom: 1rem;
-  font-size: 12px;
-  cursor: pointer;
-}
-
-.medium {
-  @include Canela-ThinItalic;
-}
-
-.subheader {
-  @include Canela-ThinItalic;
-  font-style: italic;
-}
-
-.contact-container {
-  display: flex;
-  @include Canela-Thin;
-  grid-row: 1;
-  grid-column: 10/11;
-  font-size: 2.5vw;
-  height: 8vh;
-  //align-content: center;
-  position: relative;
-  top: 1.5rem;
-  z-index: 5;
-}
-
-.about {
-  cursor: pointer;
-  // justify-content: flex-end;
-  // text-align: end;{}
-  // align-items: flex-end;
-  margin-left: 3vw;
-  color: black;
-  text-decoration: none;
-}
-
 .nuxt-link-active {
   color: black;
   text-decoration: none;
 }
-
-.scroll-description {
-  //display: block;
-  margin-top: 10rem;
-  //position: absolute;
-  //text-align: center;
-  //position: relative;
-  //grid-column: 2/4;
-  align-content: center;
-  font-style: italic;
-  //z-index: -1;
-  //pointer-events: none;
-  //left: %;
-  //height: 50%;
-}
-
-.slide {
-  opacity: 0;
-}
-
-.slideIn {
-  transition: opacity 3s ease-in-out, transform 2s ease-in-out;
-}
-// .scroll-year {
-//   position: relative;
-//   grid-column: 1/2;
-//   margin-top: 5rem;
-//   position: sticky;
-//   top: 15rem;
-// }
-
-// .navigation {
-//   grid-column: 1/11;
-//   font-size: 3vw;
-//   //  margin-bottom: 70vh;
-//   //height: 100vh;
-//   //overflow-x: visible;
-//   line-height: 1.5;
-//   display: flex;
-//   overflow: hidden;
-// }
-
-.contact {
-  @include IBM-Plex-Mono;
-  font-size: 0.8vw;
-  bottom: 5vh;
-  margin: 0 auto;
-  display: flex;
-  width: 10vw;
-  align-content: center;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: 25vh;
-  //position: absolute;'
-  a {
-    padding: 5px;
-  }
-}
-
-.nav-section {
-  width: 35vw;
-  position: fixed;
-  height: 90vh;
-  // grid-row: 3;
-  //grid-column: 7/11;
-  font-size: 25px;
-  padding-top: 3rem;
-  padding: 1rem;
-  //position: sticky;
-  right: 1rem;
-  top: 1.5rem;
-  margin: 1rem;
-  margin-top: none;
-  overflow: hidden;
-}
-
-.section {
-  grid-column: 3/8;
-}
-
-.back {
-  position: fixed;
-  bottom: 1rem;
-  font-size: 18px;
-}
-
-.socials {
-  //display: block;
-  line-height: 2;
-  margin-top: 1rem;
-  position: fixed;
-  font-size: 18px;
-  font-style: italic;
-  height: auto;
-  //grid-row: 0;
-  // grid-column: 9/11;
-  //position: sticky;
-  // bottom: 5rem;
-  color: blue;
-  z-index: 5;
-  a {
-    pointer-events: auto;
-    display: block;
-  }
-}
-
 .blink-hover {
   opacity: 0.5;
   transition: opacity 0.25;
@@ -412,18 +238,19 @@ export default {
 
 .page-enter-active,
 .page-leave-active {
-  transition: opacity 0.25s ease-in;
+  transition: opacity 0.25s ease-in-out;
 }
 
 .page-enter,
 .page-leave-to {
   opacity: 0.2;
+  transition: opacity 0.25 ease-out;
   filter: grayscale(1);
 }
 
 .nav-enter-active,
 .nav-leave-active {
-  transition: opacity 0.25s ease-in;
+  transition: opacity 1s ease-in;
 }
 
 .nav-enter,

@@ -10,7 +10,15 @@
     }"
     v-if="show"
   >
-    <div class="description-container">
+    <div
+      class="description-container"
+      v-if="
+        projects.id == 3 ||
+        projects.id == 6 ||
+        projects.id == 1 ||
+        projects.id == 2
+      "
+    >
       <div class="title">{{ name }}</div>
       <div class="description" v-html="description"></div>
     </div>
@@ -58,6 +66,18 @@
         "
       />
     </div>
+    <div
+      class="description-container"
+      v-if="
+        projects.id != 3 &&
+        projects.id != 6 &&
+        projects.id != 1 &&
+        projects.id != 2
+      "
+    >
+      <div class="title">{{ name }}</div>
+      <div class="description" v-html="description"></div>
+    </div>
   </div>
   <!-- </nuxt-link> -->
 </template>
@@ -80,6 +100,7 @@ export default {
     //   }
     //   return this.projects.id + 1;
     // },
+
     images: function () {
       return this.projects.images;
     },
@@ -182,16 +203,16 @@ export default {
 
 .pages-container {
   position: absolute;
-  top: 4rem;
+  top: 10vh;
   left: 1rem;
   height: calc(100vh - 5rem);
   width: calc(100vw - 2rem);
   margin: 0;
   z-index: -1;
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-column-gap: 1rem;
-  grid-auto-columns: 1fr;
+  // display: grid;
+  // grid-template-columns: repeat(12, 1fr);
+  // grid-column-gap: 1rem;
+  // grid-auto-columns: 1fr;
   align-items: center;
 }
 
@@ -206,6 +227,14 @@ export default {
   color: black;
   text-decoration: none;
 }
+.title,
+.description {
+  margin: 0 auto;
+  text-align: center;
+  pointer-events: auto;
+  z-index: 5;
+}
+
 .description-container {
   position: relative;
   @include IBM-Plex-Mono;
@@ -214,26 +243,22 @@ export default {
   grid-row: 2;
   grid-column: 4/10;
   pointer-events: none;
-  margin-bottom: 3rem;
-  margin-top: 10vh;
-  .title,
-  .description {
-    margin: 0 auto;
-    text-align: center;
-    pointer-events: auto;
-    z-index: 5;
-  }
+  margin-bottom: 1vh;
+  margin-top: 5vh;
   // grid-row: 1;
 }
 .image-cont {
-  grid-row: 3;
-  grid-column: 4/10;
+  //grid-column: 4/10;
+  width: 50vw;
+  margin: 0 auto;
   //display: block;
   // cursor: default;
   overflow-x: scroll;
   img {
+    height: 100%;
     width: 100%;
-    margin-bottom: 3rem;
+    margin-top: 8vh;
+    // margin-bottom: 3vh;
   }
 }
 .pagination {
@@ -305,11 +330,4 @@ export default {
 //     width: 100%;
 //   }
 // }
-
-img {
-  display: block;
-  position: relative;
-  width: 50%;
-  margin-bottom: 3rem;
-}
 </style>

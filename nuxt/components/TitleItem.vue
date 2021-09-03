@@ -1,7 +1,10 @@
 <template>
   <a
     class="name"
-    :class="{ 'blink-hover': navHovered, blink: navClick }"
+    :class="{
+      'blink-hover': navHovered,
+      blink: navClick,
+    }"
     v-on:click="
       $emit('clicked', index);
       navClick = true;
@@ -13,8 +16,31 @@
     @mouseleave="removeTitle()"
   >
     <nuxt-link class="project-link" :to="'/nav/' + entries.id">
-      <a class="dot" v-if="index != 0"> • </a> {{ entries.name }} |
-      <a class="medium"> {{ entries.medium }}</a>
+      <a
+        class="dot"
+        :class="{
+          blink: onProjectpage,
+        }"
+        v-if="index != 0"
+      >
+        •
+      </a>
+      <a
+        class="name"
+        :class="{
+          blink: onProjectpage,
+        }"
+      >
+        {{ entries.name }} |
+      </a>
+      <a
+        class="medium"
+        :class="{
+          blink: onProjectpage,
+        }"
+      >
+        {{ entries.medium }}</a
+      >
     </nuxt-link>
   </a>
 </template>
@@ -54,6 +80,9 @@ export default {
     },
     showLanding: function () {
       return this.$store.state.landing;
+    },
+    onProjectpage() {
+      return this.$route.params.nav == this.entries.id;
     },
   },
 
@@ -100,7 +129,8 @@ export default {
 }
 
 .blink {
-  animation: blink 1s;
+  animation: blink 1;
+  //animation-iteration-count: infinite;
 }
 
 @keyframes blink {
