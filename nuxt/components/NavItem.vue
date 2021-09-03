@@ -1,6 +1,6 @@
 <template>
   <div
-    v-if="!imagesloaded"
+    v-if="imagesloaded"
     class="section-container"
     :class="{ 'section-container--active': titleHovered }"
   >
@@ -120,7 +120,7 @@ export default {
 
 .section-container {
   position: absolute;
-  top: 10vh;
+  top: 16vh;
   left: 1rem;
   height: calc(100vh - 5rem);
   width: calc(100vw - 2rem);
@@ -132,10 +132,12 @@ export default {
   // grid-auto-columns: 1fr;
   opacity: 0;
   align-items: center;
+  transition: opacity 1s;
+  filter: grayscale(1);
 }
 
 .section-container--active {
-  opacity: 0.5;
+  opacity: 0.8;
   transition: opacity 1s;
   filter: grayscale(1);
   // overflow: hidden;

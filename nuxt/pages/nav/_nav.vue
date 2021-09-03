@@ -12,12 +12,12 @@
   >
     <div
       class="description-container"
-      v-if="
-        projects.id == 3 ||
-        projects.id == 6 ||
-        projects.id == 1 ||
-        projects.id == 2
-      "
+      :class="{
+        'desc-enter-active': show,
+        'desc-leave-active': show,
+        'desc-enter': !show,
+        'desc-leave-to': !show,
+      }"
     >
       <div class="title">{{ name }}</div>
       <div class="description" v-html="description"></div>
@@ -65,18 +65,6 @@
             .join('https://agile-peak-21162.herokuapp.com/uploads/')
         "
       />
-    </div>
-    <div
-      class="description-container"
-      v-if="
-        projects.id != 3 &&
-        projects.id != 6 &&
-        projects.id != 1 &&
-        projects.id != 2
-      "
-    >
-      <div class="title">{{ name }}</div>
-      <div class="description" v-html="description"></div>
     </div>
   </div>
   <!-- </nuxt-link> -->
@@ -309,6 +297,16 @@ export default {
 }
 .page-enter,
 .page-leave-to {
+  opacity: 0;
+  //   transform: translate3d(0, 15px, 0);
+}
+
+.desc-enter-active,
+.desc-leave-active {
+  transition: opacity 0.2s ease-in-out, transform 0.25s ease-in-out;
+}
+.desc-enter,
+.desc-leave-to {
   opacity: 0;
   transform: translate3d(0, 15px, 0);
 }

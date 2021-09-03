@@ -24,7 +24,6 @@
           @click.native="showLanding"
           :projects="projects"
           :slideToggle="slideToggle"
-          v-if="landing"
         />
       </div>
     </transition>
@@ -64,7 +63,7 @@ export default {
         } else this.landing = false;
 
         console.log("lanidng" + this.landing);
-      }, 150);
+      }, 1050);
     },
     selectOn() {
       this.navHovered = true;
@@ -243,7 +242,7 @@ export default {
 
 .page-enter,
 .page-leave-to {
-  opacity: 0.2;
+  opacity: 0;
   transition: opacity 0.25 ease-out;
   filter: grayscale(1);
 }
