@@ -472,7 +472,7 @@ export default {
   //   display: none;
   // }
   .navigation {
-    font-size: 4vw;
+    font-size: 6vw;
     // grid-column: 3/11;
     // margin: 0 0 8rem 0;
   }

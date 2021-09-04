@@ -61,7 +61,7 @@ html {
   display: flex;
   @include Canela-Thin;
   width: 100%;
-  font-size: 2.5vw;
+  font-size: 3vw;
   height: 10vh;
   //align-content: center;
   position: relative;
@@ -77,6 +77,7 @@ html {
 .subheader {
   @include Canela-ThinItalic;
   font-style: italic;
+  filter: blur(2px);
 }
 
 .index {
@@ -142,7 +143,7 @@ html {
 @media screen and (max-width: 768px) {
   .header,
   .about {
-    font-size: 3.5vw;
+    font-size: 5vw;
     grid-column: 1/9;
     width: 30vw;
   }

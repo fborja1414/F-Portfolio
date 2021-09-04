@@ -311,21 +311,21 @@ export default {
   transform: translate3d(0, 15px, 0);
 }
 
-// @media screen and (max-width: 768px) {
-//   .description-container {
-//     margin-top: 10vh;
-//     font-size: 1.8vw;
-//     grid-column: 1/12;
-//     .title {
-//       font-size: 1.8vw;
-//     }
-//   }
-//   .image-cont {
-//     grid-column: 1/13;
-//     width: 100%;
-//   }
-//   img {
-//     width: 100%;
-//   }
-// }
+@media screen and (max-width: 768px) {
+  .description-container {
+    margin-top: 10vh;
+    font-size: 2vw;
+    width: 90vw;
+    .title {
+      font-size: 2vw;
+    }
+  }
+  .image-cont {
+    width: 90vw;
+    margin: 0 auto;
+  }
+  img {
+    width: 100%;
+  }
+}
 </style>

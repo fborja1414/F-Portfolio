@@ -242,9 +242,9 @@ export default {
 
 .page-enter,
 .page-leave-to {
-  opacity: 0;
+  opacity: 0.2;
   transition: opacity 0.25 ease-out;
-  filter: grayscale(1);
+  filter: blur(2px);
 }
 
 .nav-enter-active,

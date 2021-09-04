@@ -238,17 +238,17 @@ export default {
 
   .navigation {
     //margin-top: 10vh;
-    font-size: 4vw;
+    font-size: 6vw;
     // grid-column: 3/11;
     // margin: 0 0 8rem 0;
   }
   .header-container {
-    font-size: 1.5vw;
+    font-size: 2.5vw;
     grid-column: 1/9;
   }
   .contact {
     padding-top: 20vh;
-    font-size: 1.6vw;
+    font-size: 2vw;
     text-align: center;
     width: 40vw;
   }

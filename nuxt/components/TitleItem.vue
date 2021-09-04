@@ -3,7 +3,6 @@
     class="name"
     :class="{
       'blink-hover': navHovered,
-      blink: navClick,
     }"
     v-on:click="
       $emit('clicked', index);
@@ -16,15 +15,7 @@
     @mouseleave="removeTitle()"
   >
     <nuxt-link class="project-link" :to="'/nav/' + entries.id">
-      <a
-        class="dot"
-        :class="{
-          blink: onProjectpage,
-        }"
-        v-if="index != 0"
-      >
-        •
-      </a>
+      <a class="dot" v-if="index != 0"> • </a>
       <a
         class="name"
         :class="{
@@ -125,12 +116,13 @@ export default {
 
 .blink-hover {
   opacity: 0.5;
-  transition: opacity 0.5;
+  transition: opacity 10s;
+  filter: blur(1px);
 }
 
 .blink {
-  animation: blink 1;
-  //animation-iteration-count: infinite;
+  filter: blur(2px);
+  transition: opacity 1s;
 }
 
 @keyframes blink {

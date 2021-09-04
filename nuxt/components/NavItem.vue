@@ -1,6 +1,6 @@
 <template>
   <div
-    v-if="imagesloaded"
+    v-if="!imagesloaded"
     class="section-container"
     :class="{ 'section-container--active': titleHovered }"
   >
@@ -226,7 +226,7 @@ export default {
   //   display: none;
   // }
   .navigation {
-    font-size: 4vw;
+    font-size: 6vw;
     // grid-column: 3/11;
     // margin: 0 0 8rem 0;
   }
