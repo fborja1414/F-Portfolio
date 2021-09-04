@@ -1,13 +1,11 @@
 <template>
   <div class="main">
     <div class="header-container">
-      <nuxt-link class="nuxt-link-active" to="/">
-        <a class="header">
-          Francisco Borja
-          <a class="subheader">designer and developer</a>
-        </a>
-        <!-- <a class="index">index</a> -->
-      </nuxt-link>
+      <a class="header">
+        Francisco Borja
+        <a class="subheader">designer and developer</a>
+      </a>
+      <!-- <a class="index">index</a> -->
 
       <a class="about"
         ><nuxt-link class="nuxt-link-active" to="/about">about</nuxt-link>
@@ -20,9 +18,17 @@
 
 <script>
 export default {
+  // data() {
+  //   return {
+  //     landing: true,
+  //   };
+  // },
   methods: {
+    // toggleLanding() {
+    //   //   console.log("itogglelanding");
+    //   this.landing = true;
+    // },
     // openLanding() {
-    //   console.log("inabout");
     //   this.$store.commit("toggleLanding", true);
     // },
   },
