@@ -1,11 +1,13 @@
 <template>
   <div class="main">
     <div class="header-container">
-      <a class="header">
-        Francisco Borja
-        <a class="subheader">designer and developer</a>
+      <a class="nuxt-link-active">
+        <a class="header">
+          Francisco Borja
+          <a class="subheader">designer and developer</a>
+        </a>
+        <!-- <a class="index">index</a> -->
       </a>
-      <!-- <a class="index">index</a> -->
 
       <a class="about"
         ><nuxt-link class="nuxt-link-active" to="/about">about</nuxt-link>
