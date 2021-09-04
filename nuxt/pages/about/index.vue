@@ -66,4 +66,10 @@ export default {
   opacity: 0;
   transform: translate3d(0, 15px, 0);
 }
+
+@media screen and (max-width: 768px) {
+  .about-copy {
+    font-size: 5vw;
+  }
+}
 </style>

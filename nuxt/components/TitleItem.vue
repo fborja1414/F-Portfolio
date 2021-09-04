@@ -14,7 +14,7 @@
     @mouseenter="setTitle(entries.name)"
     @mouseleave="removeTitle()"
   >
-    <nuxt-link class="project-link" :to="'/nav/' + entries.id">
+    <nuxt-link class="project-link" :to="'/' + entries.id">
       <a class="dot" v-if="index != 0"> • </a>
       <a
         class="name"
@@ -101,8 +101,9 @@ export default {
 
 .name {
   @include Canela-Thin;
-  margin: 10px;
+  margin: 5px;
   transition: opacity 1s;
+  width: 100%;
 }
 
 .project-link {
@@ -121,7 +122,7 @@ export default {
 }
 
 .blink {
-  filter: blur(2px);
+  // filter: blur(2px);
   transition: opacity 1s;
 }
 
@@ -152,4 +153,10 @@ export default {
 //   opacity: 0;
 //   transform: translate3d(0, 15px, 0);
 // }
+
+@media screen and (max-width: 768px) {
+  .dot {
+    padding: 0;
+  }
+}
 </style>

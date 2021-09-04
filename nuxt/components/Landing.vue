@@ -86,6 +86,7 @@ export default {
 }
 
 .project-titles {
+  width: calc(100vw - 2rem);
   justify-content: center;
   align-items: center;
   align-content: center;
@@ -94,59 +95,17 @@ export default {
   cursor: pointer;
 }
 
-.name {
-  @include Canela-Thin;
-  margin-right: 10px;
-}
-
-.next {
-  @include IBM-Plex-Mono;
-  position: absolute;
-  bottom: 1rem;
-  right: 1rem;
-  font-size: 12px;
-  cursor: pointer;
-}
-
-.prev {
-  @include IBM-Plex-Mono;
-  position: absolute;
-  //left: 5rem;
-  bottom: 1rem;
-  font-size: 12px;
-  cursor: pointer;
-}
-
-.medium {
-  @include Canela-ThinItalic;
-}
-
-.subheader {
-  @include Canela-ThinItalic;
-  font-style: italic;
-}
-
 .nuxt-link-active {
   color: black;
   text-decoration: none;
 }
 
-.slide {
-  opacity: 0;
-}
-
-.slideIn {
-  transition: opacity 3s ease-in-out, transform 2s ease-in-out;
-}
-
 .navigation {
-  position: absolute;
+  position: sticky;
   top: 4rem;
-  left: 1rem;
   height: calc(100vh - 5rem);
   width: calc(100vw - 2rem);
   //top: 10vh;
-  grid-column: 1/11;
   font-size: 3vw;
   line-height: 1.5;
   display: block;
@@ -232,15 +191,9 @@ export default {
 }
 
 @media screen and (max-width: 768px) {
-  .nav-section {
-    opacity: 0;
-  }
-
   .navigation {
     //margin-top: 10vh;
-    font-size: 6vw;
-    // grid-column: 3/11;
-    // margin: 0 0 8rem 0;
+    font-size: 10vw;
   }
   .header-container {
     font-size: 2.5vw;

@@ -7,26 +7,26 @@
     "_name": "_14565cc5"
   },
   {
-    "name": "nav",
-    "path": "/nav",
-    "component": "/Users/FranciscoBorja/Desktop/F-Portfolio/nuxt/pages/nav.vue",
-    "chunkName": "pages/nav",
-    "children": [
-      {
-        "name": "nav-nav",
-        "path": ":nav?",
-        "component": "/Users/FranciscoBorja/Desktop/F-Portfolio/nuxt/pages/nav/_nav.vue",
-        "chunkName": "pages/nav/_nav",
-        "_name": "_fdad61aa"
-      }
-    ],
-    "_name": "_01ed44d0"
+    "name": "nav2.",
+    "path": "/nav2.",
+    "component": "/Users/FranciscoBorja/Desktop/F-Portfolio/nuxt/pages/nav2..vue",
+    "chunkName": "pages/nav2.",
+    "_name": "_64e525d4"
   },
   {
     "name": "index",
     "path": "/",
     "component": "/Users/FranciscoBorja/Desktop/F-Portfolio/nuxt/pages/index.vue",
     "chunkName": "pages/index",
+    "children": [
+      {
+        "name": "index",
+        "path": ":index",
+        "component": "/Users/FranciscoBorja/Desktop/F-Portfolio/nuxt/pages/index/_index.vue",
+        "chunkName": "pages/index/_index",
+        "_name": "_eedac8ea"
+      }
+    ],
     "_name": "_68e80a87"
   },
   {

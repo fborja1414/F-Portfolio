@@ -74,10 +74,10 @@
 export default {
   async asyncData({ params, $axios, route }) {
     const projects = await $axios.$get(
-      `https://agile-peak-21162.herokuapp.com/projects/${route.params.nav}`
+      `https://agile-peak-21162.herokuapp.com/projects/${route.params.index}`
     );
-    const slug = route.params.nav;
-    // console.log(projects);
+    const slug = route.params.index;
+    console.log(slug);
     return { projects };
   },
 
@@ -192,9 +192,8 @@ export default {
 .pages-container {
   position: absolute;
   top: 10vh;
-  left: 1rem;
   height: calc(100vh - 5rem);
-  width: calc(100vw - 2rem);
+  width: 100%;
   margin: 0;
   z-index: -1;
   // display: grid;

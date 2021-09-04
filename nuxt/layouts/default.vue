@@ -1,15 +1,7 @@
 <template>
   <div class="main">
-    <div
-      class="header-container"
-      :class="{
-        'slideIn-navigation-enter-active': !slideToggle,
-        'slideIn-navigation-leave-active': !slideToggle,
-        'slideIn-navigation-enter': slideToggle,
-        'slideIn-navigation-leave-to': slideToggle,
-      }"
-    >
-      <nuxt-link to="/">
+    <div class="header-container">
+      <nuxt-link class="nuxt-link-active" to="/">
         <a class="header">
           Francisco Borja
           <a class="subheader">designer and developer</a>
@@ -74,10 +66,16 @@ html {
   width: 100%;
 }
 
+// .blink-hover {
+//   opacity: 0.5;
+//   transition: opacity 10s;
+//   filter: blur(1px);
+// }
+
 .subheader {
   @include Canela-ThinItalic;
   font-style: italic;
-  filter: blur(2px);
+  //   filter: blur(2px);
 }
 
 .index {

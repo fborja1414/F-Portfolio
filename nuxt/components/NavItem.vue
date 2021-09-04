@@ -121,9 +121,8 @@ export default {
 .section-container {
   position: absolute;
   top: 16vh;
-  left: 1rem;
   height: calc(100vh - 5rem);
-  width: calc(100vw - 2rem);
+  width: 100%;
   margin: 0;
   z-index: -1;
   // display: grid;

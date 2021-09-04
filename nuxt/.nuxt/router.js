@@ -5,9 +5,9 @@ import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
 const _14565cc5 = () => interopDefault(import('../pages/about/index.vue' /* webpackChunkName: "pages/about/index" */))
-const _01ed44d0 = () => interopDefault(import('../pages/nav.vue' /* webpackChunkName: "pages/nav" */))
-const _fdad61aa = () => interopDefault(import('../pages/nav/_nav.vue' /* webpackChunkName: "pages/nav/_nav" */))
+const _64e525d4 = () => interopDefault(import('../pages/nav2..vue' /* webpackChunkName: "pages/nav2." */))
 const _68e80a87 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
+const _eedac8ea = () => interopDefault(import('../pages/index/_index.vue' /* webpackChunkName: "pages/index/_index" */))
 const _b6012396 = () => interopDefault(import('../pages/_project.vue' /* webpackChunkName: "pages/_project" */))
 
 const emptyFn = () => {}
@@ -26,18 +26,18 @@ export const routerOptions = {
     component: _14565cc5,
     name: "about"
   }, {
-    path: "/nav",
-    component: _01ed44d0,
-    name: "nav",
-    children: [{
-      path: ":nav?",
-      component: _fdad61aa,
-      name: "nav-nav"
-    }]
+    path: "/nav2.",
+    component: _64e525d4,
+    name: "nav2."
   }, {
     path: "/",
     component: _68e80a87,
-    name: "index"
+    name: "index",
+    children: [{
+      path: ":index",
+      component: _eedac8ea,
+      name: "index"
+    }]
   }, {
     path: "/:project",
     component: _b6012396,
