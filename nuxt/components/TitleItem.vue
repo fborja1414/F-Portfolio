@@ -117,8 +117,7 @@ export default {
 
 .blink-hover {
   opacity: 0.5;
-  transition: opacity 10s;
-  filter: blur(1px);
+  transition: opacity 0.25s;
 }
 
 .blink {
