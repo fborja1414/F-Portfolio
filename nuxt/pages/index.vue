@@ -230,9 +230,9 @@ export default {
 
 .page-enter,
 .page-leave-to {
-  opacity: 0;
+  opacity: 0.2;
   transition: opacity 0.25 ease-out;
-  //filter: blur(2px);
+  filter: blur(2px);
 }
 
 .nav-enter-active,
@@ -245,7 +245,7 @@ export default {
   opacity: 0;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 768px) {
   // nav-section {
   //   display: none;
   //   opacity: 0;
