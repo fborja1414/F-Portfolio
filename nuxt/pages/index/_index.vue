@@ -310,7 +310,7 @@ export default {
   transform: translate3d(0, 15px, 0);
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 800px) {
   .description-container {
     margin-top: 10vh;
     font-size: 2vw;

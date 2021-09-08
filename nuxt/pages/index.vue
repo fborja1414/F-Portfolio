@@ -77,6 +77,7 @@ export default {
 
         console.log("lanidng" + this.landing);
       }, 1050);
+      window.scrollTo({ top, behavior: "smooth" });
     },
     selectOn() {
       this.navHovered = true;
@@ -138,6 +139,7 @@ export default {
   // position: absolute;
   width: calc(100vw - 2rem);
   z-index: -5;
+  cursor: pointer;
 }
 
 .nuxt-link-active {
@@ -228,9 +230,9 @@ export default {
 
 .page-enter,
 .page-leave-to {
-  opacity: 0.2;
+  opacity: 0;
   transition: opacity 0.25 ease-out;
-  filter: blur(2px);
+  //filter: blur(2px);
 }
 
 .nav-enter-active,
@@ -243,7 +245,7 @@ export default {
   opacity: 0;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 800px) {
   // nav-section {
   //   display: none;
   //   opacity: 0;
