@@ -1,7 +1,37 @@
 <template>
   <div v-if="show">
     <transition name="page">
-      <div>
+      <div class="overview-container">
+        <div class="header-container">
+          <a class="nuxt-link-active">
+            <a class="header" v-if="landing">
+              Francisco Borja
+              <a class="subheader">designer and developer</a>
+            </a>
+            <!-- <a class="index">index</a> -->
+          </a>
+
+          <a class="about" v-if="landing"
+            ><nuxt-link class="nuxt-link-active" to="/about">about</nuxt-link>
+          </a>
+          <a class="index" v-if="!landing" @click="showLanding">index</a>
+        </div>
+
+        <landing
+          :class="{
+            'nav-enter-active': landing,
+            'nav-leave-active': landing,
+            'nav-enter': !landing,
+            'nav-leave-to': !landing,
+          }"
+          class="landing"
+          v-on:click="showLanding"
+          @click.native="showLanding"
+          :projects="projects"
+          :slideToggle="slideToggle"
+          v-show="landing"
+        />
+
         <nuxt-child
           :class="{
             'page-enter-active': !landing,
@@ -11,21 +41,10 @@
           }"
           @click.native="showLanding"
           class="project"
+          :landing="landing"
           :key="$route.params.index"
         />
-        <landing
-          :class="{
-            'nav-enter-active': landing,
-            'nav-leave-active': landing,
-            'nav-enter': !landing,
-            'nav-leave-to': !landing,
-          }"
-          v-on:click="showLanding"
-          @click.native="showLanding"
-          :projects="projects"
-          :slideToggle="slideToggle"
-          v-show="landing"
-        />
+
         <!-- <about
           :class="{
             'nav-enter-active': !landing,
@@ -77,7 +96,7 @@ export default {
 
         console.log("lanidng" + this.landing);
       }, 1050);
-      window.scrollTo({ top, behavior: "smooth" });
+      // window.scrollTo({ top, behavior: "smooth" });
     },
     selectOn() {
       this.navHovered = true;
@@ -135,8 +154,80 @@ export default {
 //   width: 100vw;
 // }
 
+.overview-container {
+  width: 100%;
+}
+.header-container {
+  display: flex;
+  @include Canela-Thin;
+  width: calc(100vw - 3rem);
+  font-size: 3vw;
+  //height: 10vh;
+  //align-content: center;
+  justify-content: space-between;
+  position: fixed;
+
+  top: 1.5rem;
+  z-index: 5;
+  margin: 0;
+}
+
+.header {
+  margin-left: 1rem;
+  // width: 50%;
+}
+
+// .blink-hover {
+//   opacity: 0.5;
+//   transition: opacity 10s;
+//   filter: blur(1px);
+// }
+
+.subheader {
+  @include Canela-ThinItalic;
+  font-style: italic;
+  //   filter: blur(2px);
+}
+
+.nuxt-link-active {
+  //width: 100%;
+  color: black;
+  text-decoration: none;
+}
+
+.about {
+  //width: 50%;
+  cursor: pointer;
+
+  //text-align: right;
+  //align-items: flex-end;
+  //margin-left: 3vw;
+  color: black;
+  text-decoration: none;
+}
+
+.landing {
+  position: fixed;
+  top: 4rem;
+  z-index: 5;
+}
+
+.index {
+  @include Canela-Thin;
+  cursor: pointer;
+  position: fixed;
+  top: 1.5rem;
+  right: 2vw;
+}
+
+.index:hover {
+  opacity: 0.5;
+  transition: 0.25s ease-in;
+}
+
 .project {
   // position: absolute;
+  height: 100%;
   width: calc(100vw - 2rem);
   z-index: -5;
   cursor: pointer;
@@ -231,7 +322,7 @@ export default {
 .page-enter,
 .page-leave-to {
   opacity: 0.2;
-  transition: opacity 0.25 ease-out;
+  transition: opacity 0.25s ease-out;
   filter: blur(2px);
 }
 
@@ -253,18 +344,26 @@ export default {
   // Section {
   //   display: none;
   // }
+
+  .header,
+  .about {
+    font-size: 4vw;
+  }
+
   .navigation {
-    font-size: 5.5vw;
+    font-size: 4vw;
 
     // grid-column: 3/11;
     // margin: 0 0 8rem 0;
   }
-  .contact {
-    margin-top: 0px;
-  }
+
   .header-container {
+    display: flex;
     font-size: 4vw;
-    grid-column: 1/9;
+  }
+
+  .about {
+    text-align: right;
   }
 }
 </style>

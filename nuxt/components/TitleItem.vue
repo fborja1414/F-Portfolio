@@ -3,6 +3,7 @@
     class="name"
     :class="{
       'blink-hover': navHovered,
+      blink: onProjectpage,
     }"
     v-on:click="
       $emit('clicked', index);
@@ -73,7 +74,7 @@ export default {
       return this.$store.state.landing;
     },
     onProjectpage() {
-      return this.$route.params.nav == this.entries.id;
+      return this.$route.params.index == this.entries.id;
     },
   },
 
@@ -122,12 +123,14 @@ export default {
 
 .blink {
   // filter: blur(2px);
-  transition: opacity 1s;
+  animation: blink 3s;
+  //transition: opacity 1s;
+  animation-iteration-count: infinite;
 }
 
 @keyframes blink {
   50% {
-    opacity: 0;
+    opacity: 0.5;
   }
 }
 

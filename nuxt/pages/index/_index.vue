@@ -8,7 +8,7 @@
       'page-enter': !show,
       'page-leave-to': !show,
     }"
-    v-if="show"
+    v-if="show && imagesloaded"
   >
     <div
       class="description-container"
@@ -19,11 +19,17 @@
         'desc-leave-to': !show,
       }"
     >
-      <div class="title">{{ name }}</div>
-      <div class="description" v-html="description"></div>
-    </div>
-    <div class="image-cont">
-      <!-- <div class="pagination" v-if="images.length > 1">
+      <div
+        class="title"
+        :class="{
+          'hide-text': landing,
+        }"
+      >
+        {{ name }}
+      </div>
+
+      <div class="image-cont">
+        <!-- <div class="pagination" v-if="images.length > 1">
             {{ pageNum }} / {{ images.length }}
           </div>
 
@@ -56,15 +62,23 @@
               "
             />
           </div>-->
-      <img
-        v-for="(image, index) in images"
-        :key="index"
-        :src="
-          image.url
-            .split('/uploads/')
-            .join('https://agile-peak-21162.herokuapp.com/uploads/')
-        "
-      />
+        <img
+          v-for="(image, index) in images"
+          :key="index"
+          :src="
+            image.url
+              .split('/uploads/')
+              .join('https://agile-peak-21162.herokuapp.com/uploads/')
+          "
+        />
+      </div>
+      <div
+        class="description"
+        v-html="description"
+        :class="{
+          'hide-text': landing,
+        }"
+      ></div>
     </div>
   </div>
   <!-- </nuxt-link> -->
@@ -72,6 +86,9 @@
 
 <script>
 export default {
+  props: {
+    landing: Boolean,
+  },
   async asyncData({ params, $axios, route }) {
     const projects = await $axios.$get(
       `https://agile-peak-21162.herokuapp.com/projects/${route.params.index}`
@@ -113,10 +130,10 @@ export default {
 
   mounted() {
     this.show = true;
-    //   if (!this.imagesloaded) {
-    //     this.loadImages();
-    //     console.log(this.$refs.image);
-    //   }
+    if (!this.imagesloaded) {
+      this.loadImages();
+      console.log(this.$refs.image);
+    }
     //   this.onLandingPage();
     //   this.show = true;
     //   console.log("show" + `${this.show}`);
@@ -162,11 +179,15 @@ export default {
     async loadImages() {
       console.log(`${this.imagesloaded}`);
       const t0 = performance.now();
-      let cachedImages = [];
+      const cachedImages = [];
 
       //load Images
-      for (const image of this.projects.images) {
-        cachedImages.push(image);
+      for (const image of this.images) {
+        const img = new Image();
+        img.src = image;
+        if (img.onload) {
+          cachedImages.push(image);
+        }
       }
 
       await Promise.all(cachedImages).then(() => {
@@ -190,10 +211,10 @@ export default {
 @import "~assets/_typography.scss";
 
 .pages-container {
-  position: absolute;
+  // position: absolute;
   top: 10vh;
   height: calc(100vh - 5rem);
-  width: 100%;
+  width: 100vh;
   margin: 0;
   z-index: -1;
   // display: grid;
@@ -204,10 +225,11 @@ export default {
 }
 
 .title {
-  @include IBM-Plex-Mono;
-  font-style: italic;
-  font-size: 1vw;
+  @include Canela-ThinItalic;
+  //font-style: italic;
+  font-size: 1.5vw;
   padding-bottom: 1rem;
+  opacity: 0;
 }
 
 .nuxt-link-active {
@@ -227,11 +249,11 @@ export default {
   @include IBM-Plex-Mono;
   font-style: italic;
   font-size: 1vw;
-  grid-row: 2;
-  grid-column: 4/10;
+  // grid-row: 2;
+  //grid-column: 4/10;
   pointer-events: none;
   margin-bottom: 1vh;
-  margin-top: 5vh;
+  margin-top: 10vh;
   // grid-row: 1;
 }
 .image-cont {
@@ -240,19 +262,33 @@ export default {
   margin: 0 auto;
   //display: block;
   // cursor: default;
-  overflow-x: scroll;
+  //overflow-x: scroll;
   img {
     height: 100%;
     width: 100%;
-    margin-top: 8vh;
+    margin-top: 5vh;
     // margin-bottom: 3vh;
   }
 }
+
+.description {
+  // margin-top: 5vh;
+  text-align: center;
+  pointer-events: auto;
+  z-index: 5;
+  margin-bottom: 10vh;
+  opacity: 1;
+}
+
 .pagination {
   width: 100%;
   //display: flex;
   align-content: center;
   text-align: center;
+}
+
+.hide-text {
+  opacity: 0;
 }
 
 .scroll {

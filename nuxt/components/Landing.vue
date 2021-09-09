@@ -1,13 +1,5 @@
 <template>
-  <div
-    class="navigation"
-    :class="{
-      'slideIn-navigation-enter-active': !slideToggle,
-      'slideIn-navigation-leave-active': !slideToggle,
-      'slideIn-navigation-enter': slideToggle,
-      'slideIn-navigation-leave-to': slideToggle,
-    }"
-  >
+  <div class="navigation">
     <div class="project-titles">
       <title-item
         v-for="(entries, index) in projects"
@@ -15,12 +7,13 @@
         :entries="entries"
         :index="index"
       />
+      <div class="contact">
+        <a class="email" href="mailto:fborja1414@gmail.com">EMAIL</a>
+        <a class="github" href="fborja1414.github.io">GITHUB</a>
+        <a class="arena" href="https://www.are.na/francisco-borja">ARE.NA</a>
+      </div>
     </div>
-    <div class="contact">
-      <a class="email" href="mailto:fborja1414@gmail.com">EMAIL</a>
-      <a class="github" href="fborja1414.github.io">GITHUB</a>
-      <a class="arena" href="https://www.are.na/francisco-borja">ARE.NA</a>
-    </div>
+
     <nav-item
       :key="index"
       v-for="(entries, index) in projects"
@@ -81,17 +74,19 @@ export default {
   height: 10vh;
   align-content: center;
   position: relative;
+
   top: 1.5rem;
   z-index: 5;
 }
 
 .project-titles {
-  width: calc(100vw - 2rem);
+  width: calc(100vw - 3rem);
   justify-content: center;
   align-items: center;
   align-content: center;
   margin-top: 20vh;
-  text-align: center;
+  margin-left: 1rem;
+  //text-align: center;
   cursor: pointer;
 }
 
@@ -101,8 +96,6 @@ export default {
 }
 
 .navigation {
-  position: sticky;
-  top: 4rem;
   height: calc(100vh - 5rem);
   width: calc(100vw - 2rem);
   //top: 10vh;
@@ -114,6 +107,7 @@ export default {
 
 .contact {
   @include IBM-Plex-Mono;
+  position: fixed;
   font-size: 0.8vw;
   //bottom: 5vh;
   margin: 0 auto;
@@ -122,7 +116,7 @@ export default {
   align-content: center;
   align-items: center;
   justify-content: space-between;
-  padding-top: 25vh;
+  bottom: 10vh;
 
   a {
     padding: 5px;
@@ -191,18 +185,8 @@ export default {
 }
 
 @media screen and (max-width: 768px) {
-  .navigation {
-    //margin-top: 10vh;
-    font-size: 10vw;
-  }
-  .header-container {
-    font-size: 2.5vw;
-    grid-column: 1/9;
-  }
   .contact {
-    padding-top: 20vh;
     font-size: 2vw;
-    text-align: center;
     width: 40vw;
   }
 }
