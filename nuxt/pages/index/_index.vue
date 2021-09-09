@@ -252,6 +252,7 @@ export default {
   text-align: center;
   pointer-events: auto;
   z-index: 5;
+  width: 50vw;
 }
 
 .description-container {
@@ -290,6 +291,7 @@ export default {
   z-index: 5;
   // margin-bottom: 10vh;
   opacity: 0.7;
+  text-align: left;
 }
 
 .description2 {
@@ -377,6 +379,7 @@ export default {
     width: 80vw;
     .title,
     .description {
+      width: auto;
       font-size: 2.5vw;
       text-align: left;
     }

@@ -116,7 +116,7 @@ export default {
   align-content: center;
   align-items: center;
   justify-content: space-between;
-  bottom: 5vh;
+  bottom: 3vh;
   opacity: 0.7;
   a {
     padding: 5px;
@@ -192,6 +192,7 @@ export default {
   }
 
   .project-titles {
+    margin-top: 15vh;
     width: calc(100vw - 2rem);
     margin-left: 0;
   }
