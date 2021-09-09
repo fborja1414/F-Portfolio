@@ -19,15 +19,6 @@
         'desc-leave-to': !show,
       }"
     >
-      <div
-        class="title"
-        :class="{
-          'hide-text': !landing,
-        }"
-      >
-        {{ name }}
-      </div>
-
       <div class="image-cont">
         <!-- <div class="pagination" v-if="images.length > 1">
             {{ pageNum }} / {{ images.length }}
@@ -71,6 +62,14 @@
               .join('https://agile-peak-21162.herokuapp.com/uploads/')
           "
         />
+      </div>
+      <div
+        class="title"
+        :class="{
+          'hide-text': landing,
+        }"
+      >
+        {{ name }}
       </div>
       <div
         class="description"
@@ -231,15 +230,17 @@ export default {
   // grid-template-columns: repeat(12, 1fr);
   // grid-column-gap: 1rem;
   // grid-auto-columns: 1fr;
+
   align-items: center;
 }
 
 .title {
   @include IBM-Plex-Mono;
   //font-style: italic;
-  font-size: 1.5vw;
-  padding-bottom: 1rem;
-  opacity: 0;
+  font-size: 1vw;
+
+  // padding-bottom: 1rem;
+  padding-top: 2rem;
 }
 
 .nuxt-link-active {
@@ -249,6 +250,7 @@ export default {
 .title,
 .description {
   margin: 0 auto;
+
   text-align: center;
   pointer-events: auto;
   z-index: 5;
@@ -283,9 +285,9 @@ export default {
 }
 
 .description {
-  position: sticky;
+  //position: sticky;
   bottom: 5vh;
-  margin-top: 15vh;
+  //margin-top: 15vh;
   //text-align: center;
   pointer-events: auto;
   z-index: 5;
@@ -311,7 +313,7 @@ export default {
 }
 
 .hide-text {
-  opacity: 0.7;
+  opacity: 0;
   position: sticky;
   top: 10vh;
 }

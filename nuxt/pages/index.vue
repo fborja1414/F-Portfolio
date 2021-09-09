@@ -159,13 +159,14 @@ export default {
 }
 .header-container {
   display: flex;
-  @include Canela-Thin;
+  @include IBM-Plex-Mono;
   width: calc(100vw - 3rem);
-  font-size: 3vw;
+  font-size: 1.3vw;
   //height: 10vh;
   //align-content: center;
   justify-content: space-between;
   position: fixed;
+  opacity: 0.8;
 
   top: 1.5rem;
   z-index: 5;
@@ -184,9 +185,10 @@ export default {
 // }
 
 .subheader {
-  @include Canela-ThinItalic;
-  font-style: italic;
+  // @include Canela-ThinItalic;
+  //font-style: italic;
   //   filter: blur(2px);
+  opacity: 0.8;
 }
 
 .nuxt-link-active {
@@ -213,7 +215,7 @@ export default {
 }
 
 .index {
-  @include Canela-Thin;
+  @include IBM-Plex-Mono;
   cursor: pointer;
   position: fixed;
   top: 1.5rem;
@@ -347,7 +349,7 @@ export default {
 
   .header,
   .about {
-    font-size: 5vw;
+    font-size: 3vw;
     margin-left: 0rem;
   }
 
@@ -368,7 +370,7 @@ export default {
   }
 
   .index {
-    font-size: 5vw;
+    font-size: 3vw;
     right: 5.5vw;
   }
 }
