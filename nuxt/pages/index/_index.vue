@@ -79,6 +79,13 @@
           'hide-text': landing,
         }"
       ></div>
+      <div
+        class="description2"
+        v-html="description2"
+        :class="{
+          'hide-text': landing,
+        }"
+      ></div>
     </div>
   </div>
   <!-- </nuxt-link> -->
@@ -114,6 +121,9 @@ export default {
     },
     description: function () {
       return this.projects.description;
+    },
+    description2: function () {
+      return this.projects.description2;
     },
     // showLanding: function () {
     //   return this.$store.state.landing;
@@ -272,8 +282,17 @@ export default {
 }
 
 .description {
-  // margin-top: 5vh;
-  text-align: center;
+  margin-top: 5vh;
+  //text-align: center;
+  pointer-events: auto;
+  z-index: 5;
+  margin-bottom: 10vh;
+  opacity: 1;
+}
+
+.description2 {
+  margin-top: 5vh;
+  //text-align: center;
   pointer-events: auto;
   z-index: 5;
   margin-bottom: 10vh;
@@ -348,15 +367,16 @@ export default {
 
 @media screen and (max-width: 800px) {
   .description-container {
+    margin: 0 auto;
     margin-top: 10vh;
     font-size: 2vw;
-    width: 90vw;
+    width: 80vw;
     .title {
       font-size: 2vw;
     }
   }
   .image-cont {
-    width: 90vw;
+    width: 80vw;
     margin: 0 auto;
   }
   img {
