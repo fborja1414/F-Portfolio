@@ -84,7 +84,7 @@ export default {
   justify-content: center;
   align-items: center;
   align-content: center;
-  margin-top: 20vh;
+  margin-top: 25vh;
   margin-left: 1rem;
   //text-align: center;
   cursor: pointer;
@@ -116,8 +116,8 @@ export default {
   align-content: center;
   align-items: center;
   justify-content: space-between;
-  bottom: 10vh;
-
+  bottom: 5vh;
+  opacity: 0.7;
   a {
     padding: 5px;
     cursor: pointer;
@@ -186,8 +186,14 @@ export default {
 
 @media screen and (max-width: 768px) {
   .contact {
-    font-size: 2vw;
+    font-size: 2.5vw;
     width: 40vw;
+    margin-left: 0;
+  }
+
+  .project-titles {
+    width: calc(100vw - 2rem);
+    margin-left: 0;
   }
 }
 </style>

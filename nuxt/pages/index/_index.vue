@@ -22,7 +22,7 @@
       <div
         class="title"
         :class="{
-          'hide-text': landing,
+          'hide-text': !landing,
         }"
       >
         {{ name }}
@@ -235,7 +235,7 @@ export default {
 }
 
 .title {
-  @include Canela-ThinItalic;
+  @include IBM-Plex-Mono;
   //font-style: italic;
   font-size: 1.5vw;
   padding-bottom: 1rem;
@@ -282,12 +282,14 @@ export default {
 }
 
 .description {
-  margin-top: 5vh;
+  position: sticky;
+  bottom: 5vh;
+  margin-top: 15vh;
   //text-align: center;
   pointer-events: auto;
   z-index: 5;
-  margin-bottom: 10vh;
-  opacity: 1;
+  // margin-bottom: 10vh;
+  opacity: 0.7;
 }
 
 .description2 {
@@ -307,7 +309,9 @@ export default {
 }
 
 .hide-text {
-  opacity: 0;
+  opacity: 0.7;
+  position: sticky;
+  top: 10vh;
 }
 
 .scroll {
@@ -369,10 +373,12 @@ export default {
   .description-container {
     margin: 0 auto;
     margin-top: 10vh;
-    font-size: 2vw;
+    // font-size: 2vw;
     width: 80vw;
-    .title {
-      font-size: 2vw;
+    .title,
+    .description {
+      font-size: 2.5vw;
+      text-align: left;
     }
   }
   .image-cont {

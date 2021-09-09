@@ -347,19 +347,20 @@ export default {
 
   .header,
   .about {
-    font-size: 4vw;
+    font-size: 5vw;
+    margin-left: 0rem;
   }
 
   .navigation {
-    font-size: 4vw;
+    margin-left: 0;
+    font-size: 5vw;
 
     // grid-column: 3/11;
     // margin: 0 0 8rem 0;
   }
 
   .header-container {
-    display: flex;
-    font-size: 4vw;
+    width: calc(100vw - 2rem);
   }
 
   .about {
@@ -367,6 +368,7 @@ export default {
   }
 
   .index {
+    font-size: 5vw;
     right: 5.5vw;
   }
 }

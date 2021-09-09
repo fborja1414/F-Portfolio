@@ -102,7 +102,6 @@ export default {
 
 .name {
   @include Canela-Thin;
-  margin: 5px;
   transition: opacity 1s;
   width: 100%;
 }
@@ -143,7 +142,7 @@ export default {
 }
 
 .dot {
-  padding-right: 10px;
+  padding: 10px;
 }
 
 // .slideIn-navigation-enter-active,
@@ -158,7 +157,7 @@ export default {
 
 @media screen and (max-width: 768px) {
   .dot {
-    padding: 0;
+    padding: 5px;
   }
 }
 </style>
