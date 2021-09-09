@@ -84,7 +84,7 @@ export default {
   justify-content: center;
   align-items: center;
   align-content: center;
-  margin-top: 25vh;
+  margin-top: 20vh;
   margin-left: 1rem;
   //text-align: center;
   cursor: pointer;
