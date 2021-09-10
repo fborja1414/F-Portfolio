@@ -25,7 +25,6 @@
             'nav-leave-to': !landing,
           }"
           class="landing"
-          v-on:click="showLanding"
           @click.native="showLanding"
           :projects="projects"
           :slideToggle="slideToggle"
@@ -89,9 +88,12 @@ export default {
     showLanding() {
       if (!this.landing) {
         this.landing = true;
-      } else if (this.landing && this.$route.params.index) {
+      } else if (this.landing) {
         this.landing = false;
       }
+
+      console.log("lanidng" + this.landing);
+
       // window.scrollTo({ top, behavior: "smooth" });
     },
     selectOn() {
