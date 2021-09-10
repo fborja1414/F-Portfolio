@@ -19,8 +19,7 @@
         'desc-leave-to': !show,
       }"
     >
-      <div class="image-cont">
-        <!-- <div class="pagination" v-if="images.length > 1">
+      <!-- <div class="pagination" v-if="images.length > 1">
             {{ pageNum }} / {{ images.length }}
           </div>
 
@@ -53,6 +52,20 @@
               "
             />
           </div>-->
+      <div v-if="videoBoolean" class="image-cont">
+        <video
+          v-for="(image, index) in images"
+          :key="index"
+          :src="
+            image.url
+              .split('/uploads/')
+              .join('https://agile-peak-21162.herokuapp.com/uploads/')
+          "
+          autoplay
+          loop
+        />
+      </div>
+      <div v-else class="image-cont">
         <img
           v-for="(image, index) in images"
           :key="index"
@@ -63,6 +76,7 @@
           "
         />
       </div>
+
       <div
         class="title"
         :class="{
@@ -123,6 +137,10 @@ export default {
     },
     description2: function () {
       return this.projects.description2;
+    },
+
+    videoBoolean: function () {
+      return this.projects.videoboolean;
     },
     // showLanding: function () {
     //   return this.$store.state.landing;
@@ -208,7 +226,7 @@ export default {
           } images in ${Math.round(t1 - t0)}ms.`
         );
         console.log(`${this.imagesloaded}`);
-        console.log(`${this.entry.video}`);
+        console.log(`${this.videoBoolean}`);
       });
     },
   },
@@ -281,6 +299,11 @@ export default {
     width: 100%;
     margin-top: 5vh;
     // margin-bottom: 3vh;
+  }
+  video {
+    height: 100%;
+    width: 100%;
+    margin-top: 5vh;
   }
 }
 
@@ -355,7 +378,7 @@ export default {
 
 .page-enter-active,
 .page-leave-active {
-  transition: opacity 0.2s ease-in-out, transform 0.25s ease-in-out;
+  transition: opacity 0.2s ease-in;
 }
 .page-enter,
 .page-leave-to {
@@ -365,7 +388,7 @@ export default {
 
 .desc-enter-active,
 .desc-leave-active {
-  transition: opacity 0.2s ease-in-out, transform 0.25s ease-in-out;
+  transition: opacity 0.2s ease-in-out;
 }
 .desc-enter,
 .desc-leave-to {
@@ -391,6 +414,9 @@ export default {
     margin: 0 auto;
   }
   img {
+    width: 100%;
+  }
+  video {
     width: 100%;
   }
 }

@@ -87,15 +87,11 @@ export default {
   },
   methods: {
     showLanding() {
-      setTimeout(() => {
-        if (!this.landing) {
-          this.landing = true;
-        } else if (this.landing && this.$route.params.index) {
-          this.landing = false;
-        }
-
-        console.log("lanidng" + this.landing);
-      }, 1050);
+      if (!this.landing) {
+        this.landing = true;
+      } else if (this.landing && this.$route.params.index) {
+        this.landing = false;
+      }
       // window.scrollTo({ top, behavior: "smooth" });
     },
     selectOn() {
