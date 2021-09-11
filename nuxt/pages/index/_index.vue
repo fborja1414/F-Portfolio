@@ -76,22 +76,23 @@
           "
         />
       </div>
-
-      <div
-        class="title"
-        :class="{
-          'hide-text': landing,
-        }"
-      >
-        {{ name }}
+      <div class="grid-container">
+        <div
+          class="title"
+          :class="{
+            'hide-text': landing,
+          }"
+        >
+          {{ name }}
+        </div>
+        <div
+          class="description"
+          v-html="description"
+          :class="{
+            'hide-text': landing,
+          }"
+        ></div>
       </div>
-      <div
-        class="description"
-        v-html="description"
-        :class="{
-          'hide-text': landing,
-        }"
-      ></div>
       <div
         class="description2"
         v-html="description2"
@@ -254,11 +255,7 @@ export default {
 
 .title {
   @include IBM-Plex-Mono;
-  //font-style: italic;
   font-size: 1vw;
-
-  // padding-bottom: 1rem;
-  padding-top: 2rem;
 }
 
 .nuxt-link-active {
@@ -267,12 +264,8 @@ export default {
 }
 .title,
 .description {
-  margin: 0 auto;
-
-  text-align: center;
   pointer-events: auto;
   z-index: 5;
-  width: 50vw;
 }
 
 .description-container {
@@ -317,6 +310,14 @@ export default {
   // margin-bottom: 10vh;
   opacity: 0.7;
   text-align: left;
+}
+
+.grid-container {
+  padding-top: 5vh;
+  width: 50vw;
+  display: grid;
+  grid-template-columns: 10vw 40vw;
+  margin: 0 auto;
 }
 
 .description2 {
@@ -408,6 +409,10 @@ export default {
       font-size: 2.5vw;
       text-align: left;
     }
+  }
+  .grid-container {
+    width: 80vw;
+    grid-template-columns: 20vw 60vw;
   }
   .image-cont {
     width: 80vw;
