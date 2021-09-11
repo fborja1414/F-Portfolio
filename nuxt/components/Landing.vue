@@ -84,8 +84,9 @@ export default {
   justify-content: center;
   align-items: center;
   align-content: center;
+  margin: 0 auto;
   margin-top: 20vh;
-  margin-left: 1rem;
+
   //text-align: center;
   cursor: pointer;
 }
@@ -97,7 +98,7 @@ export default {
 
 .navigation {
   height: calc(100vh - 5rem);
-  width: calc(100vw - 2rem);
+  width: calc(100vw - 1rem);
   //top: 10vh;
   font-size: 3vw;
   line-height: 1.5;

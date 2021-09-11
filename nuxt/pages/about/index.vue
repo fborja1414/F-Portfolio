@@ -1,18 +1,20 @@
 <template>
-  <div class="page-container-about">
-    <div class="about-copy">
-      Francisco is a designer developer based in San Francisco, California. In
-      2020 he graduated with a degree in cognitive science from University of
-      California, Los Angeles. He loves developing creative websites and honing
-      his design perspective. In his free time he enjoys fashion, k-drama, and
-      eating good ramen.
-    </div>
-    <!-- <div class="contact-list">
+  <nuxt-link to="/">
+    <div class="page-container-about">
+      <div class="about-copy">
+        Francisco is a designer developer based in San Francisco, California. In
+        2020 he graduated with a degree in cognitive science from University of
+        California, Los Angeles. He loves developing creative websites and
+        honing his design perspective. In his free time he enjoys fashion,
+        k-drama, and eating good ramen.
+      </div>
+      <!-- <div class="contact-list">
       <a> email</a>
       <a>github </a>
       <a> twitter</a>
     </div> -->
-  </div>
+    </div>
+  </nuxt-link>
 </template>
 
 <script>
@@ -25,14 +27,6 @@ export default {
 @import "~assets/_typography.scss";
 
 .page-container-about {
-  display: grid;
-  grid-template-columns: repeat(10, 1fr);
-  // grid-template-rows: repeat(7, 40vh);
-  grid-auto-rows: auto;
-  grid-gap: 20px;
-  //pointer-events: none;
-  //margin: 10rem auto;
-  overflow: hidden;
 }
 
 .contact-container {
@@ -50,10 +44,11 @@ export default {
 
 .about-copy {
   padding-top: 5vh;
-  @include Canela-Thin;
-  grid-column: 2/10;
+  @include IBM-Plex-Mono;
+  width: 90vw;
+  margin: 0 auto;
   display: block;
-  font-size: 2.5vw;
+  font-size: 1vw;
   text-indent: 15%;
 }
 

@@ -3,15 +3,13 @@
     "name": "about",
     "path": "/about",
     "component": "/Users/FranciscoBorja/Desktop/F-Portfolio/nuxt/pages/about/index.vue",
-    "chunkName": "pages/about/index",
-    "_name": "_14565cc5"
+    "chunkName": "pages/about/index"
   },
   {
     "name": "nav2.",
     "path": "/nav2.",
     "component": "/Users/FranciscoBorja/Desktop/F-Portfolio/nuxt/pages/nav2..vue",
-    "chunkName": "pages/nav2.",
-    "_name": "_64e525d4"
+    "chunkName": "pages/nav2."
   },
   {
     "name": "index",
@@ -23,17 +21,14 @@
         "name": "index",
         "path": ":index",
         "component": "/Users/FranciscoBorja/Desktop/F-Portfolio/nuxt/pages/index/_index.vue",
-        "chunkName": "pages/index/_index",
-        "_name": "_eedac8ea"
+        "chunkName": "pages/index/_index"
       }
-    ],
-    "_name": "_68e80a87"
+    ]
   },
   {
     "name": "project",
     "path": "/:project",
     "component": "/Users/FranciscoBorja/Desktop/F-Portfolio/nuxt/pages/_project.vue",
-    "chunkName": "pages/_project",
-    "_name": "_b6012396"
+    "chunkName": "pages/_project"
   }
 ]

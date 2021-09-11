@@ -38,7 +38,6 @@
             'page-enter': landing,
             'page-leave-to': landing,
           }"
-          @click.native="showLanding"
           class="project"
           :landing="landing"
           :key="$route.params.index"

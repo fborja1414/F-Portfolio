@@ -52,30 +52,48 @@
               "
             />
           </div>-->
-      <div v-if="videoBoolean" class="image-cont">
-        <video
-          v-for="(image, index) in images"
-          :key="index"
-          :src="
-            image.url
-              .split('/uploads/')
-              .join('https://agile-peak-21162.herokuapp.com/uploads/')
-          "
-          autoplay
-          loop
-        />
-      </div>
-      <div v-else class="image-cont">
-        <img
-          v-for="(image, index) in images"
-          :key="index"
-          :src="
-            image.url
-              .split('/uploads/')
-              .join('https://agile-peak-21162.herokuapp.com/uploads/')
-          "
-        />
-      </div>
+      <nuxt-link class="nuxt-link-active" :to="'/' + nextpage">
+        <div v-if="videoBoolean" class="image-cont">
+          <a
+            class="pagination"
+            :class="{
+              'hide-text': landing,
+            }"
+          >
+            {{ projects.id }} / 6
+          </a>
+          <video
+            v-for="(image, index) in images"
+            :key="index"
+            :src="
+              image.url
+                .split('/uploads/')
+                .join('https://agile-peak-21162.herokuapp.com/uploads/')
+            "
+            autoplay
+            loop
+          />
+        </div>
+        <div v-else class="image-cont">
+          <a
+            class="pagination"
+            :class="{
+              'hide-text': landing,
+            }"
+          >
+            {{ projects.id }} / 6
+          </a>
+          <img
+            v-for="(image, index) in images"
+            :key="index"
+            :src="
+              image.url
+                .split('/uploads/')
+                .join('https://agile-peak-21162.herokuapp.com/uploads/')
+            "
+          />
+        </div>
+      </nuxt-link>
       <div class="grid-container">
         <div
           class="title"
@@ -120,12 +138,12 @@ export default {
   },
 
   computed: {
-    // nextpage: function () {
-    //   if (this.projects.id == 6) {
-    //     return this.projects.id - (6 - 1);
-    //   }
-    //   return this.projects.id + 1;
-    // },
+    nextpage: function () {
+      if (this.projects.id == 6) {
+        return this.projects.id - (6 - 1);
+      }
+      return this.projects.id + 1;
+    },
 
     images: function () {
       return this.projects.images;
@@ -258,6 +276,12 @@ export default {
   font-size: 1vw;
 }
 
+.pagination {
+  @include IBM-Plex-Mono;
+  margin: 0 auto;
+  font-size: 1vw;
+}
+
 .nuxt-link-active {
   color: black;
   text-decoration: none;
@@ -275,7 +299,7 @@ export default {
   font-size: 1vw;
   // grid-row: 2;
   //grid-column: 4/10;
-  pointer-events: none;
+
   margin-bottom: 1vh;
   margin-top: 10vh;
   // grid-row: 1;
@@ -417,6 +441,9 @@ export default {
   .image-cont {
     width: 80vw;
     margin: 0 auto;
+  }
+  .pagination {
+    font-size: 1vw;
   }
   img {
     width: 100%;
