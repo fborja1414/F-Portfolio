@@ -38,6 +38,7 @@
             'page-enter': landing,
             'page-leave-to': landing,
           }"
+          @click.native="showLanding"
           class="project"
           :landing="landing"
           :key="$route.params.index"
@@ -132,9 +133,12 @@ export default {
   },
 
   async asyncData({ $axios }) {
-    const projects = await $axios.$get(
+    const projectsraw = await $axios.$get(
       "https://agile-peak-21162.herokuapp.com/projects"
     );
+    const projects = projectsraw.sort(function (firstItem, secondItem) {
+      return firstItem.id - secondItem.id;
+    });
     console.log({ projects });
     return { projects };
   },
