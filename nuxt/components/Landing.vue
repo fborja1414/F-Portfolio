@@ -108,7 +108,7 @@ export default {
 .contact {
   @include IBM-Plex-Mono;
   position: fixed;
-  font-size: 14px;
+  font-size: 12px;
   //bottom: 5vh;
   margin: 0 auto;
   display: block;
@@ -186,7 +186,7 @@ export default {
 
 @media screen and (max-width: 768px) {
   .contact {
-    font-size: 14px;
+    font-size: 10px;
     width: 40vw;
     margin-left: 0;
   }
