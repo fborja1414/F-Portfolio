@@ -487,11 +487,13 @@ export default {
 
 .description-images-container {
   display: grid;
+  width: 100%; //
+
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto;
   img {
     width: 100%;
-    padding: 1rem;
+    height: auto;
+    padding: 0.5rem;
     //height: 100%;
   }
 }
