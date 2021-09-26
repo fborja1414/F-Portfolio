@@ -38,7 +38,6 @@
             'page-enter': landing,
             'page-leave-to': landing,
           }"
-          @click.native="showLanding"
           class="project"
           :landing="landing"
           :key="$route.params.index"
@@ -162,7 +161,7 @@ export default {
   display: flex;
   @include IBM-Plex-Mono;
   width: calc(100vw - 3rem);
-  font-size: 1.3vw;
+  font-size: 14px;
   //height: 10vh;
   //align-content: center;
   justify-content: space-between;
@@ -179,16 +178,7 @@ export default {
   // width: 50%;
 }
 
-// .blink-hover {
-//   opacity: 0.5;
-//   transition: opacity 10s;
-//   filter: blur(1px);
-// }
-
 .subheader {
-  // @include Canela-ThinItalic;
-  //font-style: italic;
-  //   filter: blur(2px);
   opacity: 0.8;
 }
 
@@ -200,6 +190,8 @@ export default {
 
 .about {
   //width: 50%;
+  position: fixed;
+  right: 2vw;
   cursor: pointer;
 
   //text-align: right;
@@ -213,6 +205,8 @@ export default {
   position: fixed;
   top: 4rem;
   z-index: 5;
+  background-color: f1f1f1;
+  overflow: hidden;
 }
 
 .index {
@@ -221,6 +215,7 @@ export default {
   position: fixed;
   top: 1.5rem;
   right: 2vw;
+  background: none;
 }
 
 .index:hover {
@@ -231,9 +226,8 @@ export default {
 .project {
   // position: absolute;
   height: 100%;
-  width: calc(100vw - 2rem);
+  //width: calc(100vw - 2rem);
   z-index: -5;
-  cursor: pointer;
 }
 
 .nuxt-link-active {
@@ -244,20 +238,6 @@ export default {
   opacity: 0.5;
   transition: opacity 0.25;
 }
-
-.section-container {
-  //top: 0;
-  //left: 0;
-}
-
-// .fade-in {
-//   opacity: 0;
-// }
-
-// .fade {
-//   opacity: 1;
-//   transition: opacity 0.3s;
-// }
 
 .select {
   position: absolute;
@@ -279,84 +259,37 @@ export default {
   cursor: pointer;
 }
 
-// .slideIn-enter-active,
-// .slideIn-leave-active {
-//   transition: opacity 0.25s ease-in-out, transform 0.5s ease-in-out;
-// }
-// .slideIn-enter,
-// .slideIn-leave-to {
-//   opacity: 0;
-//   transform: translate3d(0, 15px, 0);
-// }
-// .slideIn-navigation-enter-active,
-// .slideIn-navigation-leave-active {
-//   transition: opacity 1s ease-in-out, transform 1s ease-in-out;
-// }
-// .slideIn-navigation-enter,
-// .slideIn-navigation-leave-to {
-//   opacity: 0;
-//   transform: translate3d(0, 15px, 0);
-// }
-
-// .navigation-scroll-enter-active,
-// .navigation-scroll-leave-active {
-//   transition: opacity 3s ease-in-out, transform 2s ease-in-out;
-// }
-// .navigation-scroll-enter,
-// .navigation-leave-to {
-//   opacity: 0;
-//   transform: translate3d(0, 15px, 0);
-// }
 // .page-enter-active,
 // .page-leave-active {
-//   transition: opacity 0.25s ease-in-out, transform 0.5s ease-in-out;
+//   transition: opacity 0.25s ease-in-out;
 // }
+
 // .page-enter,
 // .page-leave-to {
 //   opacity: 0;
-//   transform: translate3d(0, 15px, 0);
+//   transition: opacity 0.25s ease-out;
 // }
 
-.page-enter-active,
-.page-leave-active {
-  transition: opacity 0.25s ease-in-out;
-}
+// .nav-enter-active,
+// .nav-leave-active {
+//   transition: opacity 1s ease-in;
+// }
 
-.page-enter,
-.page-leave-to {
-  opacity: 0.2;
-  transition: opacity 0.25s ease-out;
-  filter: blur(2px);
-}
-
-.nav-enter-active,
-.nav-leave-active {
-  transition: opacity 1s ease-in;
-}
-
-.nav-enter,
-.nav-leave-to {
-  opacity: 0;
-}
+// .nav-enter,
+// .nav-leave-to {
+//   opacity: 0;
+// }
 
 @media screen and (max-width: 768px) {
-  // nav-section {
-  //   display: none;
-  //   opacity: 0;
-  // }
-  // Section {
-  //   display: none;
-  // }
-
   .header,
   .about {
-    font-size: 3vw;
-    margin-left: 0rem;
+    font-size: 14px;
+    margin-left: 1rem;
   }
 
   .navigation {
     margin-left: 0;
-    font-size: 5vw;
+    font-size: 30px;
 
     // grid-column: 3/11;
     // margin: 0 0 8rem 0;
@@ -368,10 +301,11 @@ export default {
 
   .about {
     text-align: right;
+    right: 5.5vw;
   }
 
   .index {
-    font-size: 3vw;
+    font-size: 14px;
     right: 5.5vw;
   }
 }

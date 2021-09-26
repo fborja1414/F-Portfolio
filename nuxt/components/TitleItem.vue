@@ -113,6 +113,7 @@ export default {
 
 .medium {
   @include Canela-ThinItalic;
+  padding-right: 10px;
 }
 
 .blink-hover {
@@ -142,18 +143,8 @@ export default {
 }
 
 .dot {
-  padding: 10px;
+  padding: px;
 }
-
-// .slideIn-navigation-enter-active,
-// .slideIn-navigation-leave-active {
-//   transition: opacity 1s ease-in-out, transform 1s ease-in-out;
-// }
-// .slideIn-navigation-enter,
-// .slideIn-navigation-leave-to {
-//   opacity: 0;
-//   transform: translate3d(0, 15px, 0);
-// }
 
 @media screen and (max-width: 768px) {
   .dot {

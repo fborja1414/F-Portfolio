@@ -7,13 +7,6 @@
     "_name": "_14565cc5"
   },
   {
-    "name": "nav2.",
-    "path": "/nav2.",
-    "component": "/Users/FranciscoBorja/Desktop/F-Portfolio/nuxt/pages/nav2..vue",
-    "chunkName": "pages/nav2.",
-    "_name": "_64e525d4"
-  },
-  {
     "name": "index",
     "path": "/",
     "component": "/Users/FranciscoBorja/Desktop/F-Portfolio/nuxt/pages/index.vue",

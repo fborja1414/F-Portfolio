@@ -70,11 +70,10 @@ export default {
   @include Canela-Thin;
   grid-row: 1;
   grid-column: 1/7;
-  font-size: 2.5vw;
+  font-size: 18px;
   height: 10vh;
   align-content: center;
   position: relative;
-
   top: 1.5rem;
   z-index: 5;
 }
@@ -86,7 +85,7 @@ export default {
   align-content: center;
   margin: 0 auto;
   margin-top: 20vh;
-
+  color: black;
   //text-align: center;
   cursor: pointer;
 }
@@ -194,8 +193,8 @@ export default {
 
   .project-titles {
     margin-top: 15vh;
-    width: calc(100vw - 2rem);
-    margin-left: 0;
+    width: calc(100vw - 3rem);
+    margin-left: 1rem;
   }
 }
 </style>

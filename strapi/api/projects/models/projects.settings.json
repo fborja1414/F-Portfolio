@@ -50,6 +50,18 @@
       "plugin": "upload",
       "required": false,
       "pluginOptions": {}
+    },
+    "description3": {
+      "type": "text"
+    },
+    "description4": {
+      "type": "text"
+    },
+    "description5": {
+      "type": "text"
+    },
+    "description6": {
+      "type": "text"
     }
   }
 }

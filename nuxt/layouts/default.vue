@@ -48,7 +48,7 @@ html {
 *::after {
   box-sizing: border-box;
   margin: 0;
-
+  background: #f1f1f1;
   //background: black;
   //color: white;
 }

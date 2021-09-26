@@ -54,34 +54,174 @@
           </div>-->
 
       <div v-if="videoBoolean" class="image-cont">
-        <a
+        <div
           class="pagination"
           :class="{
             'hide-text': landing,
           }"
         >
-          {{ projects.id }} / 6
-        </a>
+          {{ projects.id }} / 6 {{ name }}
+          <a
+            class="link"
+            v-html="description"
+            :class="{
+              'hide-text': landing,
+            }"
+          ></a>
+        </div>
         <video
-          v-for="(image, index) in images"
           :key="index"
           :src="
-            image.url
+            imagezero.url
               .split('/uploads/')
               .join('https://agile-peak-21162.herokuapp.com/uploads/')
           "
           autoplay
           loop
         />
+        <div
+          v-if="projects.id == 1"
+          class="description2"
+          v-html="description2"
+          :class="{
+            'hide-text': landing,
+          }"
+        ></div>
+        <div v-if="projects.id == 2">
+          <div
+            class="description2"
+            v-html="description2"
+            :class="{
+              'hide-text': landing,
+            }"
+          ></div>
+          <div class="description-images-container">
+            <img
+              :key="index"
+              :src="
+                imageone.url
+                  .split('/uploads/')
+                  .join('https://agile-peak-21162.herokuapp.com/uploads/')
+              "
+            />
+            <img
+              :key="index"
+              :src="
+                imagetwo.url
+                  .split('/uploads/')
+                  .join('https://agile-peak-21162.herokuapp.com/uploads/')
+              "
+            />
+            <img
+              :key="index"
+              :src="
+                imagethree.url
+                  .split('/uploads/')
+                  .join('https://agile-peak-21162.herokuapp.com/uploads/')
+              "
+            />
+            <img
+              :key="index"
+              :src="
+                imagefour.url
+                  .split('/uploads/')
+                  .join('https://agile-peak-21162.herokuapp.com/uploads/')
+              "
+            />
+          </div>
+          <div class="first-subtitle"></div>
+          <div
+            class="description3"
+            v-html="description3"
+            :class="{
+              'hide-text': landing,
+            }"
+          ></div>
+          <div class="second-description-container">
+            <img
+              :key="index"
+              :src="
+                imagefive.url
+                  .split('/uploads/')
+                  .join('https://agile-peak-21162.herokuapp.com/uploads/')
+              "
+            />
+            <img
+              :key="index"
+              :src="
+                imagesix.url
+                  .split('/uploads/')
+                  .join('https://agile-peak-21162.herokuapp.com/uploads/')
+              "
+            />
+            <img
+              :key="index"
+              :src="
+                imageseven.url
+                  .split('/uploads/')
+                  .join('https://agile-peak-21162.herokuapp.com/uploads/')
+              "
+            />
+          </div>
+          <div
+            class="description4"
+            v-html="description4"
+            :class="{
+              'hide-text': landing,
+            }"
+          ></div>
+          <div class="third-description-container">
+            <img
+              :key="index"
+              :src="
+                imageeight.url
+                  .split('/uploads/')
+                  .join('https://agile-peak-21162.herokuapp.com/uploads/')
+              "
+            />
+            <img
+              :key="index"
+              :src="
+                imagenine.url
+                  .split('/uploads/')
+                  .join('https://agile-peak-21162.herokuapp.com/uploads/')
+              "
+            />
+          </div>
+          <div
+            class="description5"
+            v-html="description5"
+            :class="{
+              'hide-text': landing,
+            }"
+          ></div>
+          <div class="fourth-description-container">
+            <img
+              :key="index"
+              :src="
+                imageten.url
+                  .split('/uploads/')
+                  .join('https://agile-peak-21162.herokuapp.com/uploads/')
+              "
+            />
+          </div>
+          <div
+            class="description6"
+            v-html="description6"
+            :class="{
+              'hide-text': landing,
+            }"
+          ></div>
+        </div>
       </div>
-      <div v-else class="image-cont">
+      <div v-else-if="!videoBoolean" class="image-cont">
         <a
           class="pagination"
           :class="{
             'hide-text': landing,
           }"
         >
-          {{ projects.id }} / 6
+          {{ projects.id }} / 6 {{ name }}
         </a>
         <img
           v-for="(image, index) in images"
@@ -92,17 +232,7 @@
               .join('https://agile-peak-21162.herokuapp.com/uploads/')
           "
         />
-      </div>
 
-      <div class="grid-container">
-        <div
-          class="title"
-          :class="{
-            'hide-text': landing,
-          }"
-        >
-          {{ name }}
-        </div>
         <div
           class="description"
           v-html="description"
@@ -111,13 +241,6 @@
           }"
         ></div>
       </div>
-      <div
-        class="description2"
-        v-html="description2"
-        :class="{
-          'hide-text': landing,
-        }"
-      ></div>
     </div>
   </div>
   <!-- </nuxt-link> -->
@@ -155,6 +278,42 @@ export default {
     images: function () {
       return this.projects.images;
     },
+    imagezero: function () {
+      return this.projects.images[0];
+    },
+    imageone: function () {
+      return this.projects.images[1];
+    },
+    imagetwo: function () {
+      return this.projects.images[2];
+    },
+    imagethree: function () {
+      return this.projects.images[3];
+    },
+    imagefour: function () {
+      return this.projects.images[4];
+    },
+    imagefive: function () {
+      return this.projects.images[5];
+    },
+    imagesix: function () {
+      return this.projects.images[6];
+    },
+    imageseven: function () {
+      return this.projects.images[7];
+    },
+    imageeight: function () {
+      return this.projects.images[8];
+    },
+    imagenine: function () {
+      return this.projects.images[9];
+    },
+    imageten: function () {
+      return this.projects.images[10];
+    },
+    imageeleven: function () {
+      return this.projects.images[11];
+    },
     name: function () {
       return this.projects.name;
     },
@@ -163,6 +322,18 @@ export default {
     },
     description2: function () {
       return this.projects.description2;
+    },
+    description3: function () {
+      return this.projects.description3;
+    },
+    description4: function () {
+      return this.projects.description4;
+    },
+    description5: function () {
+      return this.projects.description5;
+    },
+    description6: function () {
+      return this.projects.description6;
     },
 
     videoBoolean: function () {
@@ -264,29 +435,20 @@ export default {
 @import "~assets/_typography.scss";
 
 .pages-container {
-  // position: absolute;
   top: 10vh;
-  height: calc(100vh - 5rem);
-  width: 100vh;
+  //height: calc(100vh - 5rem);
+  //width: 100vh;
   margin: 0;
   z-index: -1;
-  // display: grid;
-  // grid-template-columns: repeat(12, 1fr);
-  // grid-column-gap: 1rem;
-  // grid-auto-columns: 1fr;
-
   align-items: center;
-}
-
-.title {
-  @include IBM-Plex-Mono;
-  font-size: 1vw;
+  overflow-x: hidden;
 }
 
 .pagination {
   @include IBM-Plex-Mono;
   margin: 0 auto;
-  font-size: 1vw;
+  font-size: 20px;
+  color: black;
 }
 
 .nuxt-link-active {
@@ -303,21 +465,13 @@ export default {
   position: relative;
   @include IBM-Plex-Mono;
   font-style: italic;
-  font-size: 1vw;
-  // grid-row: 2;
-  //grid-column: 4/10;
-
+  font-size: 14px;
   margin-bottom: 1vh;
   margin-top: 10vh;
-  // grid-row: 1;
 }
 .image-cont {
-  //grid-column: 4/10;
-  width: 50vw;
+  width: 80vw;
   margin: 0 auto;
-  //display: block;
-  // cursor: default;
-  //overflow-x: scroll;
   img {
     height: 100%;
     width: 100%;
@@ -331,38 +485,87 @@ export default {
   }
 }
 
-.description {
-  //position: sticky;
+.description-images-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  img {
+    width: 100%;
+    padding: 1rem;
+    //height: 100%;
+  }
+}
+
+.second-description-container {
+  width: 80vw;
+  margin: 0 auto;
+  img {
+    width: 100%;
+    padding: 1rem;
+  }
+}
+
+.third-description-container {
+  img {
+    width: 100%;
+    padding: 1rem;
+  }
+}
+
+.fourth-description-container {
+  width: 80vw;
+  margin: 0 auto;
+  img {
+    width: 100%;
+    padding: 1rem;
+  }
+}
+
+.first-subtitle {
+  margin-top: 5vh;
   bottom: 5vh;
-  //margin-top: 15vh;
-  //text-align: center;
   pointer-events: auto;
   z-index: 5;
-  // margin-bottom: 10vh;
   opacity: 0.7;
   text-align: left;
 }
 
-.grid-container {
-  padding-top: 5vh;
-  width: 50vw;
-  display: grid;
-  grid-template-columns: 10vw 40vw;
-  margin: 0 auto;
+.link {
+  font-size: 20px;
+  color: black;
 }
-
-.description2 {
+.description {
   margin-top: 5vh;
-  //text-align: center;
+  bottom: 5vh;
   pointer-events: auto;
   z-index: 5;
-  margin-bottom: 10vh;
-  opacity: 1;
+  opacity: 0.7;
+  text-align: left;
 }
 
-.pagination {
+.description2,
+.description3,
+.description4,
+.description5,
+.description6 {
+  pointer-events: auto;
+  z-index: 5;
+  color: black;
+  opacity: 1;
+  width: 50vw;
+  margin: 0 auto;
+  margin-top: 5vh;
+  margin-bottom: 10vh;
+  opacity: 0.9;
+}
+
+.indent {
+  text-indent: 50px;
+  font-style: normal;
+}
+
+.p-graph .pagination {
   width: 100%;
-  //display: flex;
   align-content: center;
   text-align: center;
 }
@@ -382,45 +585,25 @@ export default {
 
 .page-enter-active,
 .page-leave-active {
-  transition: opacity 0.25s ease-in-out;
+  transition: opacity 0s ease-in-out;
 }
 .page-enter,
 .page-leave-to {
   opacity: 0;
 }
-
-// .slideIn-enter-active,
-// .slideIn-leave-active {
-//   transition: opacity 0.25s ease-in-out, transform 0.5s ease-in-out;
-// }
-// .slideIn-enter,
-// .slideIn-leave-to {
-//   opacity: 0;
-//   transform: translate3d(0, 15px, 0);
-// }
-// .slideIn-navigation-enter-active,
-// .slideIn-navigation-leave-active {
-//   transition: opacity 1s ease-in-out, transform 1s ease-in-out;
-// }
-// .slideIn-navigation-enter,
-// .slideIn-navigation-leave-to {
-//   opacity: 0;
-//   transform: translate3d(0, 15px, 0);
-// }
 
 .page-enter-active,
 .page-leave-active {
-  transition: opacity 0.2s ease-in;
+  transition: opacity 0s ease-in;
 }
 .page-enter,
 .page-leave-to {
   opacity: 0;
-  //   transform: translate3d(0, 15px, 0);
 }
 
 .desc-enter-active,
 .desc-leave-active {
-  transition: opacity 0.2s ease-in-out;
+  transition: opacity 0s ease-in-out;
 }
 .desc-enter,
 .desc-leave-to {
@@ -433,21 +616,49 @@ export default {
     margin: 0 auto;
     margin-top: 10vh;
     // font-size: 2vw;
-    width: 80vw;
+    width: 100%;
     .title,
     .description {
       width: auto;
-      font-size: 2.5vw;
+      font-size: 14px;
       text-align: left;
     }
+  }
+
+  .description-images-container {
+    grid-template-columns: 1fr;
+  }
+  .description2,
+  .description3,
+  .description4,
+  .description5,
+  .description6 {
+    width: 90vw;
+    padding: none;
+  }
+
+  .second-description-container,
+  .third-description-container,
+  .fourth-description-container {
+    width: 90vw;
+    img {
+      padding: none;
+    }
+  }
+  .pagination {
+    font-size: 14px;
   }
   .grid-container {
     width: 80vw;
     grid-template-columns: 20vw 60vw;
   }
   .image-cont {
-    width: 80vw;
-    margin: 0 auto;
+    width: 100%;
+    //margin: 0 auto;
+  }
+
+  .link {
+    font-size: 14px;
   }
 
   img {

@@ -8,6 +8,10 @@
         honing his design perspective. In his free time he enjoys fashion,
         k-drama, and eating good ramen.
       </div>
+      <div class="image">
+        <img class="profile" src="~assets/FranciscoBorja.JPG" />
+      </div>
+
       <!-- <div class="contact-list">
       <a> email</a>
       <a>github </a>
@@ -41,7 +45,15 @@ export default {
   top: 1.5rem;
   z-index: 5;
 }
+.image {
+  width: 60vw;
+  margin: 0 auto;
+  margin-top: 10vh;
+}
 
+.profile {
+  width: 100%;
+}
 .about-copy {
   padding-top: 5vh;
   @include IBM-Plex-Mono;
@@ -63,7 +75,7 @@ export default {
 
 @media screen and (max-width: 768px) {
   .about-copy {
-    font-size: 5vw;
+    font-size: 14px;
   }
 }
 </style>
