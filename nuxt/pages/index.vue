@@ -42,15 +42,6 @@
           :landing="landing"
           :key="$route.params.index"
         />
-
-        <!-- <about
-          :class="{
-            'nav-enter-active': !landing,
-            'nav-leave-active': !landing,
-            'nav-enter': landing,
-            'nav-leave-to': landing,
-          }"
-        /> -->
       </div>
     </transition>
   </div>
@@ -66,10 +57,6 @@ export default {
     About,
   },
 
-  // transition: {
-  //   appear: true,
-  //   name: "slideIn",
-  // },
   data() {
     return {
       show: false,
@@ -258,27 +245,6 @@ export default {
 .nav-container {
   cursor: pointer;
 }
-
-// .page-enter-active,
-// .page-leave-active {
-//   transition: opacity 0.25s ease-in-out;
-// }
-
-// .page-enter,
-// .page-leave-to {
-//   opacity: 0;
-//   transition: opacity 0.25s ease-out;
-// }
-
-// .nav-enter-active,
-// .nav-leave-active {
-//   transition: opacity 1s ease-in;
-// }
-
-// .nav-enter,
-// .nav-leave-to {
-//   opacity: 0;
-// }
 
 @media screen and (max-width: 768px) {
   .header,

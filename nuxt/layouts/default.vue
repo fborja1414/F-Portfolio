@@ -5,22 +5,7 @@
 </template>
 
 <script>
-export default {
-  // data() {
-  //   return {
-  //     landing: true,
-  //   };
-  // },
-  methods: {
-    // toggleLanding() {
-    //   //   console.log("itogglelanding");
-    //   this.landing = true;
-    // },
-    // openLanding() {
-    //   this.$store.commit("toggleLanding", true);
-    // },
-  },
-};
+export default {};
 </script>
 
 
