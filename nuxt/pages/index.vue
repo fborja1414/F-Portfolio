@@ -249,13 +249,13 @@ export default {
 @media screen and (max-width: 768px) {
   .header,
   .about {
-    font-size: 14px;
+    font-size: 2.5vw;
     margin-left: 1rem;
   }
 
   .navigation {
     margin-left: 0;
-    font-size: 30px;
+    font-size: 4vw;
 
     // grid-column: 3/11;
     // margin: 0 0 8rem 0;

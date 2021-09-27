@@ -19,40 +19,6 @@
         'desc-leave-to': !show,
       }"
     >
-      <!-- <div class="pagination" v-if="images.length > 1">
-            {{ pageNum }} / {{ images.length }}
-          </div>
-
-          <div
-            class="scroll"
-            ref="imagescroll"
-            v-if="images.length > 1"
-            v-on:scroll="displayPagination"
-          >
-            <video
-        class="vid-size"
-        :key="index"
-        :src="
-          images[1].url
-            .split('/uploads/')
-            .join('http://localhost:1337/uploads/')
-        "
-        autoplay
-        loop
-      />
-          <img
-              class="img"
-              ref="image"
-              v-for="(image, index) in images"
-              :key="index"
-              :src="
-                image.url
-                  .split('/uploads/')
-                  .join('https://agile-peak-21162.herokuapp.com/uploads/')
-              "
-            />
-          </div>-->
-
       <div v-if="videoBoolean" class="image-cont">
         <div
           class="pagination"
@@ -70,7 +36,6 @@
           ></a>
         </div>
         <video
-          :key="index"
           :src="
             imagezero.url
               .split('/uploads/')
@@ -97,7 +62,6 @@
           ></div>
           <div class="description-images-container">
             <img
-              :key="index"
               :src="
                 imageone.url
                   .split('/uploads/')
@@ -105,7 +69,6 @@
               "
             />
             <img
-              :key="index"
               :src="
                 imagetwo.url
                   .split('/uploads/')
@@ -113,7 +76,6 @@
               "
             />
             <img
-              :key="index"
               :src="
                 imagethree.url
                   .split('/uploads/')
@@ -121,7 +83,6 @@
               "
             />
             <img
-              :key="index"
               :src="
                 imagefour.url
                   .split('/uploads/')
@@ -139,7 +100,6 @@
           ></div>
           <div class="second-description-container">
             <img
-              :key="index"
               :src="
                 imagefive.url
                   .split('/uploads/')
@@ -147,7 +107,6 @@
               "
             />
             <img
-              :key="index"
               :src="
                 imagesix.url
                   .split('/uploads/')
@@ -155,7 +114,6 @@
               "
             />
             <img
-              :key="index"
               :src="
                 imageseven.url
                   .split('/uploads/')
@@ -172,7 +130,6 @@
           ></div>
           <div class="third-description-container">
             <img
-              :key="index"
               :src="
                 imageeight.url
                   .split('/uploads/')
@@ -180,7 +137,6 @@
               "
             />
             <img
-              :key="index"
               :src="
                 imagenine.url
                   .split('/uploads/')
@@ -197,7 +153,6 @@
           ></div>
           <div class="fourth-description-container">
             <img
-              :key="index"
               :src="
                 imageten.url
                   .split('/uploads/')
@@ -214,7 +169,7 @@
           ></div>
         </div>
       </div>
-      <div v-else-if="!videoBoolean" class="image-cont">
+      <div v-else class="image-cont">
         <a
           class="pagination"
           :class="{
@@ -339,9 +294,6 @@ export default {
     videoBoolean: function () {
       return this.projects.videoboolean;
     },
-    // showLanding: function () {
-    //   return this.$store.state.landing;
-    // },
   },
 
   data() {
@@ -358,9 +310,6 @@ export default {
       this.loadImages();
       console.log(this.$refs.image);
     }
-    //   this.onLandingPage();
-    //   this.show = true;
-    //   console.log("show" + `${this.show}`);
   },
   methods: {
     onLandingPage() {
