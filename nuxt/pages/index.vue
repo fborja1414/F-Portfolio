@@ -142,6 +142,8 @@ export default {
 // }
 
 .overview-container {
+  background: #f1f1f1;
+  height: 100vh;
   width: 100%;
 }
 .header-container {

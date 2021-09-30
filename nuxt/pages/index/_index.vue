@@ -385,7 +385,8 @@ export default {
 
 .pages-container {
   top: 10vh;
-  //height: calc(100vh - 5rem);
+  height: 100vh;
+  background: #f1f1f1;
   //width: 100vh;
   margin: 0;
   z-index: -1;
