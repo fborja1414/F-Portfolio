@@ -1,10 +1,20 @@
 <template>
   <div
-    v-if="!imagesloaded"
+    v-if="imagesloaded"
     class="section-container"
     :class="{ 'section-container--active': titleHovered }"
   >
     <div class="fulldisplay">
+      <!-- <video
+        v-if="!videoBoolean"
+        :src="
+          imagezero.url
+            .split('/uploads/')
+            .join('https://agile-peak-21162.herokuapp.com/uploads/')
+        "
+        autoplay
+        loop
+      /> -->
       <img
         class="fulldisplay-image"
         v-for="(image, index) in images"
@@ -56,11 +66,17 @@ export default {
     images: function () {
       return this.entries.images;
     },
+    imagezero: function () {
+      return this.entries.images[0];
+    },
     position: function () {
       return this.entries.position;
     },
     description: function () {
       return this.entries.description;
+    },
+    videoBoolean: function () {
+      return this.entries.videoBoolean;
     },
     titleHovered: function () {
       return this.entries.name == this.$store.state.title;
@@ -120,7 +136,7 @@ export default {
 
 .section-container {
   position: absolute;
-  top: 16vh;
+  top: 0px;
   height: calc(100vh - 5rem);
   width: 100%;
   margin: 0;
@@ -132,13 +148,11 @@ export default {
   opacity: 0;
   align-items: center;
   transition: opacity 1s;
-  filter: grayscale(1);
 }
 
 .section-container--active {
   opacity: 0.8;
   transition: opacity 1s;
-  filter: grayscale(1);
   // overflow: hidden;
 }
 

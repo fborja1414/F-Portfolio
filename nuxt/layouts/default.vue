@@ -13,8 +13,9 @@ export default {};
 @import "~assets/_typography.scss";
 
 .main {
-  width: calc(100% - 40px);
-  margin: 0rem 1rem 1rem 1rem;
+  width: 100%;
+  height: 100vh;
+  background: #f1f1f1;
   // max-width: 1460px;
 }
 html {
@@ -33,7 +34,7 @@ html {
 *::after {
   box-sizing: border-box;
   margin: 0;
-  background: #f1f1f1;
+
   //background: black;
   //color: white;
 }

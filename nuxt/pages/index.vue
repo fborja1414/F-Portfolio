@@ -147,7 +147,7 @@ export default {
 .header-container {
   display: flex;
   @include IBM-Plex-Mono;
-  width: calc(100vw - 3rem);
+  //width: calc(100vw - 3rem);
   font-size: 14px;
   //height: 10vh;
   //align-content: center;
