@@ -5,8 +5,9 @@
     :class="{ 'section-container--active': titleHovered }"
   >
     <div class="fulldisplay">
-      <!-- <video
-        v-if="!videoBoolean"
+      <video
+        class="fulldisplay-image"
+        v-if="videoBoolean"
         :src="
           imagezero.url
             .split('/uploads/')
@@ -14,8 +15,9 @@
         "
         autoplay
         loop
-      /> -->
+      />
       <img
+        v-else
         class="fulldisplay-image"
         v-for="(image, index) in images"
         :key="index"
@@ -63,11 +65,13 @@ export default {
     name: function () {
       return this.entries.name;
     },
-    images: function () {
-      return this.entries.images;
-    },
+
     imagezero: function () {
       return this.entries.images[0];
+    },
+    images: function () {
+      // const firstElement = this.entries.images.shift();
+      return this.entries.images;
     },
     position: function () {
       return this.entries.position;
@@ -137,7 +141,8 @@ export default {
 .section-container {
   position: absolute;
   top: 0px;
-  height: calc(100vh - 5rem);
+  //height: calc(100vh - 5rem);
+  overflow: scroll;
   width: 100%;
   margin: 0;
   z-index: -1;

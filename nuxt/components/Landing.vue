@@ -102,7 +102,7 @@ export default {
   font-size: 3vw;
   line-height: 1.5;
   display: block;
-  overflow: hidden;
+  overflow: scroll;
 }
 
 .contact {
@@ -186,7 +186,7 @@ export default {
 
 @media screen and (max-width: 768px) {
   .contact {
-    font-size: 10px;
+    font-size: 2vw;
     width: 40vw;
     margin-left: 0;
   }

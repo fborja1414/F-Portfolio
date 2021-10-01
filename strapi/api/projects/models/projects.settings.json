@@ -62,6 +62,9 @@
     },
     "description6": {
       "type": "text"
+    },
+    "videoBoolean": {
+      "type": "boolean"
     }
   }
 }

@@ -385,13 +385,13 @@ export default {
 
 .pages-container {
   top: 10vh;
-  height: 100vh;
+  //height: 100vh;
   background: #f1f1f1;
   //width: 100vh;
   margin: 0;
   z-index: -1;
   align-items: center;
-  overflow-x: hidden;
+  overflow-x: scroll;
 }
 
 .pagination {
@@ -438,7 +438,6 @@ export default {
 .description-images-container {
   display: grid;
   width: 100%; //
-
   grid-template-columns: 1fr 1fr;
   img {
     width: 100%;
@@ -449,18 +448,18 @@ export default {
 }
 
 .second-description-container {
-  width: 80vw;
+  width: 100%;
   margin: 0 auto;
   img {
     width: 100%;
-    padding: 1rem;
+    padding-top: 1rem;
   }
 }
 
 .third-description-container {
   img {
     width: 100%;
-    padding: 1rem;
+    padding-top: 1rem;
   }
 }
 
@@ -469,7 +468,7 @@ export default {
   margin: 0 auto;
   img {
     width: 100%;
-    padding: 1rem;
+    padding-top: 1rem;
   }
 }
 
@@ -579,6 +578,10 @@ export default {
 
   .description-images-container {
     grid-template-columns: 1fr;
+    img {
+      padding: none;
+      padding-top: 1rem;
+    }
   }
   .description2,
   .description3,
@@ -592,12 +595,13 @@ export default {
   .second-description-container,
   .third-description-container,
   .fourth-description-container {
-    width: 90vw;
+    width: 100%;
     img {
       padding: none;
     }
   }
   .pagination {
+    padding: 1rem;
     font-size: 14px;
   }
   .grid-container {
