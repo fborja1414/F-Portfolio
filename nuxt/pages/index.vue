@@ -150,8 +150,10 @@ export default {
 .header-container {
   display: flex;
   @include IBM-Plex-Mono;
+  //letter-spacing: 3px;
+  //text-transform: uppercase;
   //width: calc(100vw - 3rem);
-  font-size: 14px;
+  font-size: 16px;
   //height: 10vh;
   //align-content: center;
   justify-content: space-between;
@@ -254,6 +256,7 @@ export default {
   .about {
     font-size: 2.5vw;
     margin-left: 1rem;
+    width: 50vw;
   }
 
   .navigation {
@@ -265,12 +268,13 @@ export default {
   }
 
   .header-container {
-    width: calc(100vw - 2rem);
+    //width: calc(100vw - 2rem);
   }
 
   .about {
+    padding-top: 0.2rem;
     text-align: right;
-    right: 5.5vw;
+    //right: 5.5vw;
   }
 
   .index {

@@ -34,3 +34,9 @@
 @mixin IBM-Plex-Mono {
   font-family: "IBM Plex Mono", monospace;
 }
+
+@mixin neue {
+  font-family: neue-haas-grotesk-text, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
