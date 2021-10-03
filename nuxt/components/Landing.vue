@@ -140,7 +140,7 @@ export default {
 .subtitle {
   @include IBM-Plex-Mono;
   font-size: 14px;
-  padding-bottom: 2rem;
+  padding-bottom: 1rem;
 }
 
 .select {
@@ -201,6 +201,7 @@ export default {
 
   .subtitle {
     font-size: 2vw;
+    padding-bottom: 0.5rem;
   }
 
   .project-titles {
