@@ -1,6 +1,7 @@
 <template>
   <div class="navigation">
     <div class="project-titles">
+      <div class="subtitle">Hi! here are some projects I've worked on:</div>
       <title-item
         v-for="(entries, index) in projects"
         :key="index"
@@ -84,7 +85,7 @@ export default {
   align-items: center;
   align-content: center;
   margin: 0 auto;
-  margin-top: 20vh;
+  margin-top: 15vh;
   color: black;
   //text-align: center;
   cursor: pointer;
@@ -112,12 +113,13 @@ export default {
   //bottom: 5vh;
   margin: 0 auto;
   display: block;
-  width: 15vw;
+  width: 20vw;
   align-content: center;
   align-items: center;
   justify-content: space-between;
   bottom: 3vh;
   opacity: 0.7;
+
   a {
     padding: 5px;
     cursor: pointer;
@@ -133,6 +135,12 @@ export default {
 .blink-hover {
   opacity: 0.5;
   transition: opacity 0.25;
+}
+
+.subtitle {
+  @include IBM-Plex-Mono;
+  font-size: 14px;
+  padding-bottom: 2rem;
 }
 
 .select {
@@ -189,6 +197,10 @@ export default {
     font-size: 2vw;
     width: 40vw;
     margin-left: 0;
+  }
+
+  .subtitle {
+    font-size: 2vw;
   }
 
   .project-titles {

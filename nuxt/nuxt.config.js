@@ -14,13 +14,14 @@ export default {
     },
     link: [
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
-      { rel: "preconnect", href: "https://fonts.googleapis.com" }, //IBM Plex Mono
+      { rel: "preconnect", href: "https://fonts.googleapis.com" }, //IBM Plex Mono light 300
       { rel: "preconnect", href: "https://fonts.gstatic.com" }, //
       {
         rel: "stylesheet",
         href:
-          "https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&display=swap"
-      } //
+          "https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@100;300&display=swap"
+      }, //
+      { rel: "stylesheet", href: "https://use.typekit.net/hvb3jfi.css" }
     ],
     meta: [
       { charset: "utf-8" },
