@@ -2,22 +2,7 @@
   <div v-if="show">
     <transition name="page">
       <div class="overview-container">
-        <div class="header-container">
-          <a class="nuxt-link-active">
-            <a class="header" v-if="landing">
-              Francisco Borja
-              <a class="subheader">designer and developer</a>
-            </a>
-            <!-- <a class="index">index</a> -->
-          </a>
-
-          <a class="about" v-if="landing"
-            ><nuxt-link class="nuxt-link-active" to="/about">about</nuxt-link>
-          </a>
-          <a class="index" v-if="!landing" @click="showLanding">index</a>
-        </div>
-
-        <landing
+        <!-- <landing
           :class="{
             'nav-enter-active': landing,
             'nav-leave-active': landing,
@@ -29,18 +14,31 @@
           :projects="projects"
           :slideToggle="slideToggle"
           v-show="landing"
-        />
+        /> -->
 
-        <nuxt-child
-          :class="{
-            'page-enter-active': !landing,
-            'page-leave-active': !landing,
-            'page-enter': landing,
-            'page-leave-to': landing,
-          }"
-          class="project"
-          :landing="landing"
-          :key="$route.params.index"
+        <div class="project-titles">
+          <div class="subtitle">
+            Hi! I'm a designer developer based in San Francisco, California. In
+            2020 I graduated with a degree in cognitive science from University
+            of California, Los Angeles. I love developing creative websites and
+            honing my design perspective. In my free time I enjoy fashion,
+            k-drama, and eating good ramen. Here are some things I've worked on
+          </div>
+          <title-item
+            v-for="(entries, index) in projects"
+            :key="index"
+            :entries="entries"
+            :index="index"
+          />
+        </div>
+
+        <nav-item
+          :key="index"
+          v-for="(entries, index) in projects"
+          :index="index"
+          :entries="entries"
+          :slideToggle="slideToggle"
+          class="preview"
         />
       </div>
     </transition>
@@ -48,12 +46,14 @@
 </template>
 
 <script>
-import Landing from "@/components/Landing.vue";
 import About from "@/components/About.vue";
+import NavItem from "@/components/NavItem.vue";
+import TitleItem from "@/components/TitleItem.vue";
 
 export default {
   components: {
-    Landing,
+    NavItem,
+    TitleItem,
     About,
   },
 
@@ -135,43 +135,77 @@ export default {
 @import "~assets/_projects.scss";
 @import "~assets/_typography.scss";
 
-// .child {
-//   color: black;
-//   height: 100vh;
-//   width: 100vw;
+.project-titles {
+  width: calc(100vw - 3rem);
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  margin: 0 auto;
+  margin-top: 15vh;
+  color: black;
+  //text-align: center;
+  padding-bottom: 25rem;
+  // z-index: 1;
+  font-size: 3vw;
+  line-height: 1.5;
+}
+
+.preview {
+  position: fixed;
+  top: 0px;
+}
+
+.navigation {
+  width: 100vw;
+  //top: 10vh;
+  font-size: 3vw;
+  line-height: 1.5;
+  //overflow: scroll;
+}
+
+.blink-hover {
+  opacity: 0.5;
+  transition: opacity 0.25;
+}
+
+.subtitle {
+  @include IBM-Plex-Mono;
+  font-size: 16px;
+  padding-top: 10rem;
+  padding-bottom: 15rem;
+  text-align: center;
+  opacity: 0.8;
+}
+
+.select {
+  position: absolute;
+  left: -2vw;
+  opacity: 0;
+}
+
+// .blink {
+//   animation: blink 1s;
+// }
+
+// @keyframes blink {
+//   50% {
+//     opacity: 0;
+//   }
+// }
+
+// .page-enter-active,
+// .page-leave-active {
+//   transition: opacity 0.25s ease-in-out, transform 0.5s ease-in-out;
+// }
+// .page-enter,
+// .page-leave-to {
+//   opacity: 0;
+//   transform: translate3d(0, 15px, 0);
 // }
 
 .overview-container {
-  background: #f1f1f1;
-  height: 100vh;
-  overflow: scroll;
+  height: auto;
   width: 100%;
-}
-.header-container {
-  display: flex;
-  @include IBM-Plex-Mono;
-  //letter-spacing: 3px;
-  //text-transform: uppercase;
-  //width: calc(100vw - 3rem);
-  font-size: 16px;
-  //height: 10vh;
-  //align-content: center;
-  justify-content: space-between;
-  position: fixed;
-  opacity: 0.8;
-
-  top: 1.5rem;
-  z-index: 5;
-  margin: 0;
-}
-
-.header {
-  margin-left: 1rem;
-  // width: 50%;
-}
-
-.subheader {
-  opacity: 0.8;
 }
 
 .nuxt-link-active {
@@ -193,14 +227,6 @@ export default {
   text-decoration: none;
 }
 
-.landing {
-  position: fixed;
-  top: 4rem;
-  z-index: 5;
-  background-color: f1f1f1;
-  overflow: hidden;
-}
-
 .index {
   @include IBM-Plex-Mono;
   cursor: pointer;
@@ -210,16 +236,18 @@ export default {
   background: none;
 }
 
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.25s ease-in-out;
+}
+.page-enter,
+.page-leave-to {
+  opacity: 0;
+}
+
 .index:hover {
   opacity: 0.5;
   transition: 0.25s ease-in;
-}
-
-.project {
-  // position: absolute;
-  height: 100%;
-  //width: calc(100vw - 2rem);
-  z-index: -5;
 }
 
 .nuxt-link-active {
@@ -247,10 +275,6 @@ export default {
   }
 }
 
-.nav-container {
-  cursor: pointer;
-}
-
 @media screen and (max-width: 768px) {
   .header,
   .about {
@@ -268,6 +292,7 @@ export default {
   }
 
   .header-container {
+    opacity: 0.8;
     //width: calc(100vw - 2rem);
   }
 
@@ -280,6 +305,23 @@ export default {
   .index {
     font-size: 14px;
     right: 5.5vw;
+  }
+
+  .contact {
+    font-size: 2vw;
+    width: 40vw;
+    margin-left: 0;
+  }
+
+  .subtitle {
+    font-size: 2vw;
+    padding-bottom: 0.5rem;
+  }
+
+  .project-titles {
+    margin-top: 15vh;
+    width: calc(100vw - 3rem);
+    margin-left: 1rem;
   }
 }
 </style>

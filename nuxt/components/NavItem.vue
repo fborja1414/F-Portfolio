@@ -28,19 +28,6 @@
         "
       />
     </div>
-    <!-- <div v-else>
-        <img
-          class="fulldisplay-image"
-          v-for="(image, index) in images"
-          :key="index"
-          :src="
-            image.url
-              .split('/uploads/')
-              .join('https://agile-peak-21162.herokuapp.com/uploads/')
-          "
-        />
-      </div> -->
-    <!-- </div> -->
   </div>
 </template>
 
@@ -125,13 +112,6 @@ export default {
       });
     },
   },
-
-  // data() {
-  //   return {
-  //     navClick: false,
-  //     navHovered: false,
-  //   };
-  // },
 };
 </script>
 
@@ -142,10 +122,9 @@ export default {
   position: absolute;
   top: 0px;
   //height: calc(100vh - 5rem);
-  overflow: scroll;
+  //overflow: scroll;
   width: 100%;
   margin: 0;
-  z-index: -1;
   // display: grid;
   // grid-template-columns: repeat(12, 1fr);
   // grid-column-gap: 1rem;
@@ -153,6 +132,7 @@ export default {
   opacity: 0;
   align-items: center;
   transition: opacity 1s;
+  z-index: -1;
 }
 
 .section-container--active {
@@ -174,7 +154,7 @@ export default {
 .fulldisplay-image {
   height: 100%;
   width: 100%;
-  margin-top: 8vh;
+  margin-top: 10rem;
 }
 
 .name {

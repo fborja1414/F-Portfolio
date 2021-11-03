@@ -1,10 +1,6 @@
 <template>
   <a
     class="name"
-    :class="{
-      'blink-hover': navHovered,
-      blink: onProjectpage,
-    }"
     v-on:click="
       $emit('clicked', index);
       navClick = true;
@@ -12,27 +8,32 @@
       removeTitle();
     "
     :key="index"
-    @mouseenter="setTitle(entries.name)"
-    @mouseleave="removeTitle()"
   >
     <nuxt-link class="project-link" :to="'/' + entries.id">
-      <a class="dot" v-if="index != 0"> • </a>
-      <a
-        class="name"
-        :class="{
-          blink: onProjectpage,
-        }"
-      >
-        {{ entries.name }} |
-      </a>
       <a
         class="medium"
+        @mouseenter="setTitle(entries.name)"
+        @mouseleave="removeTitle()"
+        >{{ medium }}</a
+      >
+      <a
+        class="space"
+        v-if="medium"
+        @mouseenter="setTitle(entries.name)"
+        @mouseleave="removeTitle()"
+      ></a>
+    </nuxt-link>
+    <nuxt-link class="name-link" :to="'/' + entries.id">
+      <a
+        class="title"
         :class="{
-          blink: onProjectpage,
+          'blink-hover': navHovered,
         }"
+        @mouseenter="setTitle(entries.name)"
+        @mouseleave="removeTitle()"
       >
-        {{ entries.medium }}</a
-      >
+        {{ entries.name }}
+      </a>
     </nuxt-link>
   </a>
 </template>
@@ -64,6 +65,7 @@ export default {
     position: function () {
       return this.entries.position;
     },
+
     description: function () {
       return this.entries.description;
     },
@@ -76,10 +78,17 @@ export default {
     onProjectpage() {
       return this.$route.params.index == this.entries.id;
     },
+    medium: function () {
+      if (this.entries.medium != "") {
+        return this.entries.medium;
+      }
+      return;
+    },
   },
 
   methods: {
     setTitle(title) {
+      console.log("hoveredtrue");
       this.navHovered = true;
       this.$store.commit("titleHovered", title);
     },
@@ -101,6 +110,8 @@ export default {
 @import "~assets/_typography.scss";
 
 .name {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   @include Canela-Thin;
   transition: opacity 1s;
   width: 100%;
@@ -109,13 +120,26 @@ export default {
 .project-link {
   color: black;
   text-decoration: none;
+  text-align: right;
+  cursor: auto;
+}
+
+.name-link {
+  color: black;
+  text-decoration: none;
+  cursor: auto;
 }
 
 .medium {
   @include Canela-ThinItalic;
+  font-size: 20px;
   padding-right: 10px;
+  cursor: pointer;
 }
 
+.title {
+  cursor: pointer;
+}
 .blink-hover {
   opacity: 0.5;
   transition: opacity 0.25s;
@@ -140,10 +164,6 @@ export default {
 
 .selectOn {
   opacity: 1;
-}
-
-.dot {
-  padding: px;
 }
 
 @media screen and (max-width: 768px) {

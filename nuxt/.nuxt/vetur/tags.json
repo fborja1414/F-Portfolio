@@ -5,17 +5,8 @@
   "Landing": {
     "description": "Auto imported from components/Landing.vue"
   },
-  "Logo": {
-    "description": "Auto imported from components/Logo.vue"
-  },
   "NavItem": {
     "description": "Auto imported from components/NavItem.vue"
-  },
-  "NavSection": {
-    "description": "Auto imported from components/NavSection.vue"
-  },
-  "Section": {
-    "description": "Auto imported from components/Section.vue"
   },
   "TitleItem": {
     "description": "Auto imported from components/TitleItem.vue"

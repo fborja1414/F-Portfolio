@@ -1,203 +1,205 @@
 <template>
   <!-- <nuxt-link class="nuxt-link-active" :to="'/' + nextpage"> -->
-  <div
-    class="pages-container"
-    :class="{
-      'page-enter-active': show,
-      'page-leave-active': show,
-      'page-enter': !show,
-      'page-leave-to': !show,
-    }"
-    v-if="show && imagesloaded"
-  >
+  <transition name="page">
     <div
-      class="description-container"
+      class="pages-container"
       :class="{
-        'desc-enter-active': show,
-        'desc-leave-active': show,
-        'desc-enter': !show,
-        'desc-leave-to': !show,
+        'page-enter-active': show,
+        'page-leave-active': show,
+        'page-enter': !show,
+        'page-leave-to': !show,
       }"
+      v-if="show && imagesloaded"
     >
-      <div v-if="videoBoolean" class="image-cont">
-        <div
-          class="pagination"
-          :class="{
-            'hide-text': landing,
-          }"
-        >
-          {{ projects.id }} / 6 {{ name }}
-          <a
-            class="link"
-            v-html="description"
+      <div
+        class="description-container"
+        :class="{
+          'desc-enter-active': show,
+          'desc-leave-active': show,
+          'desc-enter': !show,
+          'desc-leave-to': !show,
+        }"
+      >
+        <div v-if="videoBoolean" class="image-cont">
+          <div
+            class="pagination"
             :class="{
               'hide-text': landing,
             }"
-          ></a>
-        </div>
-        <video
-          :src="
-            imagezero.url
-              .split('/uploads/')
-              .join('https://agile-peak-21162.herokuapp.com/uploads/')
-          "
-          autoplay
-          loop
-        />
-        <div
-          v-if="projects.id == 1"
-          class="description2"
-          v-html="description2"
-          :class="{
-            'hide-text': landing,
-          }"
-        ></div>
-        <div v-if="projects.id == 2">
+          >
+            {{ projects.id }} / 6 {{ name }}
+            <a
+              class="link"
+              v-html="description"
+              :class="{
+                'hide-text': landing,
+              }"
+            ></a>
+          </div>
+          <video
+            :src="
+              imagezero.url
+                .split('/uploads/')
+                .join('https://agile-peak-21162.herokuapp.com/uploads/')
+            "
+            autoplay
+            loop
+          />
           <div
+            v-if="projects.id == 1"
             class="description2"
             v-html="description2"
             :class="{
               'hide-text': landing,
             }"
           ></div>
-          <div class="description-images-container">
-            <img
-              :src="
-                imageone.url
-                  .split('/uploads/')
-                  .join('https://agile-peak-21162.herokuapp.com/uploads/')
-              "
-            />
-            <img
-              :src="
-                imagetwo.url
-                  .split('/uploads/')
-                  .join('https://agile-peak-21162.herokuapp.com/uploads/')
-              "
-            />
-            <img
-              :src="
-                imagethree.url
-                  .split('/uploads/')
-                  .join('https://agile-peak-21162.herokuapp.com/uploads/')
-              "
-            />
-            <img
-              :src="
-                imagefour.url
-                  .split('/uploads/')
-                  .join('https://agile-peak-21162.herokuapp.com/uploads/')
-              "
-            />
+          <div v-if="projects.id == 2">
+            <div
+              class="description2"
+              v-html="description2"
+              :class="{
+                'hide-text': landing,
+              }"
+            ></div>
+            <div class="description-images-container">
+              <img
+                :src="
+                  imageone.url
+                    .split('/uploads/')
+                    .join('https://agile-peak-21162.herokuapp.com/uploads/')
+                "
+              />
+              <img
+                :src="
+                  imagetwo.url
+                    .split('/uploads/')
+                    .join('https://agile-peak-21162.herokuapp.com/uploads/')
+                "
+              />
+              <img
+                :src="
+                  imagethree.url
+                    .split('/uploads/')
+                    .join('https://agile-peak-21162.herokuapp.com/uploads/')
+                "
+              />
+              <img
+                :src="
+                  imagefour.url
+                    .split('/uploads/')
+                    .join('https://agile-peak-21162.herokuapp.com/uploads/')
+                "
+              />
+            </div>
+            <div class="first-subtitle"></div>
+            <div
+              class="description3"
+              v-html="description3"
+              :class="{
+                'hide-text': landing,
+              }"
+            ></div>
+            <div class="second-description-container">
+              <img
+                :src="
+                  imagefive.url
+                    .split('/uploads/')
+                    .join('https://agile-peak-21162.herokuapp.com/uploads/')
+                "
+              />
+              <img
+                :src="
+                  imagesix.url
+                    .split('/uploads/')
+                    .join('https://agile-peak-21162.herokuapp.com/uploads/')
+                "
+              />
+              <img
+                :src="
+                  imageseven.url
+                    .split('/uploads/')
+                    .join('https://agile-peak-21162.herokuapp.com/uploads/')
+                "
+              />
+            </div>
+            <div
+              class="description4"
+              v-html="description4"
+              :class="{
+                'hide-text': landing,
+              }"
+            ></div>
+            <div class="third-description-container">
+              <img
+                :src="
+                  imageeight.url
+                    .split('/uploads/')
+                    .join('https://agile-peak-21162.herokuapp.com/uploads/')
+                "
+              />
+              <img
+                :src="
+                  imagenine.url
+                    .split('/uploads/')
+                    .join('https://agile-peak-21162.herokuapp.com/uploads/')
+                "
+              />
+            </div>
+            <div
+              class="description5"
+              v-html="description5"
+              :class="{
+                'hide-text': landing,
+              }"
+            ></div>
+            <div class="fourth-description-container">
+              <img
+                :src="
+                  imageten.url
+                    .split('/uploads/')
+                    .join('https://agile-peak-21162.herokuapp.com/uploads/')
+                "
+              />
+            </div>
+            <div
+              class="description6"
+              v-html="description6"
+              :class="{
+                'hide-text': landing,
+              }"
+            ></div>
           </div>
-          <div class="first-subtitle"></div>
-          <div
-            class="description3"
-            v-html="description3"
+        </div>
+        <div v-else class="image-cont">
+          <a
+            class="pagination"
             :class="{
               'hide-text': landing,
             }"
-          ></div>
-          <div class="second-description-container">
-            <img
-              :src="
-                imagefive.url
-                  .split('/uploads/')
-                  .join('https://agile-peak-21162.herokuapp.com/uploads/')
-              "
-            />
-            <img
-              :src="
-                imagesix.url
-                  .split('/uploads/')
-                  .join('https://agile-peak-21162.herokuapp.com/uploads/')
-              "
-            />
-            <img
-              :src="
-                imageseven.url
-                  .split('/uploads/')
-                  .join('https://agile-peak-21162.herokuapp.com/uploads/')
-              "
-            />
-          </div>
+          >
+            {{ projects.id }} / 6 {{ name }}
+          </a>
+          <img
+            v-for="(image, index) in images"
+            :key="index"
+            :src="
+              image.url
+                .split('/uploads/')
+                .join('https://agile-peak-21162.herokuapp.com/uploads/')
+            "
+          />
+
           <div
-            class="description4"
-            v-html="description4"
-            :class="{
-              'hide-text': landing,
-            }"
-          ></div>
-          <div class="third-description-container">
-            <img
-              :src="
-                imageeight.url
-                  .split('/uploads/')
-                  .join('https://agile-peak-21162.herokuapp.com/uploads/')
-              "
-            />
-            <img
-              :src="
-                imagenine.url
-                  .split('/uploads/')
-                  .join('https://agile-peak-21162.herokuapp.com/uploads/')
-              "
-            />
-          </div>
-          <div
-            class="description5"
-            v-html="description5"
-            :class="{
-              'hide-text': landing,
-            }"
-          ></div>
-          <div class="fourth-description-container">
-            <img
-              :src="
-                imageten.url
-                  .split('/uploads/')
-                  .join('https://agile-peak-21162.herokuapp.com/uploads/')
-              "
-            />
-          </div>
-          <div
-            class="description6"
-            v-html="description6"
+            class="description"
+            v-html="description"
             :class="{
               'hide-text': landing,
             }"
           ></div>
         </div>
       </div>
-      <div v-else class="image-cont">
-        <a
-          class="pagination"
-          :class="{
-            'hide-text': landing,
-          }"
-        >
-          {{ projects.id }} / 6 {{ name }}
-        </a>
-        <img
-          v-for="(image, index) in images"
-          :key="index"
-          :src="
-            image.url
-              .split('/uploads/')
-              .join('https://agile-peak-21162.herokuapp.com/uploads/')
-          "
-        />
-
-        <div
-          class="description"
-          v-html="description"
-          :class="{
-            'hide-text': landing,
-          }"
-        ></div>
-      </div>
     </div>
-  </div>
+  </transition>
   <!-- </nuxt-link> -->
 </template>
 
@@ -208,9 +210,9 @@ export default {
   },
   async asyncData({ params, $axios, route }) {
     const projects = await $axios.$get(
-      `https://agile-peak-21162.herokuapp.com/projects/${route.params.index}`
+      `https://agile-peak-21162.herokuapp.com/projects/${route.params.entries}`
     );
-    const slug = route.params.index;
+    const slug = route.params.entries;
     console.log(slug);
     return { projects };
   },
@@ -385,9 +387,6 @@ export default {
 
 .pages-container {
   top: 10vh;
-  //height: 100vh;
-  background: #f1f1f1;
-  //width: 100vh;
   margin: 0;
   z-index: -1;
   align-items: center;
@@ -536,30 +535,11 @@ export default {
 
 .page-enter-active,
 .page-leave-active {
-  transition: opacity 0s ease-in-out;
+  transition: opacity 0.25s ease-in;
 }
 .page-enter,
 .page-leave-to {
   opacity: 0;
-}
-
-.page-enter-active,
-.page-leave-active {
-  transition: opacity 0s ease-in;
-}
-.page-enter,
-.page-leave-to {
-  opacity: 0;
-}
-
-.desc-enter-active,
-.desc-leave-active {
-  transition: opacity 0s ease-in-out;
-}
-.desc-enter,
-.desc-leave-to {
-  opacity: 0;
-  transform: translate3d(0, 15px, 0);
 }
 
 @media screen and (max-width: 800px) {

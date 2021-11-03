@@ -8,8 +8,5 @@ You can directly use them in pages and other components without the need to impo
 
 - `<About>` | `<about>` (components/About.vue)
 - `<Landing>` | `<landing>` (components/Landing.vue)
-- `<Logo>` | `<logo>` (components/Logo.vue)
 - `<NavItem>` | `<nav-item>` (components/NavItem.vue)
-- `<NavSection>` | `<nav-section>` (components/NavSection.vue)
-- `<Section>` | `<section>` (components/Section.vue)
 - `<TitleItem>` | `<title-item>` (components/TitleItem.vue)

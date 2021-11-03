@@ -7,33 +7,17 @@
     "_name": "_14565cc5"
   },
   {
-    "name": "nav2.",
-    "path": "/nav2.",
-    "component": "/Users/FranciscoBorja/Desktop/F-Portfolio/nuxt/pages/nav2..vue",
-    "chunkName": "pages/nav2.",
-    "_name": "_64e525d4"
-  },
-  {
     "name": "index",
     "path": "/",
     "component": "/Users/FranciscoBorja/Desktop/F-Portfolio/nuxt/pages/index.vue",
     "chunkName": "pages/index",
-    "children": [
-      {
-        "name": "index",
-        "path": ":index",
-        "component": "/Users/FranciscoBorja/Desktop/F-Portfolio/nuxt/pages/index/_index.vue",
-        "chunkName": "pages/index/_index",
-        "_name": "_eedac8ea"
-      }
-    ],
     "_name": "_68e80a87"
   },
   {
-    "name": "project",
-    "path": "/:project",
-    "component": "/Users/FranciscoBorja/Desktop/F-Portfolio/nuxt/pages/_project.vue",
-    "chunkName": "pages/_project",
-    "_name": "_b6012396"
+    "name": "entries",
+    "path": "/:entries",
+    "component": "/Users/FranciscoBorja/Desktop/F-Portfolio/nuxt/pages/_entries.vue",
+    "chunkName": "pages/_entries",
+    "_name": "_695a142c"
   }
 ]

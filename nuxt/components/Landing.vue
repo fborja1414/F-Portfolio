@@ -21,6 +21,7 @@
       :index="index"
       :entries="entries"
       :slideToggle="slideToggle"
+      class="preview"
     />
   </div>
 </template>
@@ -45,11 +46,6 @@ export default {
     };
   },
   methods: {
-    hoveredNav() {
-      this.navHovered = true;
-      console.log("ha");
-    },
-
     onLandingPage() {
       if (!this.$route.params.project) {
         this.$store.commit("toggleLanding", true);
@@ -71,7 +67,6 @@ export default {
   @include Canela-Thin;
   grid-row: 1;
   grid-column: 1/7;
-  font-size: 18px;
   height: 10vh;
   align-content: center;
   position: relative;
@@ -89,21 +84,20 @@ export default {
   color: black;
   //text-align: center;
   cursor: pointer;
+  // z-index: 1;
 }
 
-.nuxt-link-active {
-  color: black;
-  text-decoration: none;
+.preview {
+  position: absolute;
+  top: 0px;
 }
 
 .navigation {
-  height: 100vh;
   width: 100vw;
   //top: 10vh;
   font-size: 3vw;
   line-height: 1.5;
-  display: block;
-  overflow: scroll;
+  //overflow: scroll;
 }
 
 .contact {
@@ -139,8 +133,10 @@ export default {
 
 .subtitle {
   @include IBM-Plex-Mono;
-  font-size: 14px;
-  padding-bottom: 1rem;
+  font-size: 16px;
+  padding-top: 10rem;
+  padding-bottom: 15rem;
+  text-align: center;
 }
 
 .select {
