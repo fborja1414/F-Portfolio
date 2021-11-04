@@ -1,17 +1,13 @@
 <template>
   <div class="main">
     <div class="header-container">
-      <a class="nuxt-link-active">
+      <div>
         <a class="header">
           Francisco Borja
           <a class="subheader">designer and developer</a>
         </a>
-        <!-- <a class="index">index</a> -->
-      </a>
+      </div>
 
-      <!-- <a class="about"
-        ><nuxt-link class="nuxt-link-active" to="/about">about</nuxt-link>
-      </a> -->
       <div class="contact">
         <a class="email" href="mailto:fborja1414@gmail.com">Email</a>
         <a class="github" href="fborja1414.github.io">Github</a>
