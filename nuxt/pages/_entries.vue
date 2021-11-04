@@ -204,6 +204,8 @@
 </template>
 
 <script>
+import TitleItem from "@/components/TitleItem.vue";
+
 export default {
   props: {
     landing: Boolean,
