@@ -60,7 +60,6 @@ export default {
   data() {
     return {
       show: false,
-      landing: true,
       scroll: true,
       sectionDescription: " ",
       showSection: true,
@@ -71,17 +70,6 @@ export default {
     };
   },
   methods: {
-    showLanding() {
-      if (!this.landing) {
-        this.landing = true;
-      } else if (this.landing) {
-        this.landing = false;
-      }
-
-      console.log("lanidng" + this.landing);
-
-      // window.scrollTo({ top, behavior: "smooth" });
-    },
     selectOn() {
       this.navHovered = true;
     },
@@ -118,15 +106,12 @@ export default {
     this.$nextTick(() => (this.show = true));
   },
 
-  async asyncData({ $axios }) {
-    const projectsraw = await $axios.$get(
-      "https://agile-peak-21162.herokuapp.com/projects"
-    );
-    const projects = projectsraw.sort(function (firstItem, secondItem) {
-      return firstItem.id - secondItem.id;
-    });
-    console.log({ projects });
-    return { projects };
+  computed: {
+    projects() {
+      // this.$store.dispatch("requestFunc");
+      //console.log("projects" + this.$store.state.projects);
+      return this.$store.state.projects;
+    },
   },
 };
 </script>

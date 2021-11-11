@@ -8,9 +8,7 @@
         honing his design perspective. In his free time he enjoys fashion,
         k-drama, and eating good ramen.
       </div>
-      <div class="image">
-        <img class="profile" src="~assets/FranciscoBorja.JPG" />
-      </div>
+      <div class="image"></div>
 
       <!-- <div class="contact-list">
       <a> email</a>

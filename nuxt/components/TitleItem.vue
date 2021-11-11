@@ -1,5 +1,5 @@
 <template>
-  <a
+  <div
     class="name"
     v-on:click="
       $emit('clicked', index);
@@ -35,7 +35,7 @@
         {{ entries.name }}
       </a>
     </nuxt-link>
-  </a>
+  </div>
 </template>
 
 <script>

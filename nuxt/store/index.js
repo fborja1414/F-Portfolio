@@ -1,5 +1,6 @@
 export const state = () => ({
-  title: " "
+  title: " ",
+  projects: Object
 });
 
 export const mutations = {
@@ -17,5 +18,21 @@ export const mutations = {
 
   titleLeave(state) {
     state.title = " ";
+  },
+
+  saveProjects(state, value) {
+    const projectfilter = value.sort(function(firstItem, secondItem) {
+      return firstItem.id - secondItem.id;
+    });
+    state.projects = projectfilter;
+  }
+};
+
+export const actions = {
+  async nuxtServerInit({ commit, dispatch }, { app, $axios }) {
+    const projectsraw = await this.$axios.$get(
+      "https://agile-peak-21162.herokuapp.com/projects"
+    );
+    commit("saveProjects", projectsraw);
   }
 };

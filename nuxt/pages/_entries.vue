@@ -11,6 +11,12 @@
       }"
       v-if="show && imagesloaded"
     >
+      <!-- <title-item
+        v-for="(entries, index) in projects"
+        :entries="entries"
+        :key="index"
+        :index="index"
+      /> -->
       <div
         class="description-container"
         :class="{
@@ -28,13 +34,13 @@
             }"
           >
             {{ projects.id }} / 6 {{ name }}
-            <a
+            <div
               class="link"
               v-html="description"
               :class="{
                 'hide-text': landing,
               }"
-            ></a>
+            ></div>
           </div>
           <video
             :src="
@@ -207,6 +213,7 @@
 import TitleItem from "@/components/TitleItem.vue";
 
 export default {
+  components: { TitleItem },
   props: {
     landing: Boolean,
   },
@@ -232,6 +239,11 @@ export default {
         return this.projects.id + 5;
       }
       return this.projects.id - 1;
+    },
+
+    projects: function () {
+      //this.$store.dispatch("requestFunc");
+      return this.$store.state.projects;
     },
 
     images: function () {
@@ -417,8 +429,7 @@ export default {
   @include IBM-Plex-Mono;
   font-style: italic;
   font-size: 14px;
-  margin-bottom: 1vh;
-  margin-top: 10vh;
+  margin-top: 5rem;
 }
 .image-cont {
   width: 80vw;
@@ -426,13 +437,10 @@ export default {
   img {
     height: 100%;
     width: 100%;
-    margin-top: 5vh;
-    // margin-bottom: 3vh;
   }
   video {
     height: 100%;
     width: 100%;
-    margin-top: 5vh;
   }
 }
 
@@ -443,8 +451,7 @@ export default {
   img {
     width: 100%;
     height: auto;
-    padding: 0.5rem;
-    //height: 100%;
+    // padding: 0.5rem;
   }
 }
 
@@ -453,14 +460,12 @@ export default {
   margin: 0 auto;
   img {
     width: 100%;
-    padding-top: 1rem;
   }
 }
 
 .third-description-container {
   img {
     width: 100%;
-    padding-top: 1rem;
   }
 }
 
@@ -469,13 +474,10 @@ export default {
   margin: 0 auto;
   img {
     width: 100%;
-    padding-top: 1rem;
   }
 }
 
 .first-subtitle {
-  margin-top: 5vh;
-  bottom: 5vh;
   pointer-events: auto;
   z-index: 5;
   opacity: 0.7;
@@ -487,8 +489,6 @@ export default {
   color: black;
 }
 .description {
-  margin-top: 5vh;
-  bottom: 5vh;
   pointer-events: auto;
   z-index: 5;
   opacity: 0.7;
@@ -505,10 +505,10 @@ export default {
   color: black;
   opacity: 1;
   width: 50vw;
-  margin: 0 auto;
-  margin-top: 5vh;
-  margin-bottom: 10vh;
+  //margin: 0 auto;
   opacity: 0.9;
+  margin-bottom: 3rem;
+  margin-top: 3rem;
 }
 
 .indent {
@@ -547,8 +547,6 @@ export default {
 @media screen and (max-width: 800px) {
   .description-container {
     margin: 0 auto;
-    margin-top: 10vh;
-    // font-size: 2vw;
     width: 100%;
     .title,
     .description {
@@ -561,8 +559,7 @@ export default {
   .description-images-container {
     grid-template-columns: 1fr;
     img {
-      padding: none;
-      padding-top: 1rem;
+      // padding: none;
     }
   }
   .description2,
@@ -571,16 +568,15 @@ export default {
   .description5,
   .description6 {
     width: 90vw;
-    padding: none;
   }
 
   .second-description-container,
   .third-description-container,
   .fourth-description-container {
     width: 100%;
-    img {
-      padding: none;
-    }
+    // img {
+    //   padding: none;
+    // }
   }
   .pagination {
     padding: 1rem;
