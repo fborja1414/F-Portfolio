@@ -1,14 +1,16 @@
 <template>
   <div class="main">
     <div class="header-container">
-      <nuxt-link to="/">
-        <div>
-          <div class="header">
-            Francisco Borja
-            <a class="subheader">designer and developer</a>
+      <client-only>
+        <nuxt-link to="/">
+          <div>
+            <div class="header">
+              Francisco Borja
+              <a class="subheader">designer and developer</a>
+            </div>
           </div>
-        </div>
-      </nuxt-link>
+        </nuxt-link>
+      </client-only>
       <div class="contact">
         <a class="email" href="mailto:fborja1414@gmail.com">Email</a>
         <a class="github" href="fborja1414.github.io">Github</a>
@@ -23,7 +25,6 @@
 <script>
 export default {};
 </script>
-
 
 <style lang="scss">
 @import "~assets/_typography.scss";

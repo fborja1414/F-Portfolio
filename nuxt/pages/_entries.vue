@@ -7,7 +7,7 @@
         'page-enter-active': show,
         'page-leave-active': show,
         'page-enter': !show,
-        'page-leave-to': !show,
+        'page-leave-to': !show
       }"
       v-if="show && imagesloaded"
     >
@@ -25,14 +25,14 @@
           'desc-enter-active': show,
           'desc-leave-active': show,
           'desc-enter': !show,
-          'desc-leave-to': !show,
+          'desc-leave-to': !show
         }"
       >
         <div v-if="videoBoolean" class="image-cont">
           <div
             class="pagination"
             :class="{
-              'hide-text': landing,
+              'hide-text': landing
             }"
           >
             {{ projects.id }} / 6 {{ name }}
@@ -40,7 +40,7 @@
               class="link"
               v-html="description"
               :class="{
-                'hide-text': landing,
+                'hide-text': landing
               }"
             ></div>
           </div>
@@ -58,7 +58,7 @@
             class="description2"
             v-html="description2"
             :class="{
-              'hide-text': landing,
+              'hide-text': landing
             }"
           ></div>
           <div v-if="projects.id == 2">
@@ -66,7 +66,7 @@
               class="description2"
               v-html="description2"
               :class="{
-                'hide-text': landing,
+                'hide-text': landing
               }"
             ></div>
             <div class="description-images-container">
@@ -104,7 +104,7 @@
               class="description3"
               v-html="description3"
               :class="{
-                'hide-text': landing,
+                'hide-text': landing
               }"
             ></div>
             <div class="second-description-container">
@@ -134,7 +134,7 @@
               class="description4"
               v-html="description4"
               :class="{
-                'hide-text': landing,
+                'hide-text': landing
               }"
             ></div>
             <div class="third-description-container">
@@ -157,7 +157,7 @@
               class="description5"
               v-html="description5"
               :class="{
-                'hide-text': landing,
+                'hide-text': landing
               }"
             ></div>
             <div class="fourth-description-container">
@@ -173,7 +173,7 @@
               class="description6"
               v-html="description6"
               :class="{
-                'hide-text': landing,
+                'hide-text': landing
               }"
             ></div>
           </div>
@@ -182,7 +182,7 @@
           <a
             class="pagination"
             :class="{
-              'hide-text': landing,
+              'hide-text': landing
             }"
           >
             {{ projects.id }} / 6 {{ name }}
@@ -201,7 +201,7 @@
             class="description"
             v-html="description"
             :class="{
-              'hide-text': landing,
+              'hide-text': landing
             }"
           ></div>
         </div>
@@ -217,7 +217,7 @@ import NavComponent from "../components/NavComponent.vue";
 export default {
   components: { NavComponent },
   props: {
-    landing: Boolean,
+    landing: Boolean
   },
   async asyncData({ params, $axios, route }) {
     const projects = await $axios.$get(
@@ -229,96 +229,96 @@ export default {
   },
 
   computed: {
-    nextpage: function () {
+    nextpage: function() {
       if (this.projects.id == 6) {
         return this.projects.id - (6 - 1);
       }
       return this.projects.id + 1;
     },
 
-    prevpage: function () {
+    prevpage: function() {
       if (this.projects.id == 1) {
         return this.projects.id + 5;
       }
       return this.projects.id - 1;
     },
 
-    titleprojects: function () {
+    titleprojects: function() {
       //this.$store.dispatch("requestFunc");
       return this.$store.state.projects;
     },
 
-    images: function () {
+    images: function() {
       return this.projects.images;
     },
-    imagezero: function () {
+    imagezero: function() {
       return this.projects.images[0];
     },
-    imageone: function () {
+    imageone: function() {
       return this.projects.images[1];
     },
-    imagetwo: function () {
+    imagetwo: function() {
       return this.projects.images[2];
     },
-    imagethree: function () {
+    imagethree: function() {
       return this.projects.images[3];
     },
-    imagefour: function () {
+    imagefour: function() {
       return this.projects.images[4];
     },
-    imagefive: function () {
+    imagefive: function() {
       return this.projects.images[5];
     },
-    imagesix: function () {
+    imagesix: function() {
       return this.projects.images[6];
     },
-    imageseven: function () {
+    imageseven: function() {
       return this.projects.images[7];
     },
-    imageeight: function () {
+    imageeight: function() {
       return this.projects.images[8];
     },
-    imagenine: function () {
+    imagenine: function() {
       return this.projects.images[9];
     },
-    imageten: function () {
+    imageten: function() {
       return this.projects.images[10];
     },
-    imageeleven: function () {
+    imageeleven: function() {
       return this.projects.images[11];
     },
-    name: function () {
+    name: function() {
       return this.projects.name;
     },
-    description: function () {
+    description: function() {
       return this.projects.description;
     },
-    description2: function () {
+    description2: function() {
       return this.projects.description2;
     },
-    description3: function () {
+    description3: function() {
       return this.projects.description3;
     },
-    description4: function () {
+    description4: function() {
       return this.projects.description4;
     },
-    description5: function () {
+    description5: function() {
       return this.projects.description5;
     },
-    description6: function () {
+    description6: function() {
       return this.projects.description6;
     },
 
-    videoBoolean: function () {
+    videoBoolean: function() {
       return this.projects.videoboolean;
-    },
+    }
   },
 
   data() {
     return {
       show: false,
       imagesloaded: false,
-      pageNum: 1,
+      pageNum: 1
     };
   },
 
@@ -392,12 +392,12 @@ export default {
         console.log(`${this.imagesloaded}`);
         console.log(`${this.videoBoolean}`);
       });
-    },
-  },
+    }
+  }
 };
 </script>
 
-<style lang="scss" >
+<style lang="scss">
 @import "~assets/_projects.scss";
 @import "~assets/_typography.scss";
 
@@ -419,7 +419,7 @@ export default {
 }
 
 .nav {
-  //width: 100%;
+  width: 100vw;
   grid-column: 1/3;
   position: fixed;
   top: 25rem;

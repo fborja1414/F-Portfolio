@@ -3,21 +3,18 @@
     "name": "about",
     "path": "/about",
     "component": "/Users/FranciscoBorja/Desktop/F-Portfolio/nuxt/pages/about/index.vue",
-    "chunkName": "pages/about/index",
-    "_name": "_14565cc5"
+    "chunkName": "pages/about/index"
   },
   {
     "name": "index",
     "path": "/",
     "component": "/Users/FranciscoBorja/Desktop/F-Portfolio/nuxt/pages/index.vue",
-    "chunkName": "pages/index",
-    "_name": "_68e80a87"
+    "chunkName": "pages/index"
   },
   {
     "name": "entries",
     "path": "/:entries",
     "component": "/Users/FranciscoBorja/Desktop/F-Portfolio/nuxt/pages/_entries.vue",
-    "chunkName": "pages/_entries",
-    "_name": "_695a142c"
+    "chunkName": "pages/_entries"
   }
 ]

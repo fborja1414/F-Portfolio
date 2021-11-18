@@ -15,9 +15,11 @@
     "nuxt": "^2.15.3",
     "sass": "^1.34.1",
     "sass-loader": "^10",
+    "slugify": "^1.6.2",
     "webpack": "^4.46.0"
   },
   "devDependencies": {
+    "@nuxtclub/slugify": "^1.1.0",
     "node-sass": "^6.0.0"
   }
 }
