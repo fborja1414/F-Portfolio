@@ -11,12 +11,14 @@
       }"
       v-if="show && imagesloaded"
     >
-      <!-- <title-item
-        v-for="(entries, index) in projects"
-        :entries="entries"
-        :key="index"
-        :index="index"
-      /> -->
+      <div class="nav">
+        <nav-component
+          v-for="(entries, index) in titleprojects"
+          :entries="entries"
+          :key="index"
+          :index="index"
+        />
+      </div>
       <div
         class="description-container"
         :class="{
@@ -210,10 +212,10 @@
 </template>
 
 <script>
-import TitleItem from "@/components/TitleItem.vue";
+import NavComponent from "../components/NavComponent.vue";
 
 export default {
-  components: { TitleItem },
+  components: { NavComponent },
   props: {
     landing: Boolean,
   },
@@ -241,7 +243,7 @@ export default {
       return this.projects.id - 1;
     },
 
-    projects: function () {
+    titleprojects: function () {
       //this.$store.dispatch("requestFunc");
       return this.$store.state.projects;
     },
@@ -405,6 +407,8 @@ export default {
   z-index: -1;
   align-items: center;
   overflow-x: scroll;
+  display: grid;
+  grid-template-columns: repeat(10, 10vw);
 }
 
 .pagination {
@@ -412,6 +416,15 @@ export default {
   margin: 0 auto;
   font-size: 20px;
   color: black;
+}
+
+.nav {
+  //width: 100%;
+  grid-column: 1/3;
+  position: fixed;
+  top: 25rem;
+  left: 7vh;
+  font-size: 25px;
 }
 
 .nuxt-link-active {
@@ -426,13 +439,15 @@ export default {
 
 .description-container {
   position: relative;
+  width: 100%;
+  grid-column: 4/10;
   @include IBM-Plex-Mono;
   font-style: italic;
   font-size: 14px;
   margin-top: 5rem;
 }
 .image-cont {
-  width: 80vw;
+  width: 100%;
   margin: 0 auto;
   img {
     height: 100%;
@@ -470,7 +485,7 @@ export default {
 }
 
 .fourth-description-container {
-  width: 80vw;
+  width: 100%;
   margin: 0 auto;
   img {
     width: 100%;
@@ -548,12 +563,17 @@ export default {
   .description-container {
     margin: 0 auto;
     width: 100%;
+    //grid-column: 2/10;
     .title,
     .description {
       width: auto;
       font-size: 14px;
       text-align: left;
     }
+  }
+
+  .nav {
+    display: none;
   }
 
   .description-images-container {

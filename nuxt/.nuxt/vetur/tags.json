@@ -2,6 +2,9 @@
   "About": {
     "description": "Auto imported from components/About.vue"
   },
+  "NavComponent": {
+    "description": "Auto imported from components/NavComponent.vue"
+  },
   "NavItem": {
     "description": "Auto imported from components/NavItem.vue"
   },

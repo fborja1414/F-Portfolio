@@ -1,13 +1,14 @@
 <template>
   <div class="main">
     <div class="header-container">
-      <div>
-        <a class="header">
-          Francisco Borja
-          <a class="subheader">designer and developer</a>
-        </a>
-      </div>
-
+      <nuxt-link to="/">
+        <div>
+          <div class="header">
+            Francisco Borja
+            <a class="subheader">designer and developer</a>
+          </div>
+        </div>
+      </nuxt-link>
       <div class="contact">
         <a class="email" href="mailto:fborja1414@gmail.com">Email</a>
         <a class="github" href="fborja1414.github.io">Github</a>
@@ -110,6 +111,11 @@ html {
 
   //background: black;
   //color: white;
+}
+
+.nuxt-link-active {
+  color: black;
+  text-decoration: none;
 }
 
 .button--green {
