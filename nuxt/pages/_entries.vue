@@ -11,13 +11,15 @@
       }"
       v-if="show && imagesloaded"
     >
-      <div class="nav">
-        <nav-component
-          v-for="(entries, index) in titleprojects"
-          :entries="entries"
-          :key="index"
-          :index="index"
-        />
+      <div class="nav-container">
+        <div class="nav">
+          <nav-component
+            v-for="(entries, index) in titleprojects"
+            :entries="entries"
+            :key="index"
+            :index="index"
+          />
+        </div>
       </div>
       <div
         class="description-container"
@@ -417,13 +419,23 @@ export default {
   font-size: 20px;
   color: black;
 }
+.nav-container {
+  grid-column: 1/3;
+  height: 100%;
+  // position: sticky;
+  //width: 100vw;
+}
 
 .nav {
-  width: 100vw;
+  width: 100%;
+  height: 15rem;
   grid-column: 1/3;
-  position: fixed;
+  justify-content: flex-start;
+  align-items: flex-start;
+  //margin-top: 15rem;
+  // grid-row: 1;
+  position: sticky;
   top: 25rem;
-  left: 7vh;
   font-size: 25px;
 }
 
@@ -441,6 +453,7 @@ export default {
   position: relative;
   width: 100%;
   grid-column: 4/10;
+  grid-row: 1;
   @include IBM-Plex-Mono;
   font-style: italic;
   font-size: 14px;
