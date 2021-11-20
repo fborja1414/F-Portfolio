@@ -11,15 +11,13 @@
       }"
       v-if="show && imagesloaded"
     >
-      <div class="nav-container">
-        <div class="nav">
-          <nav-component
-            v-for="(entries, index) in titleprojects"
-            :entries="entries"
-            :key="index"
-            :index="index"
-          />
-        </div>
+      <div class="nav">
+        <nav-component
+          v-for="(entries, index) in titleprojects"
+          :entries="entries"
+          :key="index"
+          :index="index"
+        />
       </div>
       <div
         class="description-container"
@@ -407,10 +405,9 @@ export default {
   top: 10vh;
   margin: 0;
   z-index: -1;
-  align-items: center;
-  overflow-x: scroll;
-  display: grid;
-  grid-template-columns: repeat(10, 10vw);
+  //overflow-x: scroll;
+  display: flex;
+  // grid-template-columns: repeat(10, 10vw);
 }
 
 .pagination {
@@ -419,21 +416,10 @@ export default {
   font-size: 20px;
   color: black;
 }
-.nav-container {
-  grid-column: 1/3;
-  height: 100%;
-  // position: sticky;
-  //width: 100vw;
-}
 
 .nav {
-  width: 100%;
+  width: 25%;
   height: 15rem;
-  grid-column: 1/3;
-  justify-content: flex-start;
-  align-items: flex-start;
-  //margin-top: 15rem;
-  // grid-row: 1;
   position: sticky;
   top: 25rem;
   font-size: 25px;
@@ -443,6 +429,7 @@ export default {
   color: black;
   text-decoration: none;
 }
+
 .title,
 .description {
   pointer-events: auto;
@@ -451,14 +438,16 @@ export default {
 
 .description-container {
   position: relative;
-  width: 100%;
+  width: 70%;
   grid-column: 4/10;
   grid-row: 1;
   @include IBM-Plex-Mono;
   font-style: italic;
   font-size: 14px;
-  margin-top: 5rem;
+  margin-top: 3rem;
+  padding: 3rem;
 }
+
 .image-cont {
   width: 100%;
   margin: 0 auto;
@@ -532,7 +521,7 @@ export default {
   z-index: 5;
   color: black;
   opacity: 1;
-  width: 50vw;
+  width: 60vw;
   //margin: 0 auto;
   opacity: 0.9;
   margin-bottom: 3rem;
@@ -576,6 +565,8 @@ export default {
   .description-container {
     margin: 0 auto;
     width: 100%;
+    padding: 1rem;
+    padding-top: 5rem;
     //grid-column: 2/10;
     .title,
     .description {

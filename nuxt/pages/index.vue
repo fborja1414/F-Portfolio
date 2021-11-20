@@ -54,7 +54,7 @@ export default {
   components: {
     NavItem,
     TitleItem,
-    About,
+    About
   },
 
   data() {
@@ -65,7 +65,7 @@ export default {
       showSection: true,
       slideToggle: false,
       showAbout: false,
-      navHovered: false,
+      navHovered: false
       //position: Number
     };
   },
@@ -92,7 +92,7 @@ export default {
     hoveredNav() {
       this.navHovered = true;
       console.log("ha");
-    },
+    }
   },
 
   // beforeMount() {
@@ -111,8 +111,8 @@ export default {
       // this.$store.dispatch("requestFunc");
       console.log("projects" + this.$store.state.projects);
       return this.$store.state.projects;
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -300,7 +300,7 @@ export default {
 
   .subtitle {
     font-size: 2vw;
-    padding-bottom: 0.5rem;
+    padding-bottom: 15rem;
   }
 
   .project-titles {

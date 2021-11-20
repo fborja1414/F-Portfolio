@@ -130,6 +130,7 @@ export default {
   display: block;
   cursor: pointer;
   text-align: right;
+  padding: 1px;
 }
 .blink-hover {
   opacity: 0.5;

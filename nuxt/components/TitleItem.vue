@@ -27,7 +27,7 @@
       <a
         class="title"
         :class="{
-          'blink-hover': navHovered,
+          'blink-hover': navHovered
         }"
         @mouseenter="setTitle(entries.name)"
         @mouseleave="removeTitle()"
@@ -45,45 +45,45 @@ export default {
   props: {
     index: Number,
     entries: Object,
-    slideToggle: Boolean,
+    slideToggle: Boolean
   },
 
   data() {
     return {
       navHovered: false,
       navClick: false,
-      imagesloaded: false,
+      imagesloaded: false
     };
   },
   computed: {
-    name: function () {
+    name: function() {
       return this.entries.name;
     },
-    images: function () {
+    images: function() {
       return this.entries.images;
     },
-    position: function () {
+    position: function() {
       return this.entries.position;
     },
 
-    description: function () {
+    description: function() {
       return this.entries.description;
     },
-    titleHovered: function () {
+    titleHovered: function() {
       return this.entries.name == this.$store.state.title;
     },
-    showLanding: function () {
+    showLanding: function() {
       return this.$store.state.landing;
     },
     onProjectpage() {
       return this.$route.params.index == this.entries.id;
     },
-    medium: function () {
+    medium: function() {
       if (this.entries.medium != "") {
         return this.entries.medium;
       }
       return;
-    },
+    }
   },
 
   methods: {
@@ -101,8 +101,8 @@ export default {
       setTimeout(() => {
         this.navClick = false;
       }, 1200);
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -169,6 +169,14 @@ export default {
 @media screen and (max-width: 768px) {
   .dot {
     padding: 5px;
+  }
+
+  .medium {
+    font-size: 2.5vw;
+  }
+
+  .title {
+    font-size: 3vw;
   }
 }
 </style>

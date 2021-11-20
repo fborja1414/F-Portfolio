@@ -170,6 +170,7 @@ html {
     font-size: 2vw;
     width: 40vw;
     margin-left: 0;
+    text-align: right;
   }
 }
 </style>
