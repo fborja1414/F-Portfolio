@@ -119,7 +119,7 @@ export default {
 @import "~assets/_typography.scss";
 
 .section-container {
-  position: absolute;
+  position: fixed;
   top: 0px;
   //height: calc(100vh - 5rem);
   //overflow: scroll;
