@@ -9,7 +9,7 @@
         'page-enter': !show,
         'page-leave-to': !show
       }"
-      v-if="show && imagesloaded"
+      v-if="show"
     >
       <div class="nav">
         <nav-component
@@ -46,14 +46,12 @@
           </div>
           <video
             :src="
-              imagezero.url
-                .split('/uploads/')
-                .join('https://agile-peak-21162.herokuapp.com/uploads/')
-            "
+              imagezero
+                 "
             autoplay
             loop
           />
-          <div
+         <div
             v-if="projects.id == 1"
             class="description2"
             v-html="description2"
@@ -71,32 +69,22 @@
             ></div>
             <div class="description-images-container">
               <img
-                :src="
-                  imageone.url
-                    .split('/uploads/')
-                    .join('https://agile-peak-21162.herokuapp.com/uploads/')
-                "
+                :src="imageone"
               />
               <img
                 :src="
-                  imagetwo.url
-                    .split('/uploads/')
-                    .join('https://agile-peak-21162.herokuapp.com/uploads/')
-                "
+                  imagetwo
+                 "
               />
               <img
                 :src="
-                  imagethree.url
-                    .split('/uploads/')
-                    .join('https://agile-peak-21162.herokuapp.com/uploads/')
-                "
+                  imagethree
+                   "
               />
               <img
                 :src="
-                  imagefour.url
-                    .split('/uploads/')
-                    .join('https://agile-peak-21162.herokuapp.com/uploads/')
-                "
+                  imagefour
+                  "
               />
             </div>
             <div class="first-subtitle"></div>
@@ -110,24 +98,18 @@
             <div class="second-description-container">
               <img
                 :src="
-                  imagefive.url
-                    .split('/uploads/')
-                    .join('https://agile-peak-21162.herokuapp.com/uploads/')
-                "
+                  imagefive
+                    "
               />
               <img
                 :src="
-                  imagesix.url
-                    .split('/uploads/')
-                    .join('https://agile-peak-21162.herokuapp.com/uploads/')
-                "
+                  imagesix
+                     "
               />
               <img
                 :src="
-                  imageseven.url
-                    .split('/uploads/')
-                    .join('https://agile-peak-21162.herokuapp.com/uploads/')
-                "
+                  imageseven
+                  "
               />
             </div>
             <div
@@ -140,17 +122,13 @@
             <div class="third-description-container">
               <img
                 :src="
-                  imageeight.url
-                    .split('/uploads/')
-                    .join('https://agile-peak-21162.herokuapp.com/uploads/')
-                "
+                  imageeight
+                        "
               />
               <img
                 :src="
-                  imagenine.url
-                    .split('/uploads/')
-                    .join('https://agile-peak-21162.herokuapp.com/uploads/')
-                "
+                  imagenine
+                      "
               />
             </div>
             <div
@@ -163,10 +141,8 @@
             <div class="fourth-description-container">
               <img
                 :src="
-                  imageten.url
-                    .split('/uploads/')
-                    .join('https://agile-peak-21162.herokuapp.com/uploads/')
-                "
+                  imageten
+                    "
               />
             </div>
             <div
@@ -191,10 +167,8 @@
             v-for="(image, index) in images"
             :key="index"
             :src="
-              image.url
-                .split('/uploads/')
-                .join('https://agile-peak-21162.herokuapp.com/uploads/')
-            "
+              image.attributes.url
+                    "
           />
 
           <div
@@ -220,11 +194,12 @@ export default {
     landing: Boolean
   },
   async asyncData({ params, $axios, route }) {
-    const projects = await $axios.$get(
-      `https://agile-peak-21162.herokuapp.com/projects/${route.params.entries}`
+    const projectsraw = await $axios.$get(
+      `https://young-caverns-11391.herokuapp.com/api/projects/${route.params.entries}?populate=*`
     );
     const slug = route.params.entries;
     console.log(slug);
+    const projects = projectsraw.data;
     return { projects };
   },
 
@@ -249,68 +224,50 @@ export default {
     },
 
     images: function() {
-      return this.projects.images;
+      console.log(JSON.stringify(this.projects.attributes.Images.data[2]));
+      return this.projects.attributes.Images.data;
     },
     imagezero: function() {
-      return this.projects.images[0];
+      return this.projects.attributes.Images.data[0].attributes.url;
     },
     imageone: function() {
-      return this.projects.images[1];
+      return this.projects.attributes.Images.data[1].attributes.url;
     },
     imagetwo: function() {
-      return this.projects.images[2];
+      return this.projects.attributes.Images.data[2].attributes.url;
     },
     imagethree: function() {
-      return this.projects.images[3];
+     return this.projects.attributes.Images.data[3].attributes.url;
     },
     imagefour: function() {
-      return this.projects.images[4];
+     return this.projects.attributes.Images.data[4].attributes.url;
     },
-    imagefive: function() {
-      return this.projects.images[5];
-    },
-    imagesix: function() {
-      return this.projects.images[6];
-    },
-    imageseven: function() {
-      return this.projects.images[7];
-    },
-    imageeight: function() {
-      return this.projects.images[8];
-    },
-    imagenine: function() {
-      return this.projects.images[9];
-    },
-    imageten: function() {
-      return this.projects.images[10];
-    },
-    imageeleven: function() {
-      return this.projects.images[11];
-    },
+  
+ 
     name: function() {
-      return this.projects.name;
+      return this.projects.attributes.Name;
     },
     description: function() {
-      return this.projects.description;
+      return this.projects.attributes.Description;
     },
     description2: function() {
-      return this.projects.description2;
+      return this.projects.attributes.Description2;
     },
     description3: function() {
-      return this.projects.description3;
+      return this.projects.attributes.Description3;
     },
     description4: function() {
-      return this.projects.description4;
+      return this.projects.attributes.Description4;
     },
     description5: function() {
-      return this.projects.description5;
+      return this.projects.attributes.Description5;
     },
     description6: function() {
-      return this.projects.description6;
+      return this.projects.attributes.Description6;
     },
 
     videoBoolean: function() {
-      return this.projects.videoboolean;
+      return this.projects.attributes.VideoBoolean;
     }
   },
 
@@ -324,10 +281,10 @@ export default {
 
   mounted() {
     this.show = true;
-    if (!this.imagesloaded) {
-      this.loadImages();
-      console.log(this.$refs.image);
-    }
+    // if (!this.imagesloaded) {
+    //   this.loadImages();
+    //   console.log(this.$refs.image);
+    // }
   },
   methods: {
     onLandingPage() {
@@ -367,32 +324,32 @@ export default {
       // console.log(this.$refs.imagescroll);
     },
 
-    async loadImages() {
-      console.log(`${this.imagesloaded}`);
-      const t0 = performance.now();
-      const cachedImages = [];
+    // async loadImages() {
+    //   console.log(`${this.imagesloaded}`);
+    //   const t0 = performance.now();
+    //   const cachedImages = [];
 
-      //load Images
-      for (const image of this.images) {
-        const img = new Image();
-        img.src = image;
-        if (img.onload) {
-          cachedImages.push(image);
-        }
-      }
+    //   //load Images
+    //   for (const image of this.images) {
+    //     const img = new Image();
+    //     img.src = image;
+    //     if (img.onload) {
+    //       cachedImages.push(image);
+    //     }
+    //   }
 
-      await Promise.all(cachedImages).then(() => {
-        this.imagesloaded = true;
-        const t1 = performance.now();
-        console.log(
-          `${this.projects.name} - Loaded section.vue ${
-            this.projects.images.length
-          } images in ${Math.round(t1 - t0)}ms.`
-        );
-        console.log(`${this.imagesloaded}`);
-        console.log(`${this.videoBoolean}`);
-      });
-    }
+    //   await Promise.all(cachedImages).then(() => {
+    //     this.imagesloaded = true;
+    //     const t1 = performance.now();
+    //     console.log(
+    //       `${this.projects.name} - Loaded section.vue ${
+    //         this.projects.images.length
+    //       } images in ${Math.round(t1 - t0)}ms.`
+    //     );
+    //     console.log(`${this.imagesloaded}`);
+    //     console.log(`${this.videoBoolean}`);
+    //   });
+    // }
   }
 };
 </script>

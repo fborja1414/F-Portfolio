@@ -19,7 +19,7 @@
       <a
         class="space"
         v-if="medium"
-        @mouseenter="setTitle(entries.name)"
+        @mouseenter="setTitle(entries.attributes.Name)"
         @mouseleave="removeTitle()"
       ></a>
     </nuxt-link>
@@ -29,10 +29,10 @@
         :class="{
           'blink-hover': navHovered
         }"
-        @mouseenter="setTitle(entries.name)"
+        @mouseenter="setTitle(entries.attributes.Name)"
         @mouseleave="removeTitle()"
       >
-        {{ entries.name }}
+        {{ entries.attributes.Name }}
       </a>
     </nuxt-link>
   </div>
@@ -57,7 +57,8 @@ export default {
   },
   computed: {
     name: function() {
-      return this.entries.name;
+      console.log(JSON.stringify(this.entries.attributes.Medium));
+      return this.entries.attributes.name;
     },
     images: function() {
       return this.entries.images;
@@ -79,8 +80,8 @@ export default {
       return this.$route.params.index == this.entries.id;
     },
     medium: function() {
-      if (this.entries.medium != "") {
-        return this.entries.medium;
+      if (this.entries.attributes.Medium != "") {
+        return this.entries.attributes.Medium;
       }
       return;
     }

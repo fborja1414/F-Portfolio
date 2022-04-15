@@ -1,33 +1,25 @@
 <template>
   <div
-    v-if="imagesloaded"
     class="section-container"
     :class="{ 'section-container--active': titleHovered }"
   >
     <div class="fulldisplay">
-      <video
+       <video
         class="fulldisplay-image"
-        v-if="videoBoolean"
-        :src="
-          imagezero.url
-            .split('/uploads/')
-            .join('https://agile-peak-21162.herokuapp.com/uploads/')
-        "
-        autoplay
-        loop
-      />
+      v-if="videoBoolean"
+       :src="images[0].attributes.url"
+       autoplay
+       loop
+         />
       <img
-        v-else
         class="fulldisplay-image"
-        v-for="(image, index) in images"
-        :key="index"
-        :src="
-          image.url
-            .split('/uploads/')
-            .join('https://agile-peak-21162.herokuapp.com/uploads/')
-        "
+       v-else
+         v-for="(image, index) in images"
+      :src="image.attributes.url"  
+      :key="index"
       />
-    </div>
+     
+     </div>
   </div>
 </template>
 
@@ -54,31 +46,33 @@ export default {
     },
 
     imagezero: function () {
+      console.log(this.entries.images[0]);
       return this.entries.images[0];
     },
     images: function () {
+    // console.log(JSON.stringify(this.entries.attributes.Images.data[1].attributes.url));
       // const firstElement = this.entries.images.shift();
-      return this.entries.images;
+      return this.entries.attributes.Images.data;
     },
     position: function () {
-      return this.entries.position;
+      return this.entries.attributes.Position;
     },
     description: function () {
-      return this.entries.description;
+      return this.entries.attributes.Description;
     },
     videoBoolean: function () {
-      return this.entries.videoBoolean;
+      return this.entries.attributes.VideoBoolean;
     },
     titleHovered: function () {
-      return this.entries.name == this.$store.state.title;
+      return this.entries.attributes.Name == this.$store.state.title;
     },
   },
 
   mounted() {
-    if (!this.imagesloaded) {
-      this.loadImages();
-      console.log(this.$refs.image);
-    }
+    // if (!this.imagesloaded) {
+    //   this.loadImages();
+    //   console.log(this.$refs.image);
+    // }
   },
 
   methods: {

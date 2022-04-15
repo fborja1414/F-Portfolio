@@ -12,7 +12,7 @@
     <nuxt-link class="project-link" :to="'/' + entries.id">
       <a
         class="medium"
-        @mouseenter="setTitle(entries.name)"
+        @mouseenter="setTitle(entries.attributes.Name)"
         @mouseleave="removeTitle()"
         >{{ medium }}</a
       >
@@ -23,10 +23,10 @@
         :class="{
           'blink-hover': navHovered
         }"
-        @mouseenter="setTitle(entries.name)"
+        @mouseenter="setTitle(entries.attributes.Name)"
         @mouseleave="removeTitle()"
       >
-        {{ entries.name }}
+        {{ entries.attributes.Name }}
       </a>
     </nuxt-link>
   </div>
@@ -51,27 +51,27 @@ export default {
   },
   computed: {
     name: function() {
-      return this.entries.name;
+      return this.entries.attributes.Name;
     },
     images: function() {
-      return this.entries.images;
+      return this.entries.attributes.Images.data[0];
     },
     position: function() {
-      return this.entries.position;
+      return this.entries.attributes.Position;
     },
 
     description: function() {
-      return this.entries.description;
+      return this.entries.attributes.Description;
     },
     titleHovered: function() {
-      return this.entries.name == this.$store.state.title;
+      return this.entries.attributes.Name == this.$store.state.title;
     },
     showLanding: function() {
       return this.$store.state.landing;
     },
     medium: function() {
-      if (this.entries.medium != "") {
-        return this.entries.medium;
+      if (this.entries.attributes.Medium != "") {
+        return this.entries.attributes.Medium;
       }
       return;
     }

@@ -109,8 +109,9 @@ export default {
   computed: {
     projects() {
       // this.$store.dispatch("requestFunc");
-      console.log("projects" + this.$store.state.projects);
+      console.log(JSON.stringify(this.$store.state.projects));
       return this.$store.state.projects;
+      
     }
   }
 };
