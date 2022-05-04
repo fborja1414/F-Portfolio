@@ -104,6 +104,7 @@ export default {
   @include Canela-Thin;
   transition: opacity 1s;
   width: 100%;
+  padding-right: 1em;
 }
 
 .project-link {
