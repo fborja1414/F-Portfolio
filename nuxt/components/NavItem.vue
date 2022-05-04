@@ -84,27 +84,27 @@ export default {
       this.navHovered = false;
     },
 
-    async loadImages() {
-      console.log(`${this.imagesloaded}`);
-      const t0 = performance.now();
-      let cachedImages = [];
+    // async loadImages() {
+    //   console.log(`${this.imagesloaded}`);
+    //   const t0 = performance.now();
+    //   let cachedImages = [];
 
-      //load Images
-      for (const image of this.entries.images) {
-        cachedImages.push(image);
-      }
+    //   //load Images
+    //   for (const image of this.entries.images) {
+    //     cachedImages.push(image);
+    //   }
 
-      await Promise.all(cachedImages).then(() => {
-        this.imagesloaded = true;
-        const t1 = performance.now();
-        console.log(
-          `${this.entries.name} - Loaded ${
-            this.entries.images.length
-          } images in ${Math.round(t1 - t0)}ms.`
-        );
-        console.log(`${this.imagesloaded}`);
-      });
-    },
+    //   await Promise.all(cachedImages).then(() => {
+    //     this.imagesloaded = true;
+    //     const t1 = performance.now();
+    //     console.log(
+    //       `${this.entries.name} - Loaded ${
+    //         this.entries.images.length
+    //       } images in ${Math.round(t1 - t0)}ms.`
+    //     );
+    //     console.log(`${this.imagesloaded}`);
+    //   });
+    // },
   },
 };
 </script>
