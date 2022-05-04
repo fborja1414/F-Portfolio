@@ -26,7 +26,7 @@
 <script>
 export default {
   name: "NavItem",
-
+//dsvdsvsdvs
   props: {
     index: Number,
     entries: Object,
